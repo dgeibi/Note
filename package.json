@@ -1,0 +1,28 @@
+{
+  "name": "newnote",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build"
+  },
+  "dependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-latest": "^6.24.0",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^6.4.0",
+    "htmlclean": "^2.7.10",
+    "normalize.css": "^6.0.0",
+    "postcss-cssnext": "^2.10.0",
+    "postcss-csso": "^2.0.0",
+    "postcss-import": "^9.1.0",
+    "smoothscroll-polyfill": "^0.3.4",
+    "webpack": "^2.3.3",
+    "webpack-stream": "^3.2.0",
+    "wikic": "dgeibi/wikic"
+  },
+  "description": "personal wiki",
+  "author": "dgeibi <png.inside@gmail.com>"
+}

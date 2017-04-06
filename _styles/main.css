@@ -1,0 +1,182 @@
+@import "normalize.css";
+@import "wrapper";
+@import "aside";
+@import "helper";
+@import "anchor";
+@import "page";
+:root {
+  --monospace-font-family: 'Iosevka Slab', 'Iosevka', monospace;
+  --base-font-family: 'Source Han Serif SC Medium', 'Source Serif Pro', 'Noto Serif', Palatino, 'Palatino Linotype', Simsun, serif;
+  --base-font-size: 16px;
+  --base-font-weight: 400;
+  --small-font-size: calc(var(--base-font-size)*0.8);
+  --base-line-height: 1.4;
+  --spacing-unit: 2rem;
+  --text-color: #000;
+  --background-color: #f8f8f8;
+  --brand-color: #d10f0f;
+  --grey-color-dark: color(grey shade(50%));
+  --grey-color-light: color(grey tint(10%));
+}
+
+
+/**
+ * Basic styling
+ */
+
+body {
+  font-family: var(--base-font-family);
+  font-size: var(--base-font-size);
+  line-height: var(--base-line-height);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+}
+
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+
+blockquote, dl, figure, ol, p, ul, pre {
+  margin-bottom: 1rem;
+}
+
+
+/**
+ * Images
+ */
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+
+/**
+ * Lists
+ */
+
+ol, ul {
+  padding: 0 0 0 var(--spacing-unit);
+}
+
+li:not(:last-of-type) {
+  margin-bottom: .3125rem;
+}
+
+li {
+  & > ol, & > ul {
+    margin-bottom: 0;
+  }
+}
+
+
+/**
+ * Headings
+ */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 1rem 0 .75rem 0;
+  font-weight: var(--base-font-weight);
+  word-wrap: break-word;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+h4 {
+  font-size: 1.15rem;
+}
+
+
+/**
+ * Links
+ */
+
+a {
+  color: var(--brand-color);
+  text-decoration: none;
+}
+
+
+/**
+ * Blockquotes
+ */
+
+blockquote {
+  border-left: .25rem solid var(--grey-color-light);
+  padding-left: 1rem;
+  font-size: 1.125rem;
+  letter-spacing: -1px;
+  font-style: italic;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/**
+ * Code formatting
+ */
+
+code, kbd, pre, samp, tt {
+  font-family: var(--monospace-font-family);
+  font-size: 1em;
+}
+
+code {
+  padding: .07rem .3rem;
+}
+
+pre {
+  padding: .5rem .75rem;
+  overflow-x: auto;
+  & > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+
+/**
+ * Tables
+ */
+
+._table-wrapper {
+  margin-bottom: 1rem;
+  overflow: auto;
+}
+
+table {
+  min-width: 30rem;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  vertical-align: bottom;
+  font-weight: bold;
+}
+
+td {
+  vertical-align: middle;
+  border-top: 1px solid #e0e0e0;
+}
+
+td, th {
+  text-align: left;
+  padding: 0.625rem;
+}

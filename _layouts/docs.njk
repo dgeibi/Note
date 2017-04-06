@@ -1,0 +1,42 @@
+{% extends "default.njk" %}
+
+{%- block extraStyle %}
+<link rel="stylesheet" href="{{ '/assets/css/github.css' | baseurl }}">
+{%- endblock %}
+
+{%- block title %}
+  {% if page.title %}<title>{{ page.title }} - {{ type }} | {{ site.title }}</title>
+  {% else %}<title>{{ site.title }}</title>
+  {% endif %}
+{%- endblock %}
+
+{%- block body %}
+<a href="#slide" id="slide-btn">☡</a>
+<aside>
+  {% include "includes/header.njk" %}
+  <div id="list">
+    <p class="list-name">目录</p>
+    {{ list | safe }}
+  </div>
+</aside>
+
+<main>
+
+{% if page.title %}
+
+  <h1 class="page-title">{{- page.title }}</h1>
+
+  {% if page.toc %}
+  <div id="toc"></div>
+  {% endif %}
+
+  <hr/>
+
+{% endif %}
+
+  <div class="page-content">
+    {{- content| safe }}
+  </div>
+
+</main>
+{%- endblock -%}

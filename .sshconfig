@@ -1,0 +1,5 @@
+Host *.coding.net
+  HostName git.coding.net
+  IdentityFile ~/.ssh/tra
+  User png.inside@gmail.com
+  PreferredAuthentications publickey

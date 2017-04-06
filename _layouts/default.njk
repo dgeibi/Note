@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'>
+  <meta name="theme-color" content="#f8f8f8">
+  <meta charset="UTF-8">
+  {% block title %}
+    <title>{{ page.title }}{{ " | " if page.title }}{{ site.title }}</title>
+  {% endblock %}
+
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | baseurl }}">
+  <script src="{{ '/assets/js/bundle.js' | baseurl }}" async></script>
+
+  {%- block extraStyle %}
+  {% endblock -%}
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="manifest" href="/manifest.json">
+  </head>
+  <body>
+    <div class="wrapper">
+    {% block body %}
+    {{ content | safe }}
+    {% endblock %}
+    </div>
+  </body>
+</html>

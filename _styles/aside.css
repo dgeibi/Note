@@ -1,0 +1,110 @@
+aside {
+  display: none;
+  background: #f8f8f8;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+}
+
+aside ul {
+  padding: 0 0 0 1.8rem;
+}
+
+.site-header {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.list-name + ul.docs-list {
+  overflow: hidden;
+  padding: 0;
+}
+
+.docs-list li {
+  display: block;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.docs-list li > input + ul {
+  display: none;
+}
+
+.docs-list li > input:checked + ul {
+  display: block;
+  animation: fadeIn .8s ease-in-out;
+}
+
+.docs-list li label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.docs-list li input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+@media screen and (min-width: 800px) {
+  aside {
+    display: block;
+    border-bottom: 0;
+    border-right: 1px solid #eee;
+    width: 15rem;
+    padding: .7rem;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+
+  #list {
+    height: 90%;
+  }
+
+  .list-name + ul.docs-list {
+    height: 91%;
+    overflow-y: auto;
+  }
+  main {
+    margin: 0 0 0 15rem;
+  }
+}
+
+#slide-btn {
+  display: none;
+}
+
+@media screen and (max-width: 799px) {
+  aside.single {
+    padding: 1rem 0;
+    display: block;
+    border: 0;
+    width: 100%;
+    & + main {
+      display: none;
+    }
+  }
+  #slide-btn {
+    z-index: 3;
+    border-radius: .4em;
+    position: fixed;
+    font-size: 1.3rem;
+    top: .2rem;
+    left: .2rem;
+    display: block;
+    width: 2.3rem;
+    height: 1rem;
+  }
+}
