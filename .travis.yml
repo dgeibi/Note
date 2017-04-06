@@ -18,9 +18,9 @@ script:
 
 after_script:
   - cd docs
+  - git init
   - git config user.name "Deployment Bot"
   - git config user.email "deploy@travis-ci.org"
-  - git init
   - git add .
   - TZ=CST
   - git commit -m "update at `date`"
