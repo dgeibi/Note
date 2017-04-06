@@ -1,8 +1,9 @@
 {
-  "name": "newnote",
+  "name": "note",
   "version": "1.0.0",
   "main": "gulpfile.js",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "start": "gulp",
     "build": "gulp build"
@@ -24,5 +25,6 @@
     "wikic": "dgeibi/wikic"
   },
   "description": "personal wiki",
-  "author": "dgeibi <png.inside@gmail.com>"
+  "author": "dgeibi <png.inside@gmail.com>",
+  "repository": "git@github.com:dgeibi/note.git"
 }
