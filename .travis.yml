@@ -3,7 +3,7 @@ node_js:
 - "7"
 
 before_install:
-- openssl aes-256-cbc -K $encrypted_4e2dc614325b_key -iv $encrypted_4e2dc614325b_iv -in .tra.enc -out ~/.ssh/tra -d
+- openssl aes-256-cbc -K $encrypted_bbcc8cf83ca8_key -iv $encrypted_bbcc8cf83ca8_iv -in .tra.enc -out ~/.ssh/tra -d
 - chmod 600 ~/.ssh/tra
 - cp .sshconfig ~/.ssh/config
 
