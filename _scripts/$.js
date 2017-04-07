@@ -11,7 +11,4 @@ function $$(selector, context) {
   return [].slice.call(elements)
 }
 
-export {
-  $,
-  $$,
-}
+export { $, $$ }

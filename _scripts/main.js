@@ -1,6 +1,6 @@
 import smoothscroll from 'smoothscroll-polyfill'
 import { $, $$ } from './$'
-/* eslint-disable func-names,no-console*/
+/* eslint-disable func-names,no-console */
 
 smoothscroll.polyfill()
 
@@ -12,10 +12,12 @@ types.forEach((type) => {
 
 /* sw */
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
+  navigator.serviceWorker
+    .register('/sw.js')
     .then((reg) => {
       console.log(`Registration succeeded. Scope is ${reg.scope}`)
-    }).catch((error) => {
+    })
+    .catch((error) => {
       console.log(`Registration failed with ${error}`)
     })
 }
@@ -39,7 +41,8 @@ if (slideBtn) {
       lastPos = window.pageYOffset
     }
     aside.classList.toggle('single')
-    if (!hadSingle) { // now has 'single'
+    if (!hadSingle) {
+      // now has 'single'
       $(`[data-type=${types[0]}]`).scrollIntoView({
         behavior: 'smooth',
       })

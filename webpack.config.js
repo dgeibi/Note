@@ -21,12 +21,8 @@ const plugins = [
 const rules = [
   {
     test: /\.js[x]?$/,
-    use: [
-      { loader: 'babel-loader' },
-    ],
-    include: [
-      path.resolve('_scripts'),
-    ],
+    use: [{ loader: 'babel-loader' }],
+    include: [path.resolve('_scripts')],
   },
 ]
 

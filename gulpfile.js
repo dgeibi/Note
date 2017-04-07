@@ -10,11 +10,7 @@ const webpack = require('webpack')
 const webpackConfig = require('./webpack.config')
 
 const wikic = new Wikic()
-const processors = [
-  postcssImport(),
-  cssnext(),
-  csso,
-]
+const processors = [postcssImport(), cssnext(), csso]
 
 wikic.beforeWrite((context) => {
   if (!context.data) return context
@@ -24,10 +20,8 @@ wikic.beforeWrite((context) => {
 
 gulp.task('default', ['serve'])
 
-gulp.task('css', () => gulp.src('./_styles/main.css')
-  .pipe(postcss(processors))
-  .pipe(gulp.dest('./assets/css'))
-)
+gulp.task('css', () =>
+  gulp.src('./_styles/main.css').pipe(postcss(processors)).pipe(gulp.dest('./assets/css')))
 
 gulp.task('build', ['css', 'js'], () => wikic.build())
 
@@ -39,9 +33,11 @@ gulp.task('css:watch', ['css'], () => {
   gulp.watch('./_styles/**/*', ['css'])
 })
 
-gulp.task('js', () => gulp.src('_scripts/main.js')
-  .pipe(gulpWebpack(webpackConfig, webpack))
-  .pipe(gulp.dest('assets/js')))
+gulp.task('js', () =>
+  gulp
+    .src('_scripts/main.js')
+    .pipe(gulpWebpack(webpackConfig, webpack))
+    .pipe(gulp.dest('assets/js')))
 
 gulp.task('js:watch', ['js'], () => {
   gulp.watch('./_scripts/**/*', ['js'])

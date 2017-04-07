@@ -1,6 +1,9 @@
 // vecka.14islands.com/service-worker.js
 // https://github.com/14islands/vecka.14islands.com/blob/master/server/service-worker.js
 
+/* eslint-env serviceworker, browser */
+/* eslint-disable no-console */
+
 const ASSETS_CACHE = 'assets-v0.2.4'
 const PAGES_CACHE = 'pages-v1.0.0' // change to force update
 const expectedCaches = [ASSETS_CACHE, PAGES_CACHE]
@@ -15,11 +18,10 @@ const urlsToCache = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(ASSETS_CACHE)
-      .then((cache) => {
-        console.log('Opened cache')
-        return cache.addAll(urlsToCache)
-      })
+    caches.open(ASSETS_CACHE).then((cache) => {
+      console.log('Opened cache')
+      return cache.addAll(urlsToCache)
+    })
   )
 })
 
@@ -41,16 +43,18 @@ self.addEventListener('fetch', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys.map((key) => {
-          if (expectedCaches.includes(key)) return undefined
-          return caches.delete(key)
-        })
-      )
-    ).then(() => {
-      console.log('now ready to handle fetches.')
-    })
+    caches
+      .keys()
+      .then(keys =>
+        Promise.all(
+          keys.map((key) => {
+            if (expectedCaches.includes(key)) return undefined
+            return caches.delete(key)
+          })
+        ))
+      .then(() => {
+        console.log('now ready to handle fetches.')
+      })
   )
 })
 
