@@ -72,7 +72,7 @@ ie9
 * 对于其他节点类型，textContent 将所有子节点的 textContent 合并后返回，除了注释、ProcessingInstruction 节点。如果该节点没有子节点的话，返回一个空字符串。
 * 在节点上设置 textContent 属性的话，会删除它的所有子节点，并替换为一个具有给定值的文本节点。
 
-[textContent 与 innerText 的区别](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/textContent# 与 innerText 的区别)
+[textContent 与 innerText 的区别](https://developer.mozilla.org/zh-CN/docs/Web/API/Node/textContent)
 
 ## 节点位置
 
