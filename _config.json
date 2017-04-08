@@ -9,8 +9,6 @@
     "README.md",
     "**/node_modules/**",
     "yarn.lock",
-    "_styles/**",
-    "_scripts/**",
     "LICENSE",
     "package.json",
     "gulpfile.js",
