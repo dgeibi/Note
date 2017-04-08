@@ -18,14 +18,16 @@ wikic.beforeWrite((context) => {
   return Object.assign({}, context, { data: html })
 })
 
-gulp.task('default', ['serve'])
+gulp.task('default', ['serve', 'clean'])
+
+gulp.task('clean', () => wikic.clean())
 
 gulp.task('css', () =>
   gulp.src('./_styles/main.css').pipe(postcss(processors)).pipe(gulp.dest('./assets/css')))
 
-gulp.task('build', ['css', 'js'], () => wikic.build())
+gulp.task('build', ['css', 'js', 'clean'], () => wikic.build())
 
-gulp.task('serve', ['css', 'build', 'css:watch', 'js', 'js:watch'], () => {
+gulp.task('serve', ['css', 'build', 'css:watch', 'js', 'js:watch', 'clean'], () => {
   wikic.watch().serve()
 })
 
