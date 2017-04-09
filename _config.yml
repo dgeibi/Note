@@ -1,0 +1,30 @@
+docsPath: _notes
+title: Wikic
+baseurl: ''
+port: 4511
+layoutPath: _layouts
+publicPath: docs
+excludes:
+- README.md
+- "**/node_modules/**"
+- yarn.lock
+- LICENSE
+- package.json
+- gulpfile.js
+- webpack.config.js
+typeMap:
+  css: CSS
+  frontend: FrontEnd
+  webapi: Web API
+  html: HTML
+  ecmascript: ECMAScript
+  oop: 面向对象
+  ".": Home
+page:
+  layout: default
+  toc: true
+toc:
+  selectors: ".page-content h2, .page-content h3"
+  minLength: 3
+  header: "<h2>Contents</h2>"
+  id: "#toc"
