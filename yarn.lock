@@ -4797,9 +4797,9 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.1"
 
-wikic@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/wikic/-/wikic-1.1.2.tgz#9c892513162b9b40ca00695d356c88c24ca2c0f0"
+wikic@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/wikic/-/wikic-1.2.2.tgz#00a7bd3b95c5b3153e082624c9ccacdc95710e7d"
   dependencies:
     bluebird "^3.5.0"
     chokidar "^1.6.1"

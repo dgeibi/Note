@@ -5,7 +5,7 @@
 {%- endblock %}
 
 {%- block title %}
-  {% if page.title %}<title>{{ page.title }} - {{ type }} | {{ site.title }}</title>
+  {% if page.title %}<title>{{ page.title }} - {{ page.types | typeMaps | join(" - ") }} | {{ site.title }}</title>
   {% else %}<title>{{ site.title }}</title>
   {% endif %}
 {%- endblock %}
