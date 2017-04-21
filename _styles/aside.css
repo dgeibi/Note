@@ -29,6 +29,7 @@ aside ul {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -77,6 +78,7 @@ aside ul {
     height: 91%;
     overflow-y: auto;
   }
+
   main {
     margin: 0 0 0 15rem;
   }
@@ -92,10 +94,12 @@ aside ul {
     display: block;
     border: 0;
     width: 100%;
+
     & + main {
       display: none;
     }
   }
+
   #slide-btn {
     z-index: 3;
     border-radius: .4em;

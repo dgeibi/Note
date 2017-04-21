@@ -14,7 +14,7 @@
 <a href="#slide" id="slide-btn">☡</a>
 <aside>
   {% include "includes/header.njk" %}
-  <div id="list">
+  <div id="list" class="{{ page.types | join(" ") }}">
     <p class="list-name">目录</p>
     {{ list | safe }}
   </div>

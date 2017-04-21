@@ -5,4 +5,5 @@
 
 .page-content {
   margin-top: 1rem;
+  word-break: break-all;
 }

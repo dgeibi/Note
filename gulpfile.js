@@ -23,7 +23,8 @@ gulp.task('default', ['serve', 'clean'])
 gulp.task('clean', () => wikic.clean())
 
 gulp.task('css', () =>
-  gulp.src('./_styles/main.css').pipe(postcss(processors)).pipe(gulp.dest('./assets/css')))
+  gulp.src('./_styles/main.css').pipe(postcss(processors)).pipe(gulp.dest('./assets/css'))
+)
 
 gulp.task('build', ['css', 'js', 'clean'], () => wikic.build())
 
@@ -39,7 +40,8 @@ gulp.task('js', () =>
   gulp
     .src('_scripts/main.js')
     .pipe(gulpWebpack(webpackConfig, webpack))
-    .pipe(gulp.dest('assets/js')))
+    .pipe(gulp.dest('assets/js'))
+)
 
 gulp.task('js:watch', ['js'], () => {
   gulp.watch('./_scripts/**/*', ['js'])

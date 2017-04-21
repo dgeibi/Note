@@ -10,7 +10,8 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
-    "format": "prettier-eslint --write './*.js' './_scripts/**/*.js'",
+    "js:format": "prettier-eslint --write './*.js' './_scripts/**/*.js'",
+    "css:format": "stylefmt -r ./_styles/**/*.css",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -38,6 +39,7 @@
     "eslint-config-dgeibi": "dgeibi/eslint-config-dgeibi",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-no-async-without-await": "^1.2.0",
-    "prettier-eslint-cli": "^3.2.0"
+    "stylefmt": "^5.3.2",
+    "prettier-eslint-cli": "^3.3.0"
   }
 }

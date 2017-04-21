@@ -4,9 +4,10 @@
 @import "helper";
 @import "anchor";
 @import "page";
+
 :root {
   --monospace-font-family: 'Iosevka Slab', 'Iosevka', monospace;
-  --base-font-family: 'Source Han Serif SC Medium', 'Source Serif Pro', 'Noto Serif', Palatino, 'Palatino Linotype', Simsun, serif;
+  --base-font-family: 'Source Han Serif SC', 'Source Serif Pro', 'Noto Serif', Palatino, 'Palatino Linotype', Simsun, serif;
   --base-font-size: 16px;
   --base-font-weight: 400;
   --small-font-size: calc(var(--base-font-size)*0.8);
@@ -40,7 +41,13 @@ body {
  * Set `margin-bottom` to maintain vertical rhythm
  */
 
-blockquote, dl, figure, ol, p, ul, pre {
+blockquote,
+dl,
+figure,
+ol,
+p,
+ul,
+pre {
   margin-bottom: 1rem;
 }
 
@@ -63,7 +70,8 @@ main {
  * Lists
  */
 
-ol, ul {
+ol,
+ul {
   padding: 0 0 0 var(--spacing-unit);
 }
 
@@ -72,7 +80,8 @@ li:not(:last-of-type) {
 }
 
 li {
-  & > ol, & > ul {
+  & > ol,
+  & > ul {
     margin-bottom: 0;
   }
 }
@@ -82,9 +91,14 @@ li {
  * Headings
  */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 1rem 0 .75rem 0;
-  font-weight: var(--base-font-weight);
+  /*font-weight: var(--base-font-weight);*/
   word-wrap: break-word;
 }
 
@@ -121,6 +135,7 @@ blockquote {
   font-size: 1.125rem;
   letter-spacing: -1px;
   font-style: italic;
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -131,7 +146,11 @@ blockquote {
  * Code formatting
  */
 
-code, kbd, pre, samp, tt {
+code,
+kbd,
+pre,
+samp,
+tt {
   font-family: var(--monospace-font-family);
   font-size: 1em;
 }
@@ -143,6 +162,7 @@ code {
 pre {
   padding: .5rem .75rem;
   overflow-x: auto;
+
   & > code {
     border: 0;
     padding-right: 0;
@@ -176,7 +196,8 @@ td {
   border-top: 1px solid #e0e0e0;
 }
 
-td, th {
+td,
+th {
   text-align: left;
   padding: 0.625rem;
 }

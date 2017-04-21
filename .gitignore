@@ -59,4 +59,7 @@ typings/
 
 docs/
 
-assets/
+assets/*
+!assets/css
+assets/css/*
+!assets/css/github.css
