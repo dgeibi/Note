@@ -104,3 +104,7 @@ var image = document.createElement("img");
 image.src = imgURI;
 document.body.appendChild(image);
 ```
+
+## See also
+
+[HTML5 Canvas Cheat Sheet](https://simon.html5.org/dump/html5-canvas-cheat-sheet.html)

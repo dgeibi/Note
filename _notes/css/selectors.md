@@ -5,32 +5,35 @@ title: Selectors
 ## 说明
 
 * 精确度越高，优先级越高
-* 选择器可以组合使用
+* 选择符可以组合使用
 
 ## 分类
 
-- 标签选择器
-    - `p`       选择所有 `<p>`
-    - `div, p`  选择所有 `<div>` 及 `<p>`
+
+- 元素选择符
+    - 通配选择符 `*`, 选择所有元素对象
+    - 类型选择符
+        - `p`       选择所有 `<p>`
+        - `div, p`  选择所有 `<div>` 及 `<p>`
+    - class选择符   `.nav`
+    - id选择符   `#principal`
+- 关系选择符
     - `div p`   选择所有位于 `<div>` 内的 `<p>`
     - `div > p` 选择所有父级元素是 `<div>` 的 `<p>`
     - `div + p` 选择是 `<div>` 之后最近的同胞 HTML 元素的 `<p>`
     - `div ~ p` 选择所有在 `<div>` 之后的同胞 `<p>`
-- 类选择器   `.nav`
-- ID 选择器   `#principal`
-- 属性选择器
+- 属性选择符
     - `[target]`        选择所有存在 `target` 属性的元素
     - `[type=button] `  选择所有存在 `type="button"` 的元素
     - `[title~=flower]` 选择所有 `title` 属性包含 `flower` 的元素（`flower` 是独立的词，前后不能有非空白字符）
     - `[lang|=en]`      选择 `lang` 属性以 `en` 开头的所有元素（`en` 后只能以 `-` 做分割符）
     - `[class^="test"]` 选择 `class` 属性以 `test` 开头的所有元素
     - `[href$=".pdf"]`  选择 `href` 以 `.pdf` 结束的所有元素
-    - `[href*="goog"]`  选择 `href` 包含 `goog` 子字符串的元素
-- 伪类选择器   `selector:pseudo-class`
+    - `[href*="google"]`  选择 `href` 包含 `google` 子字符串的元素
+- 伪类选择符   `E:pseudo-class`
+- 伪元素选择符 `E::pseudo-element`
 
-## 伪类和伪元素
-
-伪类
+## 伪类选择符
 
 ```css
 :link                 /* 未访问的链接；顺序：:link — :visited — :hover — :active.  会覆盖其他所有的 `a:*'*/
@@ -54,12 +57,33 @@ li:nth-of-type(An+B)      /* 父级元素下的第 An+B 个 li 元素 */
 li:nth-last-of-type(An+B) /* 父级元素下的倒数第 An+B 个 li 元素 */
 ```
 
-伪元素
+## 伪元素选择符
 
 ```css
 ::before       /* 元素前面的内容 */
 ::after        /* 元素最后的内容 */
 ::first-letter /* 元素的第一个字母 */
 ::first-line   /* 元素的第一行 */
-::selection    /* 被选中的内容，一般改变其 color，background-color */
+::selection    /* 设置对象被选择时的颜色 */
+::placeholder  /* 设置对象文字占位符的样式, 注意浏览器前缀 */
+```
+
+::placeholder：
+
+``` html
+<style>
+input::-webkit-input-placeholder {
+	color: #111;
+}
+input:-ms-input-placeholder { /* IE10+ */
+	color: #111;
+}
+input:-moz-placeholder { /* Firefox4-18 */
+	color: #111;
+}
+input::-moz-placeholder { /* Firefox19+ */
+	color: #111;
+}
+</style>
+<input type="text" placeholder="input xxx" />
 ```

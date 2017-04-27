@@ -178,6 +178,7 @@ pre {
 ._table-wrapper {
   margin-bottom: 1rem;
   overflow: auto;
+  word-break: initial;
 }
 
 table {
