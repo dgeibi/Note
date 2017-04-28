@@ -43,9 +43,12 @@ if (slideBtn) {
     aside.classList.toggle('single')
     if (!hadSingle) {
       // now has 'single'
-      $(`[data-type=${types[0]}]`).scrollIntoView({
-        behavior: 'smooth',
-      })
+      const listTop = $(`[data-type=${types[0]}]`)
+      if (listTop) {
+        listTop.scrollIntoView({
+          behavior: 'smooth',
+        })
+      }
     } else if (lastPos !== null) {
       window.scroll({ top: lastPos, left: 0, behavior: 'smooth' })
     }
