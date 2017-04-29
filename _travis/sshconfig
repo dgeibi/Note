@@ -1,5 +1,5 @@
 Host *.coding.net
   HostName git.coding.net
-  IdentityFile ~/.ssh/tra
+  IdentityFile ~/.ssh/note_coding
   User png.inside@gmail.com
   PreferredAuthentications publickey
