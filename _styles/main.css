@@ -10,7 +10,7 @@
   --monospace-font-family: 'Iosevka Slab', 'Iosevka', monospace;
   --base-font-family: 'Source Serif Pro', 'Noto Serif', Palatino, 'Palatino Linotype', 'Noto Serif SC', Simsun, serif;
   --base-font-size: 16px;
-  --base-font-weight: 500;
+  --base-font-weight: 400;
   --small-font-size: calc(var(--base-font-size)*0.8);
   --base-line-height: 1.4;
   --spacing-unit: 2rem;
@@ -29,6 +29,7 @@
 body {
   font-family: var(--base-font-family);
   font-size: var(--base-font-size);
+  font-weight: var(--base-font-weight);
   line-height: var(--base-line-height);
   color: var(--text-color);
   background-color: var(--background-color);
