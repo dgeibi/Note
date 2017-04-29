@@ -18,10 +18,12 @@ const urlsToCache = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(ASSETS_CACHE).then((cache) => {
-      console.log('Opened cache')
-      return cache.addAll(urlsToCache)
-    })
+    caches.open(ASSETS_CACHE)
+      .then((cache) => {
+        console.log('Opened cache')
+        return cache.addAll(urlsToCache)
+      })
+      .then(self.skipWaiting())
   )
 })
 
@@ -53,9 +55,8 @@ self.addEventListener('activate', (event) => {
           })
         )
       )
-      .then(() => {
-        console.log('now ready to handle fetches.')
-      })
+      .then(() => console.log('now ready to handle fetches.'))
+      .then(() => self.clients.claim())
   )
 })
 
