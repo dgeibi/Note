@@ -3,7 +3,7 @@ title: Object
 lang: en
 ---
 
-## Object 字面量
+## `Object` 字面量
 
 `{x: x}` is `{x}`
 
@@ -38,7 +38,7 @@ obj.x = 'axe';
 obj._x//'axe'
 ```
 
-## Object.assign()
+## `Object.assign()`
 
 `Object.assign(target, ...sources)` return target
 
@@ -46,7 +46,7 @@ The Object.assign() method is used to copy the **values** of all **enumerable ow
 
 Note: target itself will be changed.
 
-## Object.create()
+## `Object.create()`
 
 `Object.create(proto[, propertiesObject])` return a new object whose prototype is proto.
 
@@ -55,7 +55,7 @@ See
 - [原型式继承](/ecmascript/inheritance.html#原型式继承)
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
 
-## Object.defineProperty()
+## `Object.defineProperty()`
 
 [Object.defineProperty() - JavaScript \| MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 
@@ -96,15 +96,15 @@ An accessor descriptor also has the following optional keys:
 | get| A function which serves as a getter for the property, or undefined if there is no getter. The function return will be used as the value of property. The function has no parameter. | undefined |
 | set| A function which serves as a setter for the property, or undefined if there is no setter. The function will receive as only argument the new value being **assigned** to the property. | undefined |
 
-## Object.keys()
+## `Object.keys()`
 
 return: an array of a given object's **own enumerable** properties
 
-##  Object.getOwnPropertyNames()
+##  `Object.getOwnPropertyNames()`
 
 return: an array of all properties (enumerable or not) found directly upon a given object.
 
-## Object.getOwnPropertyDescriptors()
+## `Object.getOwnPropertyDescriptors()`
 
 return: all own property descriptors of a given object
 
@@ -112,23 +112,23 @@ return: all own property descriptors of a given object
 Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj))
 ```
 
-## Object.preventExtensions()
+## `Object.preventExtensions()`
 
 prevents new properties from ever being added to an object (i.e. prevents future extensions to the object).
 
-## Object.seal()
+## `Object.seal()`
 
 Sealing an object prevents new properties from being added and marks all existing properties as non-configurable
 
 `Object.seal(obj)` 可修改已存在的 property，但不能用 delete property/或重新设置 descriptor，不能给 obj 增加新 property。
 
-## Object.freeze()
+## `Object.freeze()`
 
 prevents new properties from being added to it; prevents existing properties from being removed; and prevents existing properties, or their enumerability, configurability, or writability, from being changed. The method returns the object being frozen.
 
 `Object.isFrozen(obj)` true
 
-## Object.is()
+## `Object.is()`
 
 ``` javascript
 +0 === -0 // true
@@ -139,7 +139,7 @@ Object.is(NaN, 0/0) // true
 Object.is({},{}) // false
 ```
 
-## Object.setPrototypeOf()
+## `Object.setPrototypeOf()`
 
 ``` javascript
 Object.setPrototypeOf(B.prototype, A.prototype);
@@ -147,7 +147,7 @@ Object.setPrototypeOf(B.prototype, A.prototype);
 B.prototype.__proto__ = A.prototype;
 ```
 
-## Object.getPrototypeOf()
+## `Object.getPrototypeOf()`
 
 `Object.getPrototypeOf(obj)`
 
@@ -157,7 +157,7 @@ var anotherPerson = Object.create(person)
 console.log(Object.getPrototypeOf(anotherPerson) === person) // true
 ```
 
-## {}.isPrototypeOf()
+## `{}.isPrototypeOf()`
 
 `prototypeObj.isPrototypeOf(obj)`
 
@@ -169,7 +169,7 @@ var anotherPerson = Object.create(person)
 console.log(person.isPrototypeOf(anotherPerson)) // true
 ```
 
-## {}.hasOwnProperty()
+## `{}.hasOwnProperty()`
 
 `obj.hasOwnProperty(prop)`
 

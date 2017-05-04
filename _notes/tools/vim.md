@@ -134,7 +134,7 @@ Vim the Six Billion Dollar editor
 
 你要让你的光标移动更有效率，你一定要了解下面的这些命令，千万别跳过。
 
-1. `NG` == `:N` → 到第 N 行   
+1. `NG` == `:N` → 到第 N 行
 2. `gg` → 到第一行。（陈皓注：相当于 `1G`或 `:1`）
 3. `G`→ 到最后一行。
 4. 按单词移动：
@@ -145,7 +145,7 @@ Vim the Six Billion Dollar editor
 >>
 > >如果你认为单词是由blank字符分隔符，那么你需要使用大写的E和W。（陈皓注：程序语句）
 >
->![](http://ww4.sinaimg.cn/large/920f35bagw1eyoy6dezxij209x02b3ye.jpg)
+>![](https://ww4.sinaimg.cn/large/920f35bagw1eyoy6dezxij209x02b3ye.jpg)
 
 下面，让我来说说最强的光标移动：
 
@@ -194,7 +194,7 @@ Vim the Six Billion Dollar editor
 >* `t,` → 到逗号前的第一个字符。`,` 可以变成其它字符。
 >* `3fa` → 在当前行查找第三个出现的 `a`。
 >* `F` 和 `T` → 和 f 和 t 一样，只不过是相反方向。
-> ![](http://ww1.sinaimg.cn/large/920f35bagw1eyoydg25o9j20bb02cjr9.jpg)
+> ![](https://ww1.sinaimg.cn/large/920f35bagw1eyoydg25o9j20bb02cjr9.jpg)
 
 还有一个很有用的命令是 `dt"` → 删除所有的内容，直到遇到双引号—— "。
 
@@ -216,7 +216,7 @@ Vim the Six Billion Dollar editor
 >* `v2i)` → 会选择 `map (+) ("foo")`
 >* `v2a)` → 会选择 `(map (+) ("foo"))`
 
-![](http://ww3.sinaimg.cn/large/920f35bagw1eyoyg46z73j206q03imx6.jpg)
+![](https://ww3.sinaimg.cn/large/920f35bagw1eyoyg46z73j206q03imx6.jpg)
 
 ### 块操作
 
@@ -227,7 +227,7 @@ Vim the Six Billion Dollar editor
 * `<C-d>` → 向下移动 (你也可以使用 hjkl 来移动光标，或是使用 `%`，或是别的)
 * `I-- [ESC]` → 在每一行插入`--`
 
-![](http://ww4.sinaimg.cn/large/920f35bagw1eyoyhozmhsg208c04gdg4.gif)
+![](https://ww4.sinaimg.cn/large/920f35bagw1eyoyhozmhsg208c04gdg4.gif)
 
 注：在 Windows 下的 vim，你需要使用 `<C-q>` 而不是 `<C-v>`。在剪贴板不空时，`<C-v>` 是粘贴。
 
@@ -237,7 +237,7 @@ Vim the Six Billion Dollar editor
 
 在 INSERT 模式下，你可以输入一个词的开头，然后按 `<C-p>`或是`<C-n>`，自动补齐功能就出现了……
 
-![](http://ww3.sinaimg.cn/large/920f35bagw1eyoyrehqdig20c10503ys.gif)
+![](https://ww3.sinaimg.cn/large/920f35bagw1eyoyrehqdig20c10503ys.gif)
 
 ### 宏录制： qa 操作序列 q, @a, @@
 
@@ -258,7 +258,7 @@ Vim the Six Billion Dollar editor
 * `@@` → 在2 正面写下3
 * 现在做 `100@@` 会创建新的100行，并把数据增加到 103.
 
-![](http://ww1.sinaimg.cn/large/920f35bagw1eyoyvmu0x0g20b4050t8p.gif)
+![](https://ww1.sinaimg.cn/large/920f35bagw1eyoyvmu0x0g20b4050t8p.gif)
 
 ### 可视化选择
 
@@ -270,7 +270,7 @@ Vim the Six Billion Dollar editor
 * `<` 或 `>` → 左右缩进
 * `=` → 自动给缩进 （陈皓注：这个功能相当强大，我太喜欢了）
 
-![](http://ww2.sinaimg.cn/large/920f35bagw1eyoyx1iiveg20c1050wht.gif)
+![](https://ww2.sinaimg.cn/large/920f35bagw1eyoyx1iiveg20c1050wht.gif)
 
 在所有被选择的行后加上点东西：
 
@@ -279,7 +279,7 @@ Vim the Six Billion Dollar editor
 * `$` 到行最后
 * `A`, 输入字符串，按 `ESC`
 
-![](http://ww1.sinaimg.cn/large/920f35bagw1eyoyyieok2g20c1050wht.gif)
+![](https://ww1.sinaimg.cn/large/920f35bagw1eyoyyieok2g20c1050wht.gif)
 
 ### 分屏: `:split` 和 `:vsplit`
 
@@ -290,7 +290,7 @@ Vim the Six Billion Dollar editor
 * `<C-w>_` (或 `<C-w>|`) : 最大化尺寸 (<C-w>| 垂直分屏)
 * `<C-w>+` (或 `<C-w>-`) : 增加尺寸
 
-![](http://ww4.sinaimg.cn/large/920f35bagw1eyoz0g1bslg20c1050wg1.gif)
+![](https://ww4.sinaimg.cn/large/920f35bagw1eyoz0g1bslg20c1050wg1.gif)
 
 ## 结束语
 
