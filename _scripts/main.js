@@ -7,7 +7,10 @@ smoothscroll.polyfill();
 const hostname = location.pathname;
 const types = hostname.split('/').slice(1, -1);
 types.forEach((type) => {
-  $(`[data-type=${type}]`).checked = true;
+  const target = $(`[data-type=${type}]`);
+  if (target) {
+    target.checked = true;
+  }
 });
 
 /* sw */

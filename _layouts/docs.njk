@@ -1,7 +1,7 @@
 {% extends "default.njk" %}
 
 {%- block extraStyle %}
-<link rel="stylesheet" href="{{ '/assets/css/github.css' | baseurl }}">
+<link rel="stylesheet" href="{{ '/assets/css/github.css' | baseurl | relative }}">
 {%- endblock %}
 
 {%- block title %}

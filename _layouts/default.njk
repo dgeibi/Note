@@ -8,8 +8,8 @@
     <title>{{ page.title }}{{ " | " if page.title }}{{ site.title }}</title>
   {% endblock %}
 
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | baseurl }}">
-  <script src="{{ '/assets/js/bundle.js' | baseurl }}" async></script>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | baseurl | relative }}">
+  <script src="{{ '/assets/js/bundle.js' | baseurl | relative }}" async></script>
 
   {%- block extraStyle %}
   {% endblock -%}
