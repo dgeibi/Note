@@ -5261,19 +5261,20 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.1"
 
-wikic@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/wikic/-/wikic-1.2.5.tgz#546ca03af817a888b2d06f9f61640eb32b5344e0"
+wikic@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/wikic/-/wikic-1.2.6.tgz#b77ccbd915e6c6131caeb128f0755ba722d88998"
   dependencies:
     bluebird "^3.5.0"
     chokidar "^1.6.1"
+    commander "^2.9.0"
     find-parent-dir "^0.3.0"
     front-matter "^2.1.2"
     fs-promise "^2.0.0"
     get-port "^3.1.0"
     glob "^7.1.1"
     highlight.js "^9.10.0"
-    html-toc dgeibi/html-toc
+    html-toc "github:dgeibi/html-toc"
     js-yaml "^3.8.3"
     lodash "^4.17.4"
     markdown-it "^8.3.1"

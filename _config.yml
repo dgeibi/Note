@@ -1,12 +1,7 @@
-docsPath: _notes
 title: Wikic
-baseurl: ''
 port: 4511
-layoutPath: _layouts
-publicPath: docs
 excludes:
 - README.md
-- "**/node_modules/**"
 - yarn.lock
 - LICENSE
 - package.json
