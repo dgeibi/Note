@@ -117,7 +117,7 @@ format："text/plain"("text"), "text/uri-list"("url")
 
 ## Media Events
 
-[Media Element - HTML](/html/media.html#mediaevents)
+[Media Element - HTML](/html/media.html#media-events)
 
 ## Event handlers for objects of the text track APIs
 

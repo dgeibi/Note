@@ -130,4 +130,4 @@ selectElem.add(newOption, undefined);
 
 ## 表单事件
 
-[表单事件](/webapi/typeofevent.html#formevents)
+[表单事件](/webapi/typeofevent.html#form-events)

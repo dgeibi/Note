@@ -41,9 +41,9 @@ unset var-name
 
 ## 获取命令输出的值
 
-```shell
+``` shell
 value1="$(command)"
-value2=\`command\`
+value2=`command`
 ```
 
 ## read：从用户输入给变量赋值

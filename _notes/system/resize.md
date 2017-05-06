@@ -165,7 +165,7 @@ Command (? for help): b
 # /dev/sda1: 268432/28352512 files (0.1% non-contiguous), 11359488/113392384 blocks
 ```
 
-## 用resize2fs 调整文件系统大小
+## 用 resize2fs 调整文件系统大小
 
 ```shell
 [root@tanghuimin ~]# resize2fs /dev/sda1 326G

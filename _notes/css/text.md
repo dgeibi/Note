@@ -37,4 +37,4 @@ title: Text
 
 ie10
 
-[CSS Shadow](/css/shadow.html#text-shadow)
+[CSS Shadow](/css/shadow.html)
