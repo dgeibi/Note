@@ -1,8 +1,6 @@
-.anchor {
-  display: none;
-
-  @nest .page-content h2:hover &, .page-content h3:hover & {
-    display: inline;
+h2, h3 {
+  &:hover .anchor::after {
+    content: ' #';
   }
 }
 
