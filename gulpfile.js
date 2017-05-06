@@ -3,7 +3,6 @@ const postcssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const postcss = require('gulp-postcss');
 const csso = require('postcss-csso');
-const htmlclean = require('htmlclean');
 const Wikic = require('wikic');
 const gulpWebpack = require('webpack-stream');
 const webpack = require('webpack');
@@ -11,12 +10,6 @@ const webpackConfig = require('./webpack.config');
 
 const wikic = new Wikic();
 const processors = [postcssImport(), cssnext(), csso];
-
-wikic.beforeWrite((context) => {
-  if (!context.data) return context;
-  const html = htmlclean(context.data);
-  return Object.assign({}, context, { data: html });
-});
 
 gulp.task('default', ['serve', 'clean']);
 
