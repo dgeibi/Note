@@ -2364,15 +2364,6 @@ html-tags@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-1.1.1.tgz#869f43859f12d9bdc3892419e494a628aa1b204e"
 
-"html-toc@github:dgeibi/html-toc":
-  version "1.0.2"
-  resolved "https://codeload.github.com/dgeibi/html-toc/tar.gz/660b1d0b3e651dbb0171cade07a89635cd2913bb"
-  dependencies:
-    cheerio "^0.22.0"
-    escape-html "^1.0.3"
-    extend-shallow "^2.0.1"
-    markdown-slug "^0.1.1"
-
 htmlclean@^2.7.10:
   version "2.7.10"
   resolved "https://registry.yarnpkg.com/htmlclean/-/htmlclean-2.7.10.tgz#60b19c413a348b3d1a448ab8a572edb9dbdeb61d"
@@ -5233,9 +5224,18 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.1"
 
-wikic@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/wikic/-/wikic-2.0.5.tgz#c69f42d7849aee130cdf81c8033229ea367d843d"
+wikic-html-toc@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/wikic-html-toc/-/wikic-html-toc-1.0.5.tgz#54bdf961f23bf6799f20ddf51f62c14cb280e976"
+  dependencies:
+    cheerio "^0.22.0"
+    escape-html "^1.0.3"
+    extend-shallow "^2.0.1"
+    markdown-slug "^0.1.1"
+
+wikic@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/wikic/-/wikic-2.0.6.tgz#ef86c833e513018ac027a2c02334ca2d34562065"
   dependencies:
     bluebird "^3.5.0"
     chokidar "^1.6.1"
@@ -5246,11 +5246,11 @@ wikic@^2.0.5:
     get-port "^3.1.0"
     glob "^7.1.1"
     highlight.js "^9.10.0"
-    html-toc "github:dgeibi/html-toc"
     js-yaml "^3.8.3"
     lodash "^4.17.4"
     markdown-it "^8.3.1"
     nunjucks "^3.0.0"
+    wikic-html-toc "^1.0.5"
     winston "^2.3.1"
 
 window-size@0.1.0:
