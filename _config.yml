@@ -23,3 +23,5 @@ toc:
   minLength: 3
   header: "<h2>Contents</h2>"
   id: "#toc"
+logger:
+  file: error
