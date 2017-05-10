@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "gulp",
-    "build": "gulp build",
+    "build": "postcss _styles/main.css -o assets/css/main.css && webpack && wikic build --clean",
     "js:format": "prettier-eslint --write './*.js' './_scripts/**/*.js'",
     "css:format": "stylefmt -r ./_styles/**/*.css",
     "lint": "eslint ."
@@ -22,13 +22,14 @@
     "gulp-postcss": "^6.4.0",
     "htmlclean": "^2.7.10",
     "normalize.css": "^6.0.0",
+    "postcss-cli": "^4.0.0",
     "postcss-cssnext": "^2.10.0",
     "postcss-csso": "^2.0.0",
     "postcss-import": "^9.1.0",
     "smoothscroll-polyfill": "^0.3.4",
     "webpack": "^2.3.3",
     "webpack-stream": "^3.2.0",
-    "wikic": "^2.0.6"
+    "wikic": "^2.1.0"
   },
   "description": "personal wiki",
   "author": "dgeibi <png.inside@gmail.com>",

@@ -29,7 +29,7 @@ const rules = [
 module.exports = {
   entry: './_scripts/main.js',
   output: {
-    path: path.resolve(__dirname, 'assets'),
+    path: path.resolve(__dirname, 'assets/js'),
     filename: 'bundle.js',
     publicPath: 'js',
   },

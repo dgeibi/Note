@@ -1,22 +1,19 @@
 const gulp = require('gulp');
-const postcssImport = require('postcss-import');
-const cssnext = require('postcss-cssnext');
 const postcss = require('gulp-postcss');
-const csso = require('postcss-csso');
 const Wikic = require('wikic');
 const gulpWebpack = require('webpack-stream');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
+const postcssConfig = require('./_styles/postcss.config');
 
 const wikic = new Wikic();
-const processors = [postcssImport(), cssnext(), csso];
 
 gulp.task('default', ['serve', 'clean']);
 
 gulp.task('clean', () => wikic.clean());
 
 gulp.task('css', () =>
-  gulp.src('./_styles/main.css').pipe(postcss(processors)).pipe(gulp.dest('./assets/css'))
+  gulp.src('./_styles/main.css').pipe(postcss(postcssConfig.plugins)).pipe(gulp.dest('./assets/css'))
 );
 
 gulp.task('build', ['css', 'js', 'clean'], () => wikic.build());
