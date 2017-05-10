@@ -9,9 +9,12 @@
   },
   "scripts": {
     "start": "gulp",
-    "build": "postcss _styles/main.css -o assets/css/main.css && webpack && wikic build --clean",
+    "css": "postcss _styles/main.css -o assets/css/main.css",
+    "js": "webpack",
+    "build": "npm run js && npm run css && wikic build --clean",
     "js:format": "prettier-eslint --write './*.js' './_scripts/**/*.js'",
     "css:format": "stylefmt -r ./_styles/**/*.css",
+    "format": "npm run js:format && npm run css:format",
     "lint": "eslint ."
   },
   "dependencies": {

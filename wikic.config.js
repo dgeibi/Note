@@ -41,14 +41,7 @@ module.exports = {
     },
   ],
   listTemplate: {
-    headerTemplate(
-      {
-      level,
-        index,
-        typeName,
-        typeSlug,
-    }
-    ) {
+    headerTemplate({ level, index, typeName, typeSlug }) {
       return `<label for="${level}-${index}">${typeName}</label><input type="checkbox" id="${level}-${index}" data-type="${typeSlug}">`;
     },
   },

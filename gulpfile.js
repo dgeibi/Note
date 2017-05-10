@@ -13,7 +13,10 @@ gulp.task('default', ['serve', 'clean']);
 gulp.task('clean', () => wikic.clean());
 
 gulp.task('css', () =>
-  gulp.src('./_styles/main.css').pipe(postcss(postcssConfig.plugins)).pipe(gulp.dest('./assets/css'))
+  gulp
+    .src('./_styles/main.css')
+    .pipe(postcss(postcssConfig.plugins))
+    .pipe(gulp.dest('./assets/css'))
 );
 
 gulp.task('build', ['css', 'js', 'clean'], () => wikic.build());
