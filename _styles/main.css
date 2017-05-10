@@ -8,7 +8,7 @@
 
 :root {
   --monospace-font-family: 'Iosevka Slab', 'Iosevka', Menlo, Monaco, Consolas, 'Andale Mono', 'lucida console', 'Courier New', monospace;
-  --base-font-family: 'Source Serif Pro', 'Noto Serif', Palatino, 'Palatino Linotype', 'Noto Serif SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', serif;
+  --base-font-family: 'Source Serif Pro', 'Noto Serif', Palatino, 'Palatino Linotype', 'Noto Serif SC', 'Noto Serif CJK SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', serif;
   --base-font-size: 16px;
   --base-font-weight: 400;
   --small-font-size: calc(var(--base-font-size)*0.8);
