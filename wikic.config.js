@@ -1,3 +1,4 @@
+/* eslint-disable global-require, no-console */
 const htmlclean = require('htmlclean');
 
 module.exports = {
