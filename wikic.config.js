@@ -30,6 +30,18 @@ module.exports = {
     layout: 'default',
     toc: true,
   },
+  docslist: {
+    enable: true,
+    listTemplate: {
+      headerTemplate({ level, index, typeName, typeSlug }) {
+        return `<label for="${level}-${index}">${typeName}</label><input type="checkbox" id="${level}-${index}" data-type="${typeSlug}">`;
+      },
+    },
+  },
+  docsmap: {
+    enable: true,
+    output: 'docsmap.json',
+  },
   logger: {
     file: 'error',
   },
@@ -40,9 +52,16 @@ module.exports = {
       return Object.assign({}, context, { data: html });
     },
   ],
-  listTemplate: {
-    headerTemplate({ level, index, typeName, typeSlug }) {
-      return `<label for="${level}-${index}">${typeName}</label><input type="checkbox" id="${level}-${index}" data-type="${typeSlug}">`;
+  suites: [
+    require('wikic-suite-docslist'),
+    require('wikic-suite-docsmap'),
+    {
+      beforeBuild() {
+        console.time('build');
+      },
+      afterBuild() {
+        console.timeEnd('build');
+      },
     },
-  },
+  ],
 };
