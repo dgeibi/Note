@@ -7,9 +7,6 @@ before_install:
 - chmod 600 ~/.ssh/note_coding
 - cat _travis/sshconfig >> ~/.ssh/config
 
-cache:
-  yarn: true
-
 addons:
   ssh_known_hosts: git.coding.net
 
