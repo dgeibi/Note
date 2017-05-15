@@ -32,7 +32,7 @@
     "smoothscroll-polyfill": "^0.3.4",
     "webpack": "^2.3.3",
     "webpack-stream": "^3.2.0",
-    "wikic": "^2.2.1",
+    "wikic": "^2.2.2",
     "wikic-suite-docslist": "^1.0.1",
     "wikic-suite-docsmap": "^1.0.1"
   },
