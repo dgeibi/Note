@@ -27,6 +27,7 @@
  */
 
 body {
+  margin: 0;
   font-family: var(--base-font-family);
   font-size: var(--base-font-size);
   font-weight: var(--base-font-weight);
@@ -64,7 +65,9 @@ img {
 }
 
 main {
-  padding: 2rem 0;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 2rem 1.5rem;
 }
 
 
@@ -202,4 +205,8 @@ td,
 th {
   text-align: left;
   padding: 0.625rem;
+}
+
+aside {
+  background: var(--background-color);
 }
