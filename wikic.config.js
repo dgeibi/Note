@@ -28,7 +28,7 @@ module.exports = {
     '.': 'Home',
   },
   page: {
-    layout: 'default',
+    layout: 'page',
     toc: true,
   },
   docslist: {
@@ -53,16 +53,5 @@ module.exports = {
       return Object.assign({}, context, { data: html });
     },
   ],
-  suites: [
-    require('wikic-suite-docslist'),
-    require('wikic-suite-docsmap'),
-    {
-      beforeBuild() {
-        console.time('build');
-      },
-      afterBuild() {
-        console.timeEnd('build');
-      },
-    },
-  ],
+  suites: [require('wikic-suite-docslist'), require('wikic-suite-docsmap')],
 };
