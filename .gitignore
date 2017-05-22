@@ -63,3 +63,4 @@ assets/*
 !assets/css
 assets/css/*
 !assets/css/github.css
+.vscode

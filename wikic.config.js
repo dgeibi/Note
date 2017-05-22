@@ -13,9 +13,9 @@ module.exports = {
     'webpack.config.js',
   ],
   toc: {
-    selectors: '.page-content h2, .page-content h3',
+    selectors: '.page-content > h2, .page-content > h3',
     minLength: 3,
-    header: '<h2>Contents</h2>',
+    header: '<header>IN THIS ARTICLE</header>',
     id: '#toc',
   },
   typeMap: {
