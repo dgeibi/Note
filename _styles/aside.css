@@ -16,10 +16,6 @@ aside {
   border-right: 1px solid #eee;
 }
 
-body.show-aside-left {
-  padding: 0 0 0 var(--aside-width);
-}
-
 aside ul {
   padding: 0 0 0 1.8rem;
 }
@@ -81,16 +77,18 @@ aside ul {
   height: 1rem;
 }
 
-body {
-  padding: 0;
-}
-
 aside.hide {
   left: calc(-var(--aside-width));
 }
 
 @media (max-width: 350px) {
-  aside.single {
+  aside.narrow {
     width: 80%;
+  }
+}
+
+@media (min-width: 800px) {
+  body.show-aside-left {
+    padding: 0 0 0 var(--aside-width);
   }
 }

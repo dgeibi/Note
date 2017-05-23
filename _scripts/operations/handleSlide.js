@@ -16,80 +16,78 @@ const slideBtn = $('#slide-btn');
 const aside = $('aside');
 
 if (aside && slideBtn) {
-  let hide;
-  let small;
-  const resetForSmall = () => {
-    body.classList.remove('show-aside-left');
+  const state = {
+    isHide: null,
+    isNarrow: null,
+    mode: null,
   };
 
-  const resetForWide = () => {
-    aside.classList.remove('single');
+  const presets = {
+    narrow: {
+      hideDefault: true,
+
+      show() {
+        aside.classList.remove('hide');
+        aside.classList.add('narrow');
+        return this;
+      },
+
+      hide() {
+        aside.classList.add('hide');
+        aside.classList.remove('narrow');
+        return this;
+      },
+
+    },
+
+    wide: {
+      hideDefault: false,
+
+      show() {
+        body.classList.add('show-aside-left');
+        aside.classList.remove('hide');
+        return this;
+      },
+
+      hide() {
+        body.classList.remove('show-aside-left');
+        aside.classList.add('hide');
+        return this;
+      },
+    },
   };
 
-  const showAsideLeft = () => {
-    body.classList.add('show-aside-left');
-    aside.classList.remove('hide');
-  };
-
-  const hideAsideLeft = () => {
-    body.classList.remove('show-aside-left');
-    aside.classList.add('hide');
-  };
-
-  const hideSingleAside = () => {
-    aside.classList.add('hide');
-    aside.classList.remove('single');
-  };
-
-  const showSingleAside = () => {
-    aside.classList.remove('hide');
-    aside.classList.add('single');
-  };
-
-  const toggleAsideNotSmall = () => {
-    // toggle hide
+  const applyAside = (preset, hide) => {
     if (hide) {
-      hideAsideLeft();
+      preset.hide();
     } else {
-      showAsideLeft();
+      preset.show();
     }
   };
 
-  const toggleAsideIfSmall = () => {
-    if (hide) {
-      hideSingleAside();
-    } else {
-      showSingleAside();
+  const media = window.matchMedia('(max-width: 799px)');
+
+  const handleWidthChange = (mql) => {
+    state.isNarrow = mql.matches;
+    const currentMode = state.isNarrow ? 'narrow' : 'wide';
+    const preset = presets[currentMode];
+
+    if (!state.mode) { // init
+      state.isHide = preset.hideDefault;
     }
+
+    if (state.mode !== currentMode) {
+      applyAside(preset, state.isHide);
+    }
+
+    state.mode = currentMode;
   };
 
-  const handleResize = (event) => {
-    const init = !event;
-    small = window.matchMedia('(max-width: 799px)').matches;
-
-    if (init) {
-      // hide if small default
-      hide = small;
-    }
-
-    if (small) {
-      resetForSmall();
-      toggleAsideIfSmall();
-    } else {
-      resetForWide();
-      toggleAsideNotSmall();
-    }
-  };
-
-  handleResize();
-  window.addEventListener('resize', $.throttle(handleResize, 100));
+  media.addListener(handleWidthChange);
+  handleWidthChange(media);
 
   slideBtn.addEventListener('click', () => {
-    hide = !hide;
-    if (small) {
-      toggleAsideIfSmall();
-    } else {
-      toggleAsideNotSmall();
-    }
+    state.isHide = !state.isHide;
+    applyAside(presets[state.mode], state.isHide);
   });
 }
