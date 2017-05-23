@@ -3,8 +3,8 @@ import $ from '../utils';
 
 const searchInput = $('aside input[type=search]');
 const searchResult = $('.search-result');
-const suggestions = searchResult.querySelector('.suggestions');
-const resultNumberSpan = searchResult.querySelector('.count');
+const suggestions = $('.suggestions', searchResult);
+const resultNumberSpan = $('.count', searchResult);
 
 let docs = null;
 
