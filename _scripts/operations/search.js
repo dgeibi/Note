@@ -8,20 +8,14 @@ const resultNumberSpan = searchResult.querySelector('.count');
 
 let docs = null;
 
-if (searchInput) {
-  $.depend(
-    '//cdn.bootcss.com/native-promise-only/0.8.1/npo.js',
-    () => {
-      if (typeof Promise !== 'object') return true;
-      return false;
-    },
-    () => {
-      fetch('/docsmap.json').then(r => r.json()).then((data) => {
-        docs = data;
-      });
-    }
-  );
+function fetchDocs() {
+  fetch('/docsmap.json').then(r => r.json()).then((data) => {
+    docs = data;
+  });
+}
 
+if (searchInput) {
+  $.depend.on('promise', fetchDocs);
   const findMatches = function findMatches(wordToMatch, docsInfos) {
     return docsInfos.filter((info) => {
       const regex = new RegExp(wordToMatch, 'ig');

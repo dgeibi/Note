@@ -1,11 +1,26 @@
-const depend = (url, test, callback) => {
+import Events from './events';
+
+const emitter = new Events();
+
+const depend = function depend({ key, url, test }) {
+  const emit = function emit() {
+    emitter.emit(key);
+  };
   if (!test()) {
-    callback();
-    return;
+    setTimeout(emit, 0);
+    return emitter;
   }
   const script = document.createElement('script');
   script.src = url;
-  script.onload = callback;
+  script.onload = emit;
   document.head.appendChild(script);
+  return emitter;
 };
+
+depend.on = function dependOn(...args) {
+  emitter.on(...args);
+};
+
+depend.emitter = emitter;
+
 export default depend;
