@@ -1,0 +1,47 @@
+.search-result {
+  display: none;
+}
+
+.search-result.open {
+  display: block;
+  & + .page {
+    display: none;
+  }
+}
+
+.search-result .hl {
+  background: #ffda9f;
+}
+
+.suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  & > li:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+
+  & > li .title {
+    margin: 0;
+  }
+
+  & > li .types {
+    font-style: italic;
+  }
+
+
+}
+
+.search-header {
+  text-align: center;
+  margin-bottom: 1.5em;
+
+  & > h1 {
+    margin: 0;
+  }
+}
+
+input[type=search] {
+  width: 100%;
+}

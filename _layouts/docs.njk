@@ -14,27 +14,26 @@
 <a href="#slide" id="slide-btn">☡</a>
 <aside>
   {% include "includes/header.njk" %}
+  <input type="search" placeholder="Type or Title">
   <div id="list" class="{{ page.types | join(" ") }}">
-    <p class="list-name">目录</p>
+    <p class="list-name">CONTENTS</p>
     {{ list | safe }}
   </div>
 </aside>
 
 <main>
-
-{% if page.title %}
-
-  <h1 class="page-title">{{- page.title }}</h1>
-
-  {% if page.toc %}
-  <nav id="toc"></nav>
-  {% endif %}
-
-{% endif %}
-
-  <div class="page-content">
-    {{- content| safe }}
-  </div>
-
+  <section class="search-result">
+    <header class="search-header">
+      <h1>Found&nbsp;<span class="count"></span>&nbsp;articles.</h1>
+    </header>
+    <ul class="suggestions"></ul>
+  </section>
+  <article class='page'>
+    {% if page.title %}<h1 class="page-title">{{- page.title }}</h1>{% endif %}
+    {% if page.toc %}<nav id="toc"></nav>{% endif %}
+    <div class="page-content">
+      {{- content| safe }}
+    </div>
+  </article>
 </main>
 {%- endblock -%}

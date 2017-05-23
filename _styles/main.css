@@ -5,6 +5,7 @@
 @import "anchor";
 @import "page";
 @import "fonts";
+@import "search";
 
 :root {
   --monospace-font-family: 'Iosevka Slab', 'Iosevka', Menlo, Monaco, Consolas, 'Andale Mono', 'lucida console', 'Courier New', monospace;
@@ -68,7 +69,7 @@ img {
 main {
   margin: 0 auto;
   max-width: 800px;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
 }
 
 
