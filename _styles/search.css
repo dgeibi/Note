@@ -4,6 +4,7 @@
 
 .search-result.open {
   display: block;
+
   & + .page {
     display: none;
   }
@@ -29,8 +30,6 @@
   & > li .types {
     font-style: italic;
   }
-
-
 }
 
 .search-header {

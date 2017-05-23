@@ -37,7 +37,6 @@ if (aside && slideBtn) {
         aside.classList.remove('narrow');
         return this;
       },
-
     },
 
     wide: {
@@ -72,7 +71,8 @@ if (aside && slideBtn) {
     const currentMode = state.isNarrow ? 'narrow' : 'wide';
     const preset = presets[currentMode];
 
-    if (!state.mode) { // init
+    if (!state.mode) {
+      // init
       state.isHide = preset.hideDefault;
     }
 
