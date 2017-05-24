@@ -4,7 +4,7 @@
 /* eslint-env serviceworker, browser */
 /* eslint-disable no-console */
 
-const ASSETS_CACHE = 'assets-v0.4.3';
+const ASSETS_CACHE = 'assets-v0.4.4';
 const PAGES_CACHE = 'pages-v1.0.0'; // change to force update
 const expectedCaches = [ASSETS_CACHE, PAGES_CACHE];
 const urlsToCache = [
