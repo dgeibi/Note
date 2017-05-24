@@ -57,10 +57,10 @@ typings/
 # dotenv environment variables file
 .env
 
-docs/
+/docs/
 
-assets/*
-!assets/css
-assets/css/*
-!assets/css/github.css
+/assets/css/*
+!/assets/css/github.css
+/assets/js/*
+!/assets/js/sw-toolkit.js
 .vscode

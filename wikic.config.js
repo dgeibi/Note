@@ -54,4 +54,5 @@ module.exports = {
     },
   ],
   suites: [require('wikic-suite-docslist'), require('wikic-suite-docsmap')],
+  afterBuildTasks: [require('./_scripts/sw')],
 };

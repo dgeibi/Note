@@ -1,0 +1,14 @@
+{
+  "name": "assets",
+  "root": "./docs",
+  "output": "sw.js",
+  "version": 2,
+  "urls": {
+    "/assets/css/main.css": "eb3458e0356be52ea48ef01a4f2bd158",
+    "/assets/css/github.css": "bf6c14925e66edb1526b6c9489b3c042",
+    "/assets/js/bundle.js": "4e8bd563f57467e33a0e02a2cc46a63b",
+    "/manifest.json": "17a27b5c0b759e550f9a00b0d657f171",
+    "/offline.html": "1f0676dc10c4f9af7e35a9c0d3490357",
+    "/favicon.png": "b8bdbae64092fb372933c35031cc9e51"
+  }
+}

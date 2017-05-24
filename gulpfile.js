@@ -26,7 +26,7 @@ gulp.task('serve', ['css', 'build', 'css:watch', 'js', 'js:watch', 'clean'], () 
 });
 
 gulp.task('css:watch', ['css'], () => {
-  gulp.watch('./_styles/**/*', ['css']);
+  gulp.watch('./_styles/**/*.css', ['css']);
 });
 
 gulp.task('js', () =>
@@ -37,5 +37,5 @@ gulp.task('js', () =>
 );
 
 gulp.task('js:watch', ['js'], () => {
-  gulp.watch('./_scripts/**/*', ['js']);
+  gulp.watch('./_scripts/**/*.js', ['js']);
 });
