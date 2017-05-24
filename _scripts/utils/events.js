@@ -2,41 +2,62 @@ function Events() {
   this.listeners = {};
 }
 
-function on(type, fn) {
-  if (!type) throw Error('type require');
+const addListener = function addListener(type, fn, once) {
+  if (!type) throw Error('type of listener required');
   if (typeof fn !== 'function') throw Error('listener required');
   if (!this.listeners[type]) {
     this.listeners[type] = [];
   }
-  this.listeners[type].push(fn);
-}
+  this.listeners[type].push({
+    fn,
+    once: !!once,
+  });
+  return this;
+};
 
-function remove(type, fn) {
+const on = function on(type, fn) {
+  return addListener.call(this, type, fn);
+};
+
+const once = function once(type, fn) {
+  return addListener.call(this, type, fn, true);
+};
+
+const remove = function remove(type, fn) {
   if (!type) throw Error('type require');
   const listeners = this.listeners[type];
-  if (!listeners) return;
+  if (!listeners) return this;
   if (typeof fn !== 'function') {
-    this.listeners[type] = [];
+    // remove all listeners
+    listeners.splice(0, listeners.length);
   } else {
-    listeners.forEach((listener, index) => {
-      if (listener !== fn) return;
-      listeners.splice(index, 1);
+    listeners.forEach((listener, index, array) => {
+      if (listener.fn !== fn) return;
+      array.splice(index, 1);
     });
   }
-}
+  return this;
+};
 
-function emit(type, ...args) {
+const emit = function emit(type, ...args) {
   const listeners = this.listeners[type];
-  if (!listeners) return;
-  listeners.forEach((fn) => {
-    fn(...args);
+  if (!listeners) return this;
+  listeners.forEach((listener, index, array) => {
+    listener.fn(...args);
+    if (listener.once) {
+      array.splice(index, 1);
+    }
   });
-}
+  return this;
+};
 
-Events.prototype.emit = emit;
-Events.prototype.on = on;
-Events.prototype.remove = remove;
-Events.prototype.addListener = on;
-Events.prototype.removeListener = remove;
+const proto = Events.prototype;
+
+proto.emit = emit;
+proto.on = on;
+proto.addListener = on;
+proto.once = once;
+proto.remove = remove;
+proto.removeListener = remove;
 
 export default Events;

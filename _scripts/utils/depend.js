@@ -17,8 +17,10 @@ const depend = function depend({ key, url, test }) {
   return emitter;
 };
 
+// params: key, callback
 depend.on = function dependOn(...args) {
-  emitter.on(...args);
+  emitter.once(...args);
+  return this;
 };
 
 depend.emitter = emitter;
