@@ -1,10 +1,8 @@
 import $ from '../utils';
+import slide2left from './slide2left';
 
-const hostname = location.pathname;
-const body = document.body;
-
-// check type
-const types = hostname.split('/').slice(1, -1);
+// check types according to pathname
+const types = location.pathname.split('/').slice(1, -1);
 types.forEach((type) => {
   const target = $(`[data-type=${type}]`);
   if (target) {
@@ -12,10 +10,11 @@ types.forEach((type) => {
   }
 });
 
-const slideBtn = $('#slide-btn');
-const aside = $('aside');
+// do something with aside and slideBtn
+((aside, slideBtn) => {
+  if (!aside || !slideBtn) return;
+  const body = document.body;
 
-if (aside && slideBtn) {
   const state = {
     isHide: null,
     isNarrow: null,
@@ -28,13 +27,11 @@ if (aside && slideBtn) {
 
       show() {
         aside.classList.remove('hide');
-        aside.classList.add('narrow');
         return this;
       },
 
       hide() {
         aside.classList.add('hide');
-        aside.classList.remove('narrow');
         return this;
       },
     },
@@ -64,8 +61,7 @@ if (aside && slideBtn) {
     }
   };
 
-  const media = window.matchMedia('(max-width: 799px)');
-
+  // use media-query to detect width change
   const handleWidthChange = (mql) => {
     state.isNarrow = mql.matches;
     const currentMode = state.isNarrow ? 'narrow' : 'wide';
@@ -82,32 +78,28 @@ if (aside && slideBtn) {
 
     state.mode = currentMode;
   };
-
+  const media = window.matchMedia('(max-width: 799px)');
   media.addListener(handleWidthChange);
   handleWidthChange(media);
+
+  // add listener to slideBtn
   const toggle = () => {
     state.isHide = !state.isHide;
     applyAside(presets[state.mode], state.isHide);
   };
-
   slideBtn.addEventListener('click', toggle);
 
-  // slide to left -> hide aside
-  let startX = 0;
-
-  aside.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    if (!state.isNarrow) return;
-    startX = e.touches[0].clientX;
-  });
-
-  aside.addEventListener('touchend', (e) => {
-    e.preventDefault();
-    if (!state.isNarrow) return;
-    const endX = e.changedTouches[0].clientX;
-    const offsetX = endX - startX;
-    if (offsetX < -40) {
-      toggle();
-    }
-  });
-}
+  // apply slide2left gesture
+  slide2left(
+    {
+      touchArea: aside,
+      get test() {
+        return state.isNarrow;
+      },
+      get isHide() {
+        return state.isHide;
+      },
+    },
+    toggle
+  );
+})($('aside'), $('#slide-btn'));

@@ -74,3 +74,82 @@ function add([x, y]){
 
 add([1, 2]); // 3
 ```
+
+**Caveats**
+
+``` javascript
+let _a = 1;
+let _b = 2;
+
+setInterval(() => {
+  _a += 1;
+  _b += 2;
+}, 1000);
+
+function normal(obj) {
+  setInterval(() => {
+    console.log('a', obj.a);
+    console.log('b', obj.b);
+  }, 1000);
+}
+
+normal({
+  get a() {
+    return _a;
+  },
+  get b() {
+    return _b;
+  },
+});
+// a 2
+// b 4
+// a 3
+// b 6
+// a 4
+// b 8
+// a 5
+// b 10
+// a 6
+// b 12
+// a 7
+// b 14
+```
+
+``` javascript
+let _a = 1;
+let _b = 2;
+
+setInterval(() => {
+  _a += 1;
+  _b += 2;
+}, 1000);
+
+function wtf({ a, b }) {
+  setInterval(() => {
+    console.log('a', a);
+    console.log('b', b);
+  }, 1000);
+}
+
+wtf({
+  get a() {
+    return _a;
+  },
+  get b() {
+    return _b;
+  },
+});
+
+// a 1
+// b 2
+// a 1
+// b 2
+// a 1
+// b 2
+// a 1
+// b 2
+// a 1
+// b 2
+// a 1
+// b 2
+```

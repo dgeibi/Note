@@ -8,7 +8,7 @@ aside {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  z-index: 99;
   width: var(--aside-width);
   padding: .7rem;
   box-sizing: border-box;
@@ -57,7 +57,7 @@ aside ul {
 }
 
 #list {
-  height: 90%;
+  height: 85%;
 }
 
 .list-name + ul.docs-list {
@@ -82,7 +82,7 @@ aside.hide {
 }
 
 @media (max-width: 350px) {
-  aside.narrow {
+  aside {
     width: 80%;
   }
 }
@@ -90,5 +90,9 @@ aside.hide {
 @media (min-width: 800px) {
   body.show-aside-left {
     padding: 0 0 0 var(--aside-width);
+
+    & aside {
+      z-index: 0;
+    }
   }
 }
