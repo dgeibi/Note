@@ -85,9 +85,29 @@ if (aside && slideBtn) {
 
   media.addListener(handleWidthChange);
   handleWidthChange(media);
-
-  slideBtn.addEventListener('click', () => {
+  const toggle = () => {
     state.isHide = !state.isHide;
     applyAside(presets[state.mode], state.isHide);
+  };
+
+  slideBtn.addEventListener('click', toggle);
+
+  // slide to left -> hide aside
+  let startX = 0;
+
+  aside.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (!state.isNarrow) return;
+    startX = e.touches[0].clientX;
+  });
+
+  aside.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    if (!state.isNarrow) return;
+    const endX = e.changedTouches[0].clientX;
+    const offsetX = endX - startX;
+    if (offsetX < -40) {
+      toggle();
+    }
   });
 }

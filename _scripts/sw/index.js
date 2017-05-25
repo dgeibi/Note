@@ -12,9 +12,8 @@ const getVersion = old => old + 1;
 const CONFIG_FILE = path.join(__dirname, 'config.json');
 const TEMPLATE_FILE = path.join(__dirname, 'sw.template.js');
 
-module.exports = function genSW() {
-  const config = JSON.parse(readFile(CONFIG_FILE));
-  const result = (() => {
+const updateSums = (config) => {
+  const urls = (() => {
     const obj = {};
     Object.keys(config.urls).forEach((url) => {
       obj[url] = getChecksumOfFile(path.join(config.root, url));
@@ -25,19 +24,21 @@ module.exports = function genSW() {
   const diff = config.urls
     ? Object.keys(config.urls).reduce((changed, key) => {
       if (changed) return changed;
-      const newHash = result[key];
-      if (typeof newHash === 'undefined') return false;
+      const newSum = urls[key];
+      if (typeof newSum === 'undefined') return false;
       const oldHash = config.urls[key];
-      return oldHash !== newHash;
+      return oldHash !== newSum;
     }, false)
     : true;
 
-  config.urls = result;
+  const version = diff ? getVersion(config.version) : config.version;
 
-  // new version
-  if (diff) {
-    config.version = getVersion(config.version);
-  }
+  return Object.assign({}, config, { version, urls });
+};
+
+module.exports = function genSW() {
+  let config = JSON.parse(readFile(CONFIG_FILE));
+  if (process.env.NODE_ENV === 'production') config = updateSums(config);
 
   const generateSW = (template, { version, name, urls }) =>
     template.replace(/__version__/g, version).replace(/__name__/g, name).replace(/__urls__/g, urls);

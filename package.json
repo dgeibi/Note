@@ -10,8 +10,9 @@
   "scripts": {
     "start": "gulp",
     "css": "postcss _styles/main.css -o assets/css/main.css",
-    "js": "webpack",
-    "build": "npm run js && npm run css && wikic build --clean",
+    "js": "NODE_ENV=production webpack",
+    "wikic": "NODE_ENV=production wikic build --clean",
+    "build": "npm run js && npm run css && npm run wikic",
     "js:format": "prettier-eslint --write './*.js' './_scripts/**/*.js'",
     "css:format": "stylefmt -r ./_styles/**/*.css",
     "format": "npm run js:format && npm run css:format",
