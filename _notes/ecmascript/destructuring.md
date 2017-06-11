@@ -153,3 +153,45 @@ wtf({
 // a 1
 // b 2
 ```
+
+``` js
+let _a = 1;
+let _b = 2;
+
+const state = {
+  get a() {
+    return _a;
+  },
+  get b() {
+    return _b;
+  },
+};
+
+setInterval(() => {
+  _a += 1;
+  _b += 2;
+}, 1000);
+
+function normal2({ a, b }) {
+  console.log('a', a);
+  console.log('b', b);
+}
+
+setInterval(() => {
+  normal2(state);
+}, 1000);
+
+/*
+b 4
+a 3
+b 6
+a 4
+b 8
+a 5
+b 10
+a 6
+b 12
+a 7
+b 14
+*/
+```
