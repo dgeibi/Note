@@ -157,6 +157,15 @@ var newArr = arr.slice(1,3);
     * itemN: 要添加进数组的元素。
 * 返回值：由被删除的元素组成的一个数组。
 
+如果忽略 deleteCount
+
+``` js
+const arr = [1, 2];
+arr.splice(1);
+
+arr // [1]
+```
+
 ## [].indexOf()
 
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
