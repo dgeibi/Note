@@ -1,11 +1,17 @@
-function throttle(actualHandler, time) {
-  let resizeTimeout;
-  return (...arg) => {
-    if (!resizeTimeout) {
-      resizeTimeout = setTimeout(() => {
-        resizeTimeout = null;
-        actualHandler(...arg);
-      }, time);
+/**
+ * @param {function} func
+ */
+function throttle(func, wait = 100, immediate = true) {
+  let timeout;
+  return function throttled(...args) {
+    const context = this;
+    const later = () => {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    if (!timeout) {
+      timeout = setTimeout(later, wait);
+      if (immediate) func.apply(context, args);
     }
   };
 }
