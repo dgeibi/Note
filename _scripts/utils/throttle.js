@@ -1,5 +1,7 @@
 /**
+ * 指定时间内，重复调用返回的函数仅执行一次
  * @param {function} func
+ * @returns {function}
  */
 function throttle(func, wait = 100, immediate = true) {
   let timeout;

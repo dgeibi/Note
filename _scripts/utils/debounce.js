@@ -1,5 +1,6 @@
 /**
- * from https://javascript30.com/
+ * - 指定时间内，重复调用返回的函数不会执行
+ * - From https://javascript30.com/
  * @param {function} func
  */
 function debounce(func, wait = 20, immediate = true) {
