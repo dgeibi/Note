@@ -55,7 +55,7 @@ module.exports = {
         context.data = htmlclean(context.data); // eslint-disable-line
         return context;
       },
+      afterBuild: require('./_scripts/sw'),
     },
   ],
-  afterBuildTasks: ['./_scripts/sw'],
 };
