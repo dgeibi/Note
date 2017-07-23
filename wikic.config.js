@@ -53,6 +53,6 @@ module.exports = {
       return Object.assign({}, context, { data: html });
     },
   ],
-  suites: [require('wikic-suite-docslist'), require('wikic-suite-docsmap')],
-  afterBuildTasks: [require('./_scripts/sw')],
+  suites: ['wikic-suite-docslist', 'wikic-suite-docsmap'],
+  afterBuildTasks: ['./_scripts/sw'],
 };

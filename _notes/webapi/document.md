@@ -19,8 +19,7 @@ document instanceof Document
 /* userAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2816.0 Safari/537.36 */
 document.ownerDocument   // null
 document.URL             // 文档地址字符串（HTML 文档独有）== document.location.href
-document.documentURI     // 文档地址字符串
-document.origin          // 文档协议 + 域名
+document.documentURI     // 文档地址字符串，除了HTML文档，其他文档也有
 document.domain          // 域名
 document.referrer        // Returns the URI of the page that linked to this page
 document.characterSet    // "UTF-8"
@@ -150,16 +149,15 @@ var element = document.elementFromPoint(x, y);
 
 ### document.importNode()
 
-DOM 2
+将外部节点导入当前document
 
 ```javascript
 var node = document.importNode(externalNode, deep);
 ```
 
-node: The new node that is imported into the document. The new node's parentNode is null, since it has not yet been inserted into the document tree.
-externalNode: The node from another document to be imported.
-
-deep: A boolean, indicating whether the descendants of the imported node need to be imported.
+- node: 已导入但为插入的节点
+- externalNode: 来自其它 document 的节点
+- deep: 是否深度导入
 
 ### document.adoptNode()
 

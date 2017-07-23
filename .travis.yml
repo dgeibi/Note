@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- "7"
+- "node"
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_bbcc8cf83ca8_key -iv $encrypted_bbcc8cf83ca8_iv -in _travis/note_coding.enc -out ~/.ssh/note_coding -d
