@@ -46,13 +46,16 @@ module.exports = {
   logger: {
     file: 'error',
   },
-  beforeWritePlugins: [
-    (context) => {
-      if (!context.data) return context;
-      const html = htmlclean(context.data);
-      return Object.assign({}, context, { data: html });
+  suites: [
+    'wikic-suite-docslist',
+    'wikic-suite-docsmap',
+    {
+      beforeWrite(context) {
+        if (!context.data) return context;
+        context.data = htmlclean(context.data); // eslint-disable-line
+        return context;
+      },
     },
   ],
-  suites: ['wikic-suite-docslist', 'wikic-suite-docsmap'],
   afterBuildTasks: ['./_scripts/sw'],
 };

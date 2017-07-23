@@ -1,6 +1,6 @@
-import Events from './events';
+import Emitter from 'uemitter';
 
-const emitter = new Events();
+const emitter = Emitter();
 
 const depend = function depend({ key, url, test }) {
   const emit = function emit() {

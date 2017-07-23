@@ -21,7 +21,7 @@
   "dependencies": {
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
-    "babel-preset-env": "^1.5.1",
+    "babel-preset-env": "^1.6.0",
     "format-json": "^1.0.3",
     "gulp": "^3.9.1",
     "gulp-postcss": "^6.4.0",
@@ -33,10 +33,11 @@
     "postcss-csso": "^2.0.0",
     "postcss-import": "^9.1.0",
     "smoothscroll-polyfill": "^0.3.4",
+    "uemitter": "0.0.3",
     "unfetch": "^2.1.2",
     "webpack": "^2.3.3",
     "webpack-stream": "^3.2.0",
-    "wikic": "^3.0.0",
+    "wikic": "^3.0.2",
     "wikic-suite-docslist": "^2.0.0",
     "wikic-suite-docsmap": "^2.0.0"
   },
