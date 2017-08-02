@@ -2,6 +2,8 @@
 hide: true
 ---
 
-此网站源代码在这 [GitHub](https://github.com/dgeibi/note)。
+Fork me on [GitHub](https://github.com/dgeibi/note)
 
-使用 [Wikic](https://github.com/dgeibi/wikic) 生成静态页面。
+Powered by [Wikic](https://github.com/dgeibi/wikic)
+
+Hosted by [Coding Pages](https://pages.coding.me)
