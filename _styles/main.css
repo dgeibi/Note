@@ -6,6 +6,7 @@
 @import "page";
 @import "fonts";
 @import "search";
+@import "tree";
 
 :root {
   --monospace-font-family: 'Iosevka Slab', 'Iosevka', Menlo, Monaco, Consolas, 'Andale Mono', 'lucida console', 'Courier New', monospace;

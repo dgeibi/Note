@@ -26,55 +26,20 @@ aside ul {
   margin-bottom: 1rem;
 }
 
-.list-name + ul.docs-list {
-  overflow: hidden;
-  padding: 0;
-}
-
-.docs-list li {
-  display: block;
-  position: relative;
-}
-
-.docs-list li > input + ul {
-  display: none;
-}
-
-.docs-list li > input:checked + ul {
-  display: block;
-}
-
-.docs-list li label {
-  display: block;
-  margin-bottom: .5rem;
-}
-
-.docs-list li input {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-
 #list {
   height: 85%;
 }
 
-.list-name + ul.docs-list {
+ul[role="tree"] {
   height: 91%;
   overflow-y: auto;
 }
 
 #slide-btn {
   z-index: 3;
-  border-radius: .4em;
   position: fixed;
-  font-size: 1.3rem;
-  top: .2rem;
-  left: .2rem;
-  display: block;
-  width: 2.3rem;
-  height: 1rem;
+  top: 3px;
+  left: -4px;
 }
 
 aside.hide {

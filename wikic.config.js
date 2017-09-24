@@ -1,5 +1,6 @@
 /* eslint-disable global-require, no-console */
 const htmlclean = require('htmlclean');
+const listTemplate = require('./_config/listTemplate');
 
 module.exports = {
   title: 'Wikic',
@@ -33,11 +34,7 @@ module.exports = {
   },
   docslist: {
     enable: true,
-    listTemplate: {
-      headerTemplate({ level, index, typeName, typeSlug }) {
-        return `<label for="${level}-${index}">${typeName}</label><input type="checkbox" id="${level}-${index}" data-type="${typeSlug}">`;
-      },
-    },
+    listTemplate,
   },
   docsmap: {
     enable: true,
