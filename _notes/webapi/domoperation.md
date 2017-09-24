@@ -92,16 +92,6 @@ table.deleteTFoot()
 table.createTBody() // HTML 5
 table.insertRow(pos) // pos: 0-; return table.rows[pos] // https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/insertRow
 table.deleteRow(pos)
-
-table.align // obsolete api
-table.border // obsolete api
-table.frame // obsolete api
-table.rules // obsolete api
-table.summary // obsolete api
-table.width // obsolete api
-table.bgColor // obsolete api
-table.cellPadding // obsolete api
-table.cellSpacing // obsolete api
 ```
 
 ```javascript
@@ -124,16 +114,10 @@ tr.sectionRowIndex // obsolete api
 tr.cells // collection of <td> // doc read only but actually writable
 tr.insertCell(pos) // create cell at pos, return the cell
 tr.deleteCell(pos)
-
-tr.align // obsolete api
-tr.ch // obsolete api
-tr.chOff // obsolete api
-tr.vAlign // obsolete api
-tr.bgColor // obsolete api
 ```
 
 
-```HTML
+``` html
 <table border="1" width="%100">
     <tbody>
         <tr>

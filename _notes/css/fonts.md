@@ -4,7 +4,7 @@ title: Fonts
 
 ## font-family
 
-字体类型：
+通用字体族：
 
 - serif: 有衬线字体
 - sans-serif: 无衬线字体
@@ -17,6 +17,11 @@ title: Fonts
 字体大小
 
 px, em, rem, ...
+
+__em__
+
+- font-size：相对于父元素的 font-size
+- 一般属性：相对本元素的 font-size
 
 ## font-style
 

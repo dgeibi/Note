@@ -5,24 +5,25 @@ title: Selectors
 ## 说明
 
 * 精确度越高，优先级越高
-* 选择符可以组合使用
+* 选择器可以组合使用
 
 ## 分类
 
 
-- 元素选择符
-    - 通配选择符 `*`, 选择所有元素对象
-    - 类型选择符
+- 简单选择器
+    - 通配选择器 `*`, 选择所有元素对象
+    - 类型选择器
         - `p`       选择所有 `<p>`
         - `div, p`  选择所有 `<div>` 及 `<p>`
-    - class选择符   `.nav`
-    - id选择符   `#principal`
-- 关系选择符
-    - `div p`   选择所有位于 `<div>` 内的 `<p>`
-    - `div > p` 选择所有父级元素是 `<div>` 的 `<p>`
+    - class选择器   `.nav`
+    - id选择器   `#principal`
+- 选择器组合
+    - `div.header` 直接组合，不能把两个标签选择器放在一起，标签放在最前面，直接组合即同时满足
+    - `div p`   后代选择器，选择所有位于 `<div>` 内的 `<p>`
+    - `div > p` 亲子选择器，选择所有父级元素是 `<div>` 的 `<p>`
     - `div + p` 选择是 `<div>` 之后最近的同胞 HTML 元素的 `<p>`
     - `div ~ p` 选择所有在 `<div>` 之后的同胞 `<p>`
-- 属性选择符
+- 属性选择器
     - `[target]`        选择所有存在 `target` 属性的元素
     - `[type=button] `  选择所有存在 `type="button"` 的元素
     - `[title~=flower]` 选择所有 `title` 属性包含 `flower` 的元素（`flower` 是独立的词，前后不能有非空白字符）
@@ -30,10 +31,10 @@ title: Selectors
     - `[class^="test"]` 选择 `class` 属性以 `test` 开头的所有元素
     - `[href$=".pdf"]`  选择 `href` 以 `.pdf` 结束的所有元素
     - `[href*="google"]`  选择 `href` 包含 `google` 子字符串的元素
-- 伪类选择符   `E:pseudo-class`
-- 伪元素选择符 `E::pseudo-element`
+- 伪类选择器   `E:pseudo-class`
+- 伪元素选择器 `E::pseudo-element`
 
-## 伪类选择符
+## 伪类选择器
 
 ```css
 :link                 /* 未访问的链接；顺序：:link — :visited — :hover — :active.  会覆盖其他所有的 `a:*'*/
@@ -57,7 +58,7 @@ li:nth-of-type(An+B)      /* 父级元素下的第 An+B 个 li 元素 */
 li:nth-last-of-type(An+B) /* 父级元素下的倒数第 An+B 个 li 元素 */
 ```
 
-## 伪元素选择符
+## 伪元素选择器
 
 ```css
 ::before       /* 元素前面的内容 */

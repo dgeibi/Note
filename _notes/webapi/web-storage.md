@@ -6,12 +6,12 @@ title: Web Storage
 
 methods and properties:
 
-- clear(): delete all the keys
-- getItem(name): return value whose key is name
-- key(index): return name of index
-- removeItem(name): remove item whose key is name
-- setItem(name, value): set item
-- length: the number of key
+- `clear()`: delete all the keys
+- `getItem(name)`: return value whose key is name
+- `key(index)`: return name of index
+- `removeItem(name)`: remove item whose key is name
+- `setItem(name, value)`: set item
+- `length`: the number of key
 
 其实，也可以直接用点和中括号操作 Storage 的实例的键值。
 

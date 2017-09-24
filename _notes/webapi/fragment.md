@@ -19,35 +19,4 @@ fragment.parentElement // null
 fragment.nodeValue // null
 fragment.textContent // ""
 fragment.hasChildNodes() // true
-fragment.lastElementChild
-fragment.getElementById()
-fragment.querySelector()
-fragment.querySelectorAll()
-fragment.prepend()
-fragment.append()
-fragment.baseURI
-fragment.isConnected
-fragment.ownerDocument
-fragment.childNodes
-fragment.firstChild
-fragment.lastChild
-fragment.previousSibling
-fragment.nextSibling
-fragment.getRootNode()
-fragment.normalize()
-fragment.cloneNode()
-fragment.isEqualNode()
-fragment.isSameNode()
-fragment.compareDocumentPosition()
-fragment.contains()
-fragment.lookupPrefix()
-fragment.lookupNamespaceURI()
-fragment.isDefaultNamespace()
-fragment.insertBefore()
-fragment.appendChild()
-fragment.replaceChild()
-fragment.removeChild()
-fragment.addEventListener()
-fragment.removeEventListener()
-fragment.dispatchEvent()
 ```

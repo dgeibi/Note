@@ -66,45 +66,11 @@ location.reload()
 ## navigator
 
 ```javascript
-//navigator.vendorSub
-//navigator.productSub
-//navigator.vendor
 navigator.maxTouchPoints //Return the maximum number of simultaneous touch contact points are supported by the current device.
 navigator.hardwareConcurrency //returns the number of logical processors available to run threads on the user's computer.
-navigator.appCodeName
-navigator.appName
-navigator.appVersion
-navigator.platform
-navigator.product
 navigator.userAgent //UA
-navigator.language
-navigator.languages
-navigator.onLine
-navigator.cookieEnabled
-navigator.doNotTrack
-navigator.geolocation
 navigator.plugins // non-IE plugin array
-navigator.mimeTypes
-navigator.webkitTemporaryStorage
-navigator.webkitPersistentStorage
-navigator.serviceWorker
-navigator.getBattery()
-navigator.sendBeacon()
-navigator.requestMediaKeySystemAccess()
-navigator.getGamepads()
-navigator.webkitGetUserMedia()
-navigator.javaEnabled()
-navigator.vibrate()
-navigator.requestMIDIAccess()
-navigator.credentials
-navigator.mediaDevices
-navigator.permissions
-navigator.presentation
-navigator.getUserMedia()
 navigator.registerProtocolHandler() //Allows web sites to register themselves as possible handlers for particular protocols.
-navigator.unregisterProtocolHandler()
-/ * non-chrome */
-navigator.registerContentHandler() //https://developer.mozilla.org/en-US/docs/Web/API/Navigator/registerContentHandler
 ```
 
 ## 框架窗口
@@ -306,40 +272,4 @@ result = window.prompt(message, default);
 ```javascript
 window.btoa() // 用 Base64 转码
 window.atob() // 解 Base64
-```
-
-## Others
-
-```javascript
-window.speechSynthesis
-window.caches
-window.localStorage
-window.sessionStorage
-window.webkitStorageInfo
-window.indexedDB
-window.webkitIndexedDB
-window.crypto // crypto 对象
-window.performance // performance 对象
-window.console
-window.styleMedia
-window.defaultstatus
-window.defaultStatus
-window.customElements
-window.clientInformation
-window.devicePixelRatio
-window.external
-window.applicationCache
-window.frameElement
-window.opener // 返回打开当前窗口的父窗口
-window.closed // 属性返回一个布尔值，表示窗口是否关闭
-window.TEMPORARY
-window.PERSISTENT
-window.status    // 返回或设置浏览器底部状态栏的文字
-window.toolbar   // 返回工具栏对象
-window.statusbar // 返回状态栏对象
-window.scrollbars
-window.personalbar
-window.menubar
-window.locationbar
-window.isSecureContext
 ```
