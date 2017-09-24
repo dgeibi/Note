@@ -38,3 +38,8 @@ title: Text
 ie10
 
 [CSS Shadow](/css/shadow.html)
+
+# See also
+
+- [word-break](https://developer.mozilla.org/en-US/docs/Web/CSS/word-break)
+- [word-wrap/overflow-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap)
