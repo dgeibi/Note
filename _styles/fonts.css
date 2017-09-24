@@ -12,13 +12,6 @@
   src: local(Noto Serif SC Light), local(Noto Serif CJK SC Light), local(Source Han Serif CN Light);
 }
 
-/*@font-face {
-  font-family: 'Noto Serif SC';
-  font-weight: 400;
-  font-style: normal;
-  src: local(Noto Serif SC Regular), local(Noto Serif CJK SC Regular), local(Source Han Serif CN Regular);
-}*/
-
 @font-face {
   font-family: 'Noto Serif SC';
   font-style: normal;
