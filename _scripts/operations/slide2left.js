@@ -1,12 +1,13 @@
-function slide2left(options, toggle) {
+function slide2left(options) {
   let startX = 0;
+  const { toggle } = options;
   window.addEventListener('touchstart', (e) => {
-    if (!options.test) return;
+    if (!options.enable()) return;
     startX = e.touches[0].clientX;
   });
 
   window.addEventListener('touchend', (e) => {
-    if (!options.test) return;
+    if (!options.enable()) return;
     const target = e.target;
     if (options.touchArea.contains(target)) {
       const endX = e.changedTouches[0].clientX;
@@ -18,9 +19,9 @@ function slide2left(options, toggle) {
   });
 
   window.addEventListener('mousedown', (e) => {
-    if (!options.test) return;
+    if (!options.enable()) return;
     const target = e.target;
-    if (!options.touchArea.contains(target) && !options.isHide) {
+    if (!options.touchArea.contains(target) && options.shouldHideWhenBlur()) {
       toggle();
     }
   });

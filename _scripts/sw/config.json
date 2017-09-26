@@ -2,11 +2,11 @@
   "name": "assets",
   "root": "./docs",
   "output": "sw.js",
-  "version": 10,
+  "version": 11,
   "urls": {
-    "/assets/css/main.css": "bcb4e8a336b2174d8a3c19b8198f26b3",
+    "/assets/css/main.css": "90b9571601836cada7807b020ed80390",
     "/assets/css/github.css": "bf6c14925e66edb1526b6c9489b3c042",
-    "/assets/js/bundle.js": "718ebfc691a6eeeabf80f130b864d761",
+    "/assets/js/bundle.js": "fe8a2facef62d3fa4d4dda6d7ed4f3bf",
     "/manifest.json": "17a27b5c0b759e550f9a00b0d657f171",
     "/offline.html": "1f0676dc10c4f9af7e35a9c0d3490357",
     "/favicon.png": "b8bdbae64092fb372933c35031cc9e51"

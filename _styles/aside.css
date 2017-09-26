@@ -1,22 +1,28 @@
 :root {
-  --aside-width: 280px;
+  --sidebar-width: 280px;
+  --duration: .3s;
 }
 
-aside {
+.sidebar {
   position: fixed;
-  display: block;
   top: 0;
-  bottom: 0;
   left: 0;
+  height: 100%;
+  transition: left var(--duration);
   z-index: 99;
-  width: var(--aside-width);
+  width: var(--sidebar-width);
   padding: .7rem;
   box-sizing: border-box;
   border-bottom: 0;
+  overflow: hidden;
   border-right: 1px solid #eee;
 }
 
-aside ul {
+.sidebar.sidebar--hide {
+  left: calc(-var(--sidebar-width));
+}
+
+.sidebar ul {
   padding: 0 0 0 1.8rem;
 }
 
@@ -42,21 +48,30 @@ ul[role="tree"] {
   left: -4px;
 }
 
-aside.hide {
-  left: calc(-var(--aside-width));
-}
-
 @media (max-width: 350px) {
-  aside {
+  .sidebar {
     width: 80%;
   }
 }
 
-@media (min-width: 800px) {
-  body.show-aside-left {
-    padding: 0 0 0 var(--aside-width);
+body {
+  position: relative;
+  overflow-x: hidden;
+  left: 0;
+  transition: left var(--duration), padding var(--duration);
+}
 
-    & aside {
+@media (max-width: 799px) {
+  body.open-sidebar {
+    left: var(--sidebar-width);
+  }
+}
+
+@media (min-width: 800px) {
+  body.open-sidebar {
+    padding: 0 0 0 var(--sidebar-width);
+
+    & .sidebar {
       z-index: 0;
     }
   }
