@@ -4,18 +4,18 @@
  * @returns {function}
  */
 function throttle(func, wait = 100, immediate = true) {
-  let timeout;
+  let timeout
   return function throttled(...args) {
-    const context = this;
+    const context = this
     const later = () => {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    if (!timeout) {
-      timeout = setTimeout(later, wait);
-      if (immediate) func.apply(context, args);
+      timeout = null
+      if (!immediate) func.apply(context, args)
     }
-  };
+    if (!timeout) {
+      timeout = setTimeout(later, wait)
+      if (immediate) func.apply(context, args)
+    }
+  }
 }
 
-export default throttle;
+export default throttle

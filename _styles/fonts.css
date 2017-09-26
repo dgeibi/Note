@@ -2,7 +2,8 @@
   font-family: 'Noto Serif SC';
   font-style: normal;
   font-weight: 200;
-  src: local(Noto Serif SC ExtraLight), local(Noto Serif CJK SC ExtraLight), local(Source Han Serif CN ExtraLight);
+  src: local(Noto Serif SC ExtraLight), local(Noto Serif CJK SC ExtraLight),
+    local(Source Han Serif CN ExtraLight);
 }
 
 @font-face {
@@ -16,14 +17,16 @@
   font-family: 'Noto Serif SC';
   font-style: normal;
   font-weight: 400;
-  src: local(Noto Serif SC Medium), local(Noto Serif CJK SC Medium), local(Source Han Serif CN Medium);
+  src: local(Noto Serif SC Medium), local(Noto Serif CJK SC Medium),
+    local(Source Han Serif CN Medium);
 }
 
 @font-face {
   font-family: 'Noto Serif SC';
   font-style: normal;
   font-weight: 600;
-  src: local(Noto Serif SC SemiBold), local(Noto Serif CJK SC SemiBold), local(Source Han Serif CN SemiBold);
+  src: local(Noto Serif SC SemiBold), local(Noto Serif CJK SC SemiBold),
+    local(Source Han Serif CN SemiBold);
 }
 
 @font-face {

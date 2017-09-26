@@ -1,64 +1,63 @@
-ul[role="tree"] {
+ul[role='tree'] {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-ul[role="tree"] li {
+ul[role='tree'] li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-[role="treeitem"] ul {
+[role='treeitem'] ul {
   margin: 0;
   padding: 0;
   margin-left: 0.9em;
 }
 
-[role="treeitem"][aria-expanded="false"] > ul {
+[role='treeitem'][aria-expanded='false'] > ul {
   display: none;
 }
 
-[role="treeitem"][aria-expanded="true"] > ul {
+[role='treeitem'][aria-expanded='true'] > ul {
   display: block;
 }
 
-[role="treeitem"][aria-expanded="false"] > span:before {
+[role='treeitem'][aria-expanded='false'] > span:before {
   content: url(../images/chevron-right.svg);
   position: relative;
   top: 0.4em;
 }
 
-[role="treeitem"][aria-expanded="true"] > span:before {
+[role='treeitem'][aria-expanded='true'] > span:before {
   content: url(../images/chevron-down.svg);
   position: relative;
   top: 0.4em;
 }
 
-[role="treeitem"],
-[role="treeitem"] span {
+[role='treeitem'],
+[role='treeitem'] span {
   margin: 0;
   padding: 0.125em;
   border: 1px transparent solid;
-  border-radius: .2em;
+  border-radius: 0.2em;
   display: block;
 }
 
 /* disable default keyboard focus styling for treeitems
    Keyboard focus is styled with the following CSS */
-[role="treeitem"]:focus {
+[role='treeitem']:focus {
   outline: 0;
 }
 
-[role="treeitem"].focus,
-[role="treeitem"] span.focus {
+[role='treeitem'].focus,
+[role='treeitem'] span.focus {
   border-color: black;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 }
 
-[role="treeitem"].hover,
-[role="treeitem"] span.hover {
-  background-color: #DDDDDD;
+[role='treeitem'].hover,
+[role='treeitem'] span.hover {
+  background-color: #dddddd;
 }
-

@@ -1,7 +1,4 @@
 /* eslint-disable global-require, no-console */
-const htmlclean = require('htmlclean');
-const listTemplate = require('./_config/listTemplate');
-
 module.exports = {
   title: 'Wikic',
   port: 4511,
@@ -13,6 +10,7 @@ module.exports = {
     'gulpfile.js',
     'webpack.config.js',
   ],
+  publicExcludes: ['config/**'],
   toc: {
     selectors: '.page-content > h2, .page-content > h3',
     minLength: 3,
@@ -34,7 +32,7 @@ module.exports = {
   },
   docslist: {
     enable: true,
-    listTemplate,
+    listTemplate: requireWithoutCache('./config/listTemplate'),
   },
   docsmap: {
     enable: true,
@@ -46,13 +44,13 @@ module.exports = {
   suites: [
     'wikic-suite-docslist',
     'wikic-suite-docsmap',
-    {
-      beforeWrite(context) {
-        if (!context.data) return context;
-        context.data = htmlclean(context.data); // eslint-disable-line
-        return context;
-      },
-      afterBuild: require('./_scripts/sw'),
-    },
+    require('./config/suite-gensw'),
+    require('./config/suite-htmlclean'),
   ],
-};
+}
+
+function requireWithoutCache(path) {
+  const result = require(path) // eslint-disable-line
+  delete require.cache[require.resolve(path)]
+  return result
+}

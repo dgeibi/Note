@@ -7,17 +7,19 @@ title: Background
 Example:
 
 ```css
-/* Using a <background-color> */
-background: green;
+{
+  /* Using a <background-color> */
+  background: green;
 
-/* Using a <bg-image> and <repeat-style> */
-background: url(test.jpg) repeat-y;
+  /* Using a <bg-image> and <repeat-style> */
+  background: url(test.jpg) repeat-y;
 
-/* Using a <box> and <background-color> */
-background: border-box red;
+  /* Using a <box> and <background-color> */
+  background: border-box red;
 
-/* <repeat-style>， <position>， <bg-image> */
-background: no-repeat center/80% url(../img/image.png);
+  /* <repeat-style>， <position>， <bg-image> */
+  background: no-repeat center/80% url(../img/image.png);
+}
 ```
 
 Syntax:
@@ -32,11 +34,13 @@ where
 ## background-size
 
 ``` css
-background-size: auto; /* 初始值 */
-background-size: cover; /* 缩放背景图片以完全覆盖背景区，可能背景图片部分看不见。*/
-background-size: contain; /* 缩放背景图片以完全装入背景区，可能背景区部分空白。*/
-background-size: 50% auto; /* 第一个值指定图片的宽度，第二个值指定图片的高度 */
-background-size: 50%; /* 指定图片的宽度 */
+{
+  background-size: auto; /* 初始值 */
+  background-size: cover; /* 缩放背景图片以完全覆盖背景区，可能背景图片部分看不见。*/
+  background-size: contain; /* 缩放背景图片以完全装入背景区，可能背景区部分空白。*/
+  background-size: 50% auto; /* 第一个值指定图片的宽度，第二个值指定图片的高度 */
+  background-size: 50%; /* 指定图片的宽度 */
+}
 ```
 
 ## background-attachment
@@ -68,37 +72,39 @@ background-image: url(http://www.example.com/bck.png);
 
 ## background-color
 
-```css
-/* Keyword values */
-background-color: red;
+``` css
+{
+  /* Keyword values */
+  background-color: red;
 
-/* Hexadecimal value */
-background-color: #bbff00;
+  /* Hexadecimal value */
+  background-color: #bbff00;
 
-/* RGB value */
-background-color: rgb(255, 255, 128);
+  /* RGB value */
+  background-color: rgb(255, 255, 128);
 
-/* HSLA value */
-background-color: hsla(50, 33%, 25%, 0.75);
+  /* HSLA value */
+  background-color: hsla(50, 33%, 25%, 0.75);
 
-/* Special keyword values */
-background-color: currentColor;
-background-color: transparent;  /* initial */
+  /* Special keyword values */
+  background-color: currentColor;
+  background-color: transparent;  /* initial */
 
-/* Global values */
-background-color: inherit;
-background-color: initial;
-background-color: unset;
+  /* Global values */
+  background-color: inherit;
+  background-color: initial;
+  background-color: unset;
+}
 ```
 
 ## background-repeat
 
-| Value     | Description                                                                             |
-|-----------|-----------------------------------------------------------------------------------------|
-| repeat    | The background image will be repeated both vertically and horizontally. This is default |
-| repeat-x  | The background image will be repeated only horizontally                                 |
-| repeat-y  | The background image will be repeated only vertically                                   |
-| no-repeat | The background-image will not be repeated                                               |
+| Value     | Description|
+|-----------|------------|
+| repeat|The background image will be repeated both vertically and horizontally. This is default |
+| repeat-x|The background image will be repeated only horizontally|
+| repeat-y| The background image will be repeated only vertically|
+| no-repeat | The background-image will not be repeated|
 
 实验性：round, space
 

@@ -5,7 +5,9 @@ title: Transform
 ## transform-origin 属性
 
 ```css
-transform-origin: x-axis y-axis z-axis /* 默认：50% 50% 0 */
+{
+  transform-origin: x-axis y-axis z-axis /* 默认：50% 50% 0 */
+}
 ```
 
 - x-axis：left，center，right，length，%
@@ -16,7 +18,9 @@ transform-origin: x-axis y-axis z-axis /* 默认：50% 50% 0 */
 
 ### translate()
 ```css
-transform: translate(x, y);
+{
+  transform: translate(x, y);
+}
 ```
 
 x：右正，左负。
@@ -27,7 +31,9 @@ y：下正，上负。
 ### translate3d()
 
 ```css
-transform: translate3d(tx,ty,tz)
+{
+  transform: translate3d(tx,ty,tz)
+}
 ```
 
 - tx：代表横向坐标位移向量的长度；
@@ -49,18 +55,22 @@ transform: translate3d(tx,ty,tz)
 ### scale()
 
 ```css
-/* 长宽都放大到原来的 2 倍 */
-transform: scale(2);
-/* 宽度是原来的 0.5，高度是原来的 0.7 */
-transform: scale(0.5,0.7);
-/* 先旋转 180 度再放大到原来的 1.5 倍 */
-transform: scale(-1.5);
+{
+  /* 长宽都放大到原来的 2 倍 */
+  transform: scale(2);
+  /* 宽度是原来的 0.5，高度是原来的 0.7 */
+  transform: scale(0.5,0.7);
+  /* 先旋转 180 度再放大到原来的 1.5 倍 */
+  transform: scale(-1.5);
+}
 ```
 
 ### scale3d()
 
 ```css
-transform: scale3d(sx,sy,sz)
+{
+  transform: scale3d(sx,sy,sz)
+}
 ```
 
 * scaleX(sx)：等价于 scale(sx, 1)
@@ -74,16 +84,20 @@ scaleZ() 和 scale3d() 函数单独使用时没有任何效果，需要配合其
 ### rotate()
 
 ```css
-/* 绕原点顺时针旋转 45 度 */
-transform: rotate(45deg);
-/* 绕原点逆时针旋转 45 度 */
-transform: rotate(-45deg);
+{
+  /* 绕原点顺时针旋转 45 度 */
+  transform: rotate(45deg);
+  /* 绕原点逆时针旋转 45 度 */
+  transform: rotate(-45deg);
+}
 ```
 
 ### rotate3d()
 
 ```css
-transform: rotate3d(x,y,z,a)
+{
+  transform: rotate3d(x,y,z,a)
+}
 ```
 
 以向量 (x,y,z) 为轴，旋转 a
@@ -99,13 +113,15 @@ x,y,z 均为 0 到 1 的值。
 skew: (verb) to move or lie at an angle, especially in a position that is not normal.
 
 ```css
-/* 使元素在 x 轴上偏离 10 度，y 轴上偏离 15 度。*/
-transform: skew(10deg,15deg);
-/* 使元素在 x 轴上偏离 10 度 */
-transform: skew(10deg);
-transform: skewX(10deg);
-/* 使元素在 y 轴上偏离 10 度 */
-transform: skewY(10deg);
+{
+  /* 使元素在 x 轴上偏离 10 度，y 轴上偏离 15 度。*/
+  transform: skew(10deg,15deg);
+  /* 使元素在 x 轴上偏离 10 度 */
+  transform: skew(10deg);
+  transform: skewX(10deg);
+  /* 使元素在 y 轴上偏离 10 度 */
+  transform: skewY(10deg);
+}
 ```
 
 ## 矩阵

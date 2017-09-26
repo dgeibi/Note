@@ -60,34 +60,46 @@ title: Borders
 IE9
 
 ``` css
-border-radius: length|%;
+div { border-radius: length|%; }
 ```
 
 ``` css
-border-radius: 1px 2px 3px 4px;
+div {
+  border-radius: 1px 2px 3px 4px;
+}
+
 /* 等价 */
-border-top-left-radius: 1px
-border-top-right-radius: 2px
-border-bottom-right-radius: 3px
-border-bottom-left-radius: 4px
+div {
+  border-top-left-radius: 1px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 4px;
+}
 ```
 
 ``` css
-border-radius: 1px 2px 3px;
+div {
+  border-radius: 1px 2px 3px;
+}
+
 /* 等价 */
-border-top-left-radius: 1px
-border-top-right-radius: 2px
-border-bottom-right-radius: 3px
-border-bottom-left-radius: 2px
+div {
+  border-top-left-radius: 1px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 2px;
+}
 ```
 
 ``` css
-border-radius: 1px 2px;
-/* 等价 */
-border-top-left-radius: 1px
-border-top-right-radius: 2px
-border-bottom-right-radius: 1px
-border-bottom-left-radius: 2px
+div {
+  border-radius: 1px 2px;
+  /* 等价 */
+  border-top-left-radius: 1px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 1px;
+  border-bottom-left-radius: 2px;
+}
 ```
 
 ## border-image

@@ -1,6 +1,6 @@
-import './operations/loadSW';
-import './operations/handleSlide';
-import './operations/addTableWrapper';
-import './operations/search';
-import './operations/loadVender';
-import './utils/treeLinks';
+import './operations/loadSW'
+import './operations/handleSlide'
+import './operations/addTableWrapper'
+import './operations/search'
+import './operations/loadVender'
+import './utils/treeLinks'

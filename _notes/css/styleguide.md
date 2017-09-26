@@ -9,7 +9,9 @@ title: Style Guide
 Do not use put 0s in front of values or lengths between -1 and 1.
 
 ```css
-font-size: .8em;
+p {
+  font-size: .8em;
+}
 ```
 
 ## CSS Quotation Marks
