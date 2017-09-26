@@ -17,6 +17,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "escape-string-regexp": "^1.0.5",
     "normalize.css": "^7.0.0",
     "uemitter": "^0.0.3",
     "unfetch": "^3.0.0"
