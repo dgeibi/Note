@@ -37,7 +37,6 @@ function bindMedia(query, handleMediaChange) {
 
   const toggle = () => {
     body.classList.toggle('open-sidebar');
-    aside.classList.toggle('sidebar--hide');
     state.hided = !state.hided;
   };
 
