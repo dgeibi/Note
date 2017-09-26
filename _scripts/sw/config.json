@@ -2,9 +2,9 @@
   "name": "assets",
   "root": "./docs",
   "output": "sw.js",
-  "version": 15,
+  "version": 17,
   "urls": {
-    "/assets/css/main.css": "e32c20a3303d2ece92d232029f24ece8",
+    "/assets/css/main.css": "5ff8a22606c5ac9a76ebd45f69384182",
     "/assets/css/github.css": "bf6c14925e66edb1526b6c9489b3c042",
     "/assets/js/bundle.js": "ab9c00d781530fbfedf30bf001f61563",
     "/manifest.json": "17a27b5c0b759e550f9a00b0d657f171",

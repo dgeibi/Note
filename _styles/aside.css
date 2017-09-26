@@ -12,7 +12,6 @@
   z-index: 99;
   width: var(--sidebar-width);
   padding: 0.7rem;
-  box-sizing: border-box;
   border-bottom: 0;
   overflow: hidden;
   border-right: 1px solid #eee;
@@ -33,11 +32,11 @@
 }
 
 #list {
-  height: 85%;
+  height: calc(100% - 105px);
 }
 
 ul[role='tree'] {
-  height: 91%;
+  height: calc(100% - 50px);
   overflow-y: auto;
 }
 

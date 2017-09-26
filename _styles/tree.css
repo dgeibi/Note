@@ -39,10 +39,13 @@ ul[role='tree'] li {
 [role='treeitem'],
 [role='treeitem'] span {
   margin: 0;
-  padding: 0.125em;
   border: 1px transparent solid;
   border-radius: 0.2em;
   display: block;
+}
+
+[role='treeitem'] {
+  padding: 0.125em;
 }
 
 /* disable default keyboard focus styling for treeitems
