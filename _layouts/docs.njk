@@ -15,7 +15,7 @@
 <aside class="sidebar">
   {% include "includes/header.njk" %}
   <input type="search" placeholder="Type or Title">
-  <div id="list" class="{{ page.types | join(" ") }}">
+  <div id="list">
     <p class="list-name">CONTENTS</p>
     {{ list | safe }}
   </div>
