@@ -32,7 +32,7 @@ module.exports = {
   },
   docslist: {
     enable: true,
-    listTemplate: requireWithoutCache('./config/listTemplate'),
+    listTemplate: require('./config/listTemplate'),
   },
   docsmap: {
     enable: true,
@@ -47,10 +47,4 @@ module.exports = {
     require('./config/suite-gensw'),
     require('./config/suite-htmlclean'),
   ],
-}
-
-function requireWithoutCache(path) {
-  const result = require(path) // eslint-disable-line
-  delete require.cache[require.resolve(path)]
-  return result
 }
