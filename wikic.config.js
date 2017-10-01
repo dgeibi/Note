@@ -2,6 +2,7 @@
 module.exports = {
   title: 'Wikic',
   port: 4511,
+  server: 'wikic-live-server',
   excludes: [
     'README.md',
     'yarn.lock',
