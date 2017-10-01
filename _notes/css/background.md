@@ -66,8 +66,10 @@ where
 ## background-image
 
 ```css
-background-image: none;
-background-image: url(http://www.example.com/bck.png);
+div {
+  background-image: none;
+  background-image: url(http://www.example.com/bck.png);
+}
 ```
 
 ## background-color

@@ -20,7 +20,7 @@ title: Color
 
 ## HSL
 
- `hsl(hue, saturation, lightness)`
+`hsl(hue, saturation, lightness)`
 
  * hue: 色调
     * 0/360 红
