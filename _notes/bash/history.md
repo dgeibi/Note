@@ -2,7 +2,7 @@
 title: history
 ---
 
-## history
+## `history` command
 
 ```shell
 history [n] #列出最近的 n 笔命令列表
