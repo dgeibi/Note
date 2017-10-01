@@ -10,7 +10,9 @@
             "ie >= 10",
             "last 2 versions"
           ]
-        }
+        },
+        "useBuiltins": true,
+        "loose": true
       }
     ],
     "stage-0"

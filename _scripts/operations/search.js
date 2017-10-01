@@ -18,7 +18,7 @@ function fetchDocs() {
 }
 
 if (searchInput) {
-  $.depend.on('promise', fetchDocs)
+  fetchDocs()
   const findMatches = function findMatches(regex, docsInfos) {
     return docsInfos.filter(
       info =>

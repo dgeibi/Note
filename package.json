@@ -17,10 +17,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "escape-string-regexp": "^1.0.5",
     "normalize.css": "^7.0.0",
     "uemitter": "^0.0.3",
-    "unfetch": "^3.0.0"
+    "unfetch": "^3.0.0",
+    "wicg-inert": "^1.1.4"
   },
   "description": "personal wiki",
   "author": "dgeibi <png.inside@gmail.com>",

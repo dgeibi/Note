@@ -30,6 +30,7 @@ function bindMedia(query, handleMediaChange) {
     hided: true,
     isNarrow: null,
   }
+  aside.inert = state.hided
 
   bindMedia('(max-width: 799px)', (mql) => {
     state.isNarrow = mql.matches
@@ -38,6 +39,7 @@ function bindMedia(query, handleMediaChange) {
   const toggle = () => {
     body.classList.toggle('open-sidebar')
     state.hided = !state.hided
+    aside.inert = state.hided
   }
 
   slideBtn.addEventListener('click', toggle)

@@ -7,10 +7,7 @@
   {% block title %}
     <title>{{ page.title }}{{ " | " if page.title }}{{ site.title }}</title>
   {% endblock %}
-
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | baseurl | relative }}">
-  <script src="{{ '/assets/js/bundle.js' | baseurl | relative }}" async></script>
-
   {%- block extraStyle %}
   {% endblock -%}
   <link rel="icon" href="/favicon.png" type="image/png">
@@ -20,5 +17,6 @@
     {% block body %}
     {{ content | safe }}
     {% endblock %}
+    <script src="{{ '/assets/js/bundle.js' | baseurl | relative }}"></script>
   </body>
 </html>
