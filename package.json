@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "classlist.js": "^1.1.20150312",
     "escape-string-regexp": "^1.0.5",
+    "matchmedia-polyfill": "^0.3.0",
     "normalize.css": "^7.0.0",
     "uemitter": "^0.0.3",
     "unfetch": "^3.0.0",

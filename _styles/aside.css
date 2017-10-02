@@ -75,3 +75,20 @@ body {
     }
   }
 }
+
+.docs-search-input {
+  width: 100%;
+  border-radius: 0.3em;
+  border: 2px solid #dad8d8;
+  background: white;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  padding: 0.4em 0.5em;
+  outline: 0;
+}
+
+.docs-search-input:focus {
+  border-color: #ec978d;
+  box-shadow: none;
+}

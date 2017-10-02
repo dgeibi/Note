@@ -1,4 +1,3 @@
-/* eslint-disable */
 var MutationObserver = window.MutationObserver
   || window.WebKitMutationObserver
   || window.MozMutationObserver;

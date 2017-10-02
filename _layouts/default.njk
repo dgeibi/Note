@@ -12,11 +12,11 @@
   {% endblock -%}
   <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="manifest" href="/manifest.json">
+  <script src="{{ '/assets/js/bootstrap.js' | baseurl | relative }}" async></script>
   </head>
   <body>
     {% block body %}
     {{ content | safe }}
     {% endblock %}
-    <script src="{{ '/assets/js/bundle.js' | baseurl | relative }}"></script>
   </body>
 </html>

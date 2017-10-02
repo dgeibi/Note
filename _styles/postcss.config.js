@@ -6,7 +6,7 @@ module.exports = {
   plugins: [
     postcssImport(),
     cssnext({
-      browsers: '> 3% in CN, ie 10, last 2 versions',
+      browsers: '> 5% in CN, ie >= 9, last 2 versions',
     }),
     csso,
   ],

@@ -6,8 +6,8 @@
         "modules": false,
         "targets": {
           "browsers": [
-            "> 3% in CN",
-            "ie >= 10",
+            "> 5% in CN",
+            "ie >= 9",
             "last 2 versions"
           ]
         },

@@ -2,11 +2,6 @@ import escapeRegexp from 'escape-string-regexp'
 import fetch from 'unfetch'
 import $ from '../utils'
 
-const searchInput = $('aside input[type=search]')
-const searchResult = $('.search-result')
-const suggestions = $('.suggestions', searchResult)
-const resultNumberSpan = $('.count', searchResult)
-
 let docs = null
 
 function fetchDocs() {
@@ -17,7 +12,13 @@ function fetchDocs() {
     })
 }
 
-if (searchInput) {
+(() => {
+  const searchInput = $('.docs-search-input')
+  const searchResult = $('.search-result')
+  const suggestions = $('.suggestions', searchResult)
+  const resultNumberSpan = $('.count', searchResult)
+  if (!searchInput) return
+
   fetchDocs()
   const findMatches = function findMatches(regex, docsInfos) {
     return docsInfos.filter(
@@ -32,6 +33,7 @@ if (searchInput) {
   }
 
   const displayMatches = function displayMatches() {
+    console.log('??')
     if (!this.value) {
       searchResult.classList.remove('open')
       resultNumberSpan.innerHTML = 0
@@ -58,4 +60,5 @@ if (searchInput) {
   }
 
   searchInput.addEventListener('input', displayMatches)
-}
+  searchInput.addEventListener('change', displayMatches)
+})()

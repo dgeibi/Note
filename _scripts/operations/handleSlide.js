@@ -1,14 +1,5 @@
 import $ from '../utils'
-import slide2left from './slide2left'
-
-// check types according to pathname
-const types = location.pathname.split('/').slice(1, -1)
-types.forEach((type) => {
-  const target = $(`[data-type=${type}]`)
-  if (target) {
-    target.setAttribute('aria-expanded', true)
-  }
-})
+import slide2left from '../utils/slide2left'
 
 /**
  * @param {string} query
@@ -25,12 +16,19 @@ function bindMedia(query, handleMediaChange) {
   const aside = $('aside.sidebar')
   const slideBtn = $('#slide-btn')
   if (!aside || !slideBtn) return
+
   const body = document.body
   const state = {
     hided: true,
     isNarrow: null,
   }
   aside.inert = state.hided
+
+  if (!window.matchMedia) {
+    body.classList.add('open-sidebar')
+    aside.inert = false
+    return
+  }
 
   bindMedia('(max-width: 799px)', (mql) => {
     state.isNarrow = mql.matches

@@ -31,7 +31,7 @@ gulp.task('css:watch', ['css'], () => {
 
 gulp.task('js', () =>
   gulp
-    .src('_scripts/main.js')
+    .src('_scripts/*.js')
     .pipe(gulpWebpack(webpackConfig, webpack))
     .pipe(gulp.dest('assets/js'))
 )
