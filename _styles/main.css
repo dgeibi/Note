@@ -10,16 +10,17 @@
 
 :root {
   --monospace-font-family: 'Iosevka Slab', 'Iosevka', Menlo, Monaco, Consolas, 'Andale Mono',
-    'lucida console', 'Courier New', monospace;
-  --base-font-family: 'Source Serif Pro', 'Noto Serif', Palatino, 'Palatino Linotype',
-    'Noto Serif SC', 'Noto Serif CJK SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
-    'WenQuanYi Micro Hei', serif;
+    'lucida console', 'Courier New', 'Noto Sans CJK SC', 'Noto Sans SC', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', monospace;
+  --base-font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, Ubuntu,
+    'Helvetica Neue', Helvetica, Arial, 'Noto Sans CJK SC', 'Noto Sans SC', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
   --base-font-size: 16px;
   --base-font-weight: 400;
   --small-font-size: calc(var(--base-font-size)*0.8);
   --base-line-height: 1.4;
   --spacing-unit: 2rem;
-  --text-color: #000;
+  --text-color: #333;
   --background-color: #f9f9f9;
   --brand-color: #d10f0f;
   --grey-color-dark: color(grey shade(50%));
@@ -219,4 +220,8 @@ th {
 
 aside {
   background: var(--background-color);
+}
+
+.page-title {
+  font-family: var(--monospace-font-family);
 }
