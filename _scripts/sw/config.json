@@ -2,12 +2,12 @@
   "name": "assets",
   "root": "./docs",
   "output": "sw.js",
-  "version": 50,
+  "version": 51,
   "urls": {
-    "/assets/css/main.css": "1d5456c5726e5f96686288b02474ace3",
+    "/assets/css/main.css": "79ddbd903c544c9cdda44977efd67dd9",
     "/assets/css/github.css": "bf6c14925e66edb1526b6c9489b3c042",
-    "/assets/js/app.js": "2f2e173d230f4cbb7b4116b12ce50807",
-    "/assets/js/bootstrap.js": "2c3ee980ffb7e1bd0114a33e6555bce7",
+    "/assets/js/app.js": "d9af2fa90e0b8a006da7434c4252f3a2",
+    "/assets/js/bootstrap.js": "6c9be5e205976ce0847ba2e1f4f17e37",
     "/manifest.json": "17a27b5c0b759e550f9a00b0d657f171",
     "/offline.html": "fa8d4177a4a2407439808f3940aa5337",
     "/favicon.png": "b8bdbae64092fb372933c35031cc9e51"

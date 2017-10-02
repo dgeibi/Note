@@ -12,12 +12,6 @@ if (aside && slideBtn) {
   }
   aside.inert = state.hided
 
-  if (!window.matchMedia) {
-    body.classList.add('open-sidebar')
-    aside.inert = false
-    return
-  }
-
   bindMedia('(max-width: 799px)', (mql) => {
     state.isNarrow = mql.matches
   })
