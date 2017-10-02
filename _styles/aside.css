@@ -41,10 +41,15 @@ ul[role='tree'] {
 }
 
 #slide-btn {
+  cursor: pointer;
   z-index: 3;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+body.open-sidebar #slide-btn {
   position: fixed;
-  top: 3px;
-  left: -4px;
 }
 
 @media (max-width: 350px) {
