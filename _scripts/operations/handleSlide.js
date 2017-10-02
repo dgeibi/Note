@@ -2,11 +2,9 @@ import $ from '../utils'
 import slide2left from '../utils/slide2left'
 import bindMedia from '../utils/bindMedia'
 
-(() => {
-  const aside = $('aside.sidebar')
-  const slideBtn = $('#slide-btn')
-  if (!aside || !slideBtn) return
-
+const aside = $('aside.sidebar')
+const slideBtn = $('#slide-btn')
+if (aside && slideBtn) {
   const body = document.body
   const state = {
     hided: true,
@@ -41,4 +39,4 @@ import bindMedia from '../utils/bindMedia'
     toggle,
     shouldHideWhenBlur,
   })
-})()
+}
