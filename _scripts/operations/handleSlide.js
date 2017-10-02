@@ -1,16 +1,6 @@
 import $ from '../utils'
 import slide2left from '../utils/slide2left'
-
-/**
- * @param {string} query
- * @param {Function} handleMediaChange
- */
-function bindMedia(query, handleMediaChange) {
-  const media = window.matchMedia(query)
-  media.addListener(handleMediaChange)
-  handleMediaChange(media)
-  return media
-}
+import bindMedia from '../utils/bindMedia'
 
 (() => {
   const aside = $('aside.sidebar')
@@ -36,8 +26,9 @@ function bindMedia(query, handleMediaChange) {
 
   const toggle = () => {
     body.classList.toggle('open-sidebar')
-    state.hided = !state.hided
+    state.hided = !body.classList.contains('open-sidebar')
     aside.inert = state.hided
+    slideBtn.setAttribute('aria-pressed', !state.hided)
   }
 
   slideBtn.addEventListener('click', toggle)
