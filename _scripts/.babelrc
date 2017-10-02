@@ -7,12 +7,10 @@
         "targets": {
           "browsers": [
             "> 5% in CN",
-            "ie >= 9",
             "last 2 versions"
           ]
         },
-        "useBuiltins": true,
-        "loose": true
+        "useBuiltins": true
       }
     ],
     "stage-0"

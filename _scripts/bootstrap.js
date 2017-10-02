@@ -1,8 +1,6 @@
-/* global Modernizr */
 import loadJS from './utils/loadJS'
-import './utils/modernizr'
 
-if (!Modernizr.promises) {
+if (typeof Promise !== 'function') {
   loadJS('/assets/js/app-old.js')
 } else {
   loadJS('/assets/js/app.js')
