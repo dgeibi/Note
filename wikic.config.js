@@ -5,6 +5,7 @@ module.exports = {
   server: 'wikic-live-server',
   excludes: [
     'README.md',
+    'package-lock.json',
     'yarn.lock',
     'LICENSE',
     'package.json',

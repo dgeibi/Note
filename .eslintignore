@@ -1,4 +1,4 @@
 /docs
 /assets
 modernizr.js
-MutationObserver.js
+workbox-sw.prod.*
