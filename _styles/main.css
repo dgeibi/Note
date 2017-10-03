@@ -4,23 +4,21 @@
 @import 'helper';
 @import 'anchor';
 @import 'page';
-@import 'fonts';
 @import 'search';
 @import 'tree';
 
 :root {
   --monospace-font-family: 'Iosevka Slab', 'Iosevka', Menlo, Monaco, Consolas, 'Andale Mono',
-    'lucida console', 'Courier New', 'Noto Sans CJK SC', 'Noto Sans SC', 'PingFang SC',
-    'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', monospace;
+    'lucida console', 'Courier New', monospace;
   --base-font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, Ubuntu,
-    'Helvetica Neue', Helvetica, Arial, 'Noto Sans CJK SC', 'Noto Sans SC', 'PingFang SC',
+    'Helvetica Neue', Helvetica, 'Noto Sans CJK SC', 'Noto Sans SC', 'PingFang SC',
     'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
   --base-font-size: 16px;
   --base-font-weight: 400;
   --small-font-size: calc(var(--base-font-size)*0.8);
   --base-line-height: 1.4;
   --spacing-unit: 2rem;
-  --text-color: #333;
+  --text-color: #222;
   --background-color: #f9f9f9;
   --brand-color: #d10f0f;
   --grey-color-dark: color(grey shade(50%));
@@ -117,10 +115,11 @@ h5,
 h6 {
   margin: 1rem 0 0.75rem 0;
   word-wrap: break-word;
+  letter-spacing: -1px;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 h3 {
@@ -220,8 +219,4 @@ th {
 
 aside {
   background: var(--background-color);
-}
-
-.page-title {
-  font-family: var(--monospace-font-family);
 }
