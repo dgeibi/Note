@@ -33,7 +33,6 @@ function fetchDocs() {
   }
 
   const displayMatches = function displayMatches() {
-    console.log('??')
     if (!this.value) {
       searchResult.classList.remove('open')
       resultNumberSpan.innerHTML = 0
