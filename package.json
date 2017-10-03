@@ -50,7 +50,7 @@
     "sw-precache": "^5.2.0",
     "webpack": "^3.6.0",
     "webpack-stream": "^4.0.0",
-    "wikic": "^3.0.5",
+    "wikic": "^3.0.6",
     "wikic-live-server": "^0.0.2",
     "wikic-suite-docslist": "^3.0.0",
     "wikic-suite-docsmap": "^2.0.0"
