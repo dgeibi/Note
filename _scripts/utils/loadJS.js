@@ -2,6 +2,9 @@ export default (url, done) => {
   if (url && typeof url === 'string') {
     const script = document.createElement('script')
     script.src = url
+    if (!('async' in script)) {
+      script.defer = true
+    }
     if (done) {
       script.onload = done
     }

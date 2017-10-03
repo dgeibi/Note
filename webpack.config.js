@@ -3,8 +3,10 @@ const webpack = require('webpack')
 
 module.exports = {
   entry: {
-    app: './_scripts/app.js',
-    'app-old': './_scripts/app-old.js',
+    'app-0': './_scripts/app-0.js',
+    'app-1': './_scripts/app-1.js',
+    'app-2': './_scripts/app-2.js',
+    'app-3': './_scripts/app-3.js',
     bootstrap: './_scripts/bootstrap.js',
   },
   output: {
