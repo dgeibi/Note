@@ -62,5 +62,4 @@ typings/
 /assets/css/*
 !/assets/css/github.css
 /assets/js/*
-!/assets/js/sw-toolkit.js
 .vscode

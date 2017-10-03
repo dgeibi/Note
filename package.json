@@ -47,6 +47,7 @@
     "postcss-csso": "^2.0.0",
     "postcss-import": "^11.0.0",
     "prettier-eslint-cli": "^4.3.2",
+    "sw-precache": "^5.2.0",
     "webpack": "^3.6.0",
     "webpack-stream": "^4.0.0",
     "wikic": "^3.0.5",
