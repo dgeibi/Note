@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const wbBuild = require('workbox-build')
 
-const makeWrite = root => () =>
+const genSW = (_, { publicPath: root }) =>
   wbBuild
     .injectManifest({
       swDest: `${root}/sw.js`,
@@ -23,6 +23,6 @@ const makeWrite = root => () =>
       console.log(`[ERROR] This happened: ${err}`)
     })
 
-module.exports = (config, wikic) => ({
-  afterBuild: makeWrite(wikic.publicPath),
-})
+module.exports = {
+  afterBuild: genSW,
+}
