@@ -2,45 +2,58 @@
   display: none;
 }
 
-.search-result.open {
+.search-result-container .search-result {
   display: block;
+}
 
-  & + .page {
-    display: none;
-  }
+.search-result-container > :not(.search-result) {
+  display: none;
 }
 
 .search-result .hl {
   background: #ffda9f;
 }
 
-.suggestions {
+.search-result__suggestions {
   list-style: none;
   margin: 0;
   padding: 0;
 
-  & > li:not(:last-of-type) {
+  & .search-item:not(:last-of-type) {
     margin-bottom: 1rem;
   }
 
-  & > li .title {
+  & .search-item__title {
     margin: 0;
   }
 
-  & > li .types {
+  & .search-item__types {
     font-style: italic;
   }
 }
 
-.search-header {
+.search-result__header {
   text-align: center;
   margin-bottom: 1.5em;
-
-  & > h1 {
-    margin: 0;
-  }
 }
 
-input[type='search'] {
+.search-result__description {
+  margin: 0;
+}
+
+.docs-search-input {
   width: 100%;
+  border-radius: 0.3em;
+  border: 2px solid #dad8d8;
+  background: white;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  padding: 0.4em 0.5em;
+  outline: 0;
+}
+
+.docs-search-input:focus {
+  border-color: #ec978d;
+  box-shadow: none;
 }

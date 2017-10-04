@@ -1,4 +1,5 @@
 import loadJS from './utils/loadJS'
+import loadCSS from './utils/loadCSS'
 import './utils/modernizr'
 
 const Modernizr = window.Modernizr
@@ -11,4 +12,8 @@ if (Modernizr.promises && Modernizr.matchmedia && Modernizr.classlist) {
   loadJS('/assets/js/app-2.js')
 } else {
   loadJS('/assets/js/app-3.js')
+}
+
+if (document.querySelector('pre')) {
+  loadCSS('/assets/css/github.css')
 }

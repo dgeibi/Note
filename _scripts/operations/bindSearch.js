@@ -13,12 +13,14 @@ function fetchDocs() {
 }
 
 (() => {
-  const searchInput = $('.docs-search-input')
-  const searchResult = $('.search-result')
-  const suggestions = $('.suggestions', searchResult)
+  const CONTAINER_CLASSNAME = 'search-result-container'
+  const searchInput = $('[data-search-input]')
+  const searchResult = $('[data-search-result]')
+  const suggestions = $('[data-suggestions]', searchResult)
   const resultNumberSpan = $('.count', searchResult)
   if (!searchInput) return
 
+  const searchResultParent = searchResult.parentNode
   fetchDocs()
   const findMatches = function findMatches(regex, docsInfos) {
     return docsInfos.filter(
@@ -34,22 +36,22 @@ function fetchDocs() {
 
   const displayMatches = function displayMatches() {
     if (!this.value) {
-      searchResult.classList.remove('open')
+      searchResultParent.classList.remove(CONTAINER_CLASSNAME)
       resultNumberSpan.innerHTML = 0
       suggestions.innerHTML = ''
       return
     }
     const regex = new RegExp(escapeRegexp(this.value), 'ig')
     const matchArray = findMatches(regex, docs)
-    searchResult.classList.add('open')
+    searchResultParent.classList.add(CONTAINER_CLASSNAME)
     const html = matchArray
       .map((doc) => {
         const title = doc.title.replace(regex, '<span class="hl">$&</span>')
         const types = doc.types.map(type => type.replace(regex, '<span class="hl">$&</span>'))
         return `
-          <li>
-            <h3 class="title"><a href="${doc.address}">${title}</a></h3>
-            <span class="types">${types.join(' > ')}</span>
+          <li class="search-item">
+            <h3 class="search-item__title"><a href="${doc.address}">${title}</a></h3>
+            <span class="search-item__types">${types.join(' > ')}</span>
           </li>
       `
       })

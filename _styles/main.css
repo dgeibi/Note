@@ -1,7 +1,5 @@
 @import 'normalize.css';
-@import 'wrapper';
-@import 'aside';
-@import 'helper';
+@import 'sidebar';
 @import 'anchor';
 @import 'page';
 @import 'search';

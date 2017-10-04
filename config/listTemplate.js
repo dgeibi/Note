@@ -6,7 +6,7 @@ module.exports = {
   },
 
   tree({ body }) {
-    return `<ul role="tree">${body}</ul>`
+    return `<ul role="tree" class="site-nav__content">${body}</ul>`
   },
 
   item({ title, address }) {

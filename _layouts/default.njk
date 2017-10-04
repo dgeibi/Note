@@ -8,11 +8,9 @@
     <title>{{ page.title }}{{ " | " if page.title }}{{ site.title }}</title>
   {% endblock %}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | baseurl }}">
-  {%- block extraStyle %}
-  {% endblock -%}
   <link rel="icon" href="/favicon.png" type="image/png">
   <link rel="manifest" href="/manifest.json">
-  <script src="{{ '/assets/js/bootstrap.js' | baseurl }}"></script>
+  <script src="{{ '/assets/js/bootstrap.js' | baseurl }}" async></script>
   </head>
   <body>
     {% block body %}
