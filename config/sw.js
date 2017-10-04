@@ -17,16 +17,62 @@ const pageNetworkFirst = workboxSW.strategies.networkFirst({
   },
 })
 
-const withFallback = (url, handler) => input =>
-  handler.handle(input).then((x) => {
-    if (x !== undefined) return x
-    console.error(`[SW] cache for ${input.event.request.url} not found`)
-    return caches.match(url).catch(() => {
-      throw Error(`[SW] fallback cache(${url}) not found`)
-    })
-  })
+const wrapHandler = (handler) => {
+  if (typeof handler === 'function') return handler
+  if (handler && typeof handler === 'object' && typeof handler.handle === 'function') {
+    return input => handler.handle(input)
+  }
+  throw Error('fake handler')
+}
+
+// getMsg: info -> string
+const check = getMsg => info => (x) => {
+  const errMsg = getMsg(info)
+  if (x === undefined) {
+    console.error(errMsg)
+    throw Error(errMsg)
+  }
+  return x
+}
+
+const checkResponse = check(
+  ({ tag, url }) => `[SW]${tag ? ' ' : ''}${tag || ''}: cache(${url}) not found`
+)
+
+const withFallback = (url, handler) => {
+  const callback = wrapHandler(handler)
+  return input =>
+    callback(input)
+      .then(checkResponse({ url: input.event.request.url }))
+      .catch(() => caches.match(url))
+      .then(checkResponse({ url, tag: 'fallback' }))
+}
+
+const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k)
+
+const withAliases = (aliases, handler) => {
+  const callback = wrapHandler(handler)
+  const origin = self.location.origin
+
+  return (input) => {
+    const url = input.url
+    if (url.origin === origin && has(aliases, url.pathname)) {
+      const aliasURL = origin + aliases[url.pathname]
+      console.log(`[SW] alias: trying ${url.pathname} -> ${aliasURL}...`)
+      return self.caches
+        .match(aliasURL)
+        .then(checkResponse({ url: aliasURL, tag: 'alias' }))
+        .catch(() => callback(input))
+    }
+    return callback(input)
+  }
+}
+
+const aliases = {
+  '/': '/index.html',
+}
 
 workboxSW.router.registerRoute(
-  ({ event }) => event.request.mode === 'navigate',
-  withFallback(`${self.location.origin}/index.html`, pageNetworkFirst)
+  ({ event, url }) => event.request.mode === 'navigate' && url.pathname !== '/index.html',
+  withAliases(aliases, withFallback(`${self.location.origin}/index.html`, pageNetworkFirst))
 )
