@@ -2,10 +2,12 @@ import $ from '../utils'
 import slide2left from '../utils/slide2left'
 import bindMedia from '../utils/bindMedia'
 
-const aside = $('aside.sidebar')
 const slideBtn = $('#slide-btn')
-if (aside && slideBtn) {
-  const body = document.body
+const aside = $('.sidebar')
+const opener = $('.sidebar-opener')
+const OPEN_KEY = 'sidebar-opener--open'
+
+if (aside && slideBtn && opener) {
   const state = {
     hided: true,
     isNarrow: null,
@@ -17,8 +19,8 @@ if (aside && slideBtn) {
   })
 
   const toggle = () => {
-    body.classList.toggle('open-sidebar')
-    state.hided = !body.classList.contains('open-sidebar')
+    opener.classList.toggle(OPEN_KEY)
+    state.hided = !opener.classList.contains(OPEN_KEY)
     aside.inert = state.hided
     slideBtn.setAttribute('aria-pressed', !state.hided)
   }

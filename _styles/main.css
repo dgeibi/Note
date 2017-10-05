@@ -137,6 +137,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: color(#d10f0f blackness(50%));
+}
+
 /**
  * Blockquotes
  */
