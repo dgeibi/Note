@@ -5,8 +5,7 @@ importScripts('workbox-sw.prod.v2.0.3.js')
 const workboxSW = new self.WorkboxSW({ clientsClaim: true, skipWaiting: true })
 workboxSW.precache([])
 
-const pageNetworkFirst = workboxSW.strategies.networkFirst({
-  networkTimeoutSeconds: 3,
+const pageBaseHandler = workboxSW.strategies.staleWhileRevalidate({
   cacheName: 'site-pages',
   cacheExpiration: {
     maxEntries: 20,
@@ -26,9 +25,10 @@ const wrapHandler = (handler) => {
 }
 
 // getMsg: info -> string
-const check = getMsg => info => (x) => {
+// throwTest: x => boolean
+const check = (getMsg, throwTest) => info => (x) => {
   const errMsg = getMsg(info)
-  if (x === undefined) {
+  if (x === undefined || (throwTest && throwTest(x))) {
     console.error(errMsg)
     throw Error(errMsg)
   }
@@ -36,16 +36,16 @@ const check = getMsg => info => (x) => {
 }
 
 const checkResponse = check(
-  ({ tag, url }) => `[SW]${tag ? ' ' : ''}${tag || ''}: cache(${url}) not found`
+  ({ tag, url }) => `[SW]${tag ? ' ' : ''}${tag || ''}: fail to fetch ${url}`,
+  response => !response.ok
 )
 
 const withFallback = (url, handler) => {
   const callback = wrapHandler(handler)
-  return input =>
-    callback(input)
-      .then(checkResponse({ url: input.event.request.url }))
-      .catch(() => caches.match(url))
-      .then(checkResponse({ url, tag: 'fallback' }))
+  return input => callback(input)
+    .then(checkResponse({ url: input.event.request.url }))
+    .catch(() => caches.match(url))
+    .then(checkResponse({ url, tag: 'fallback' }))
 }
 
 const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k)
@@ -74,5 +74,5 @@ const aliases = {
 
 workboxSW.router.registerRoute(
   ({ event, url }) => event.request.mode === 'navigate' && url.pathname !== '/index.html',
-  withAliases(aliases, withFallback(`${self.location.origin}/index.html`, pageNetworkFirst))
+  withAliases(aliases, withFallback(`${self.location.origin}/index.html`, pageBaseHandler))
 )
