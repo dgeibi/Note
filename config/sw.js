@@ -5,16 +5,7 @@ importScripts('workbox-sw.prod.v2.0.3.js')
 const workboxSW = new self.WorkboxSW({ clientsClaim: true, skipWaiting: true })
 workboxSW.precache([])
 
-const pageBaseHandler = workboxSW.strategies.staleWhileRevalidate({
-  cacheName: 'site-pages',
-  cacheExpiration: {
-    maxEntries: 20,
-    maxAgeSeconds: 7 * 24 * 60 * 60,
-  },
-  cacheableResponse: {
-    statuses: [0, 200],
-  },
-})
+// helpers start
 
 const wrapHandler = (handler) => {
   if (typeof handler === 'function') return handler
@@ -42,14 +33,44 @@ const checkResponse = check(
 
 const withFallback = (url, handler) => {
   const callback = wrapHandler(handler)
-  return input => callback(input)
-    .then(checkResponse({ url: input.event.request.url }))
-    .catch(() => caches.match(url))
-    .then(checkResponse({ url, tag: 'fallback' }))
+  return input =>
+    callback(input)
+      .then(checkResponse({ url: input.event.request.url }))
+      .catch(() => caches.match(url))
+      .then(checkResponse({ url, tag: 'fallback' }))
 }
+
+const removeCaches = filter =>
+  caches.keys().then(keys =>
+    Promise.all(
+      keys.map((key) => {
+        if (filter(key)) return null
+        return caches.delete(key)
+      })
+    )
+  )
+
+// helpers end
+
+const pageBaseHandler = workboxSW.strategies.staleWhileRevalidate({
+  cacheName: 'site-pages',
+  cacheExpiration: {
+    maxEntries: 20,
+    maxAgeSeconds: 7 * 24 * 60 * 60,
+  },
+  cacheableResponse: {
+    statuses: [0, 200],
+  },
+})
 
 const rootRegex = /^\/[^/]*$/
 workboxSW.router.registerRoute(
   ({ event, url }) => event.request.mode === 'navigate' && !rootRegex.test(url.pathname),
   withFallback(`${self.location.origin}/offline.html`, pageBaseHandler)
 )
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    removeCaches(key => key === 'site-pages' || /^workbox-precaching-revisioned-v1/.test(key))
+  )
+})
