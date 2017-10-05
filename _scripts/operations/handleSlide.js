@@ -25,7 +25,11 @@ if (aside && slideBtn && opener) {
     slideBtn.setAttribute('aria-pressed', !state.hided)
   }
 
-  slideBtn.addEventListener('click', toggle)
+  const toggleAndBlur = function toggleAndBlur() {
+    toggle()
+    this.blur()
+  }
+  slideBtn.addEventListener('click', toggleAndBlur)
 
   const enable = e => state.isNarrow && !slideBtn.contains(e.target)
   const shouldHideWhenBlur = () => !state.hided

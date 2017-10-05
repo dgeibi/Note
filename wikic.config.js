@@ -18,6 +18,9 @@ module.exports = {
     minLength: 3,
     header: '<header>IN THIS ARTICLE</header>',
     id: '#toc',
+    anchorTemplate(id) {
+      return `&nbsp;<a class="anchor" href="#${id}"></a>`
+    },
   },
   typeMap: {
     css: 'CSS',
