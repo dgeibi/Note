@@ -27,7 +27,7 @@ if (aside && slideBtn && opener) {
 
   slideBtn.addEventListener('click', toggle)
 
-  const enable = () => state.isNarrow
+  const enable = e => state.isNarrow && !slideBtn.contains(e.target)
   const shouldHideWhenBlur = () => !state.hided
   slide2left({
     touchArea: aside,
