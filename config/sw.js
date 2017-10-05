@@ -37,7 +37,7 @@ const check = (getMsg, throwTest) => info => (x) => {
 
 const checkResponse = check(
   ({ tag, url }) => `[SW]${tag ? ' ' : ''}${tag || ''}: fail to fetch ${url}`,
-  response => !response.ok
+  response => !response.ok && response.status === 0
 )
 
 const withFallback = (url, handler) => {
@@ -48,31 +48,8 @@ const withFallback = (url, handler) => {
     .then(checkResponse({ url, tag: 'fallback' }))
 }
 
-const has = (o, k) => Object.prototype.hasOwnProperty.call(o, k)
-
-const withAliases = (aliases, handler) => {
-  const callback = wrapHandler(handler)
-  const origin = self.location.origin
-
-  return (input) => {
-    const url = input.url
-    if (url.origin === origin && has(aliases, url.pathname)) {
-      const aliasURL = origin + aliases[url.pathname]
-      console.log(`[SW] alias: trying ${url.pathname} -> ${aliasURL}...`)
-      return self.caches
-        .match(aliasURL)
-        .then(checkResponse({ url: aliasURL, tag: 'alias' }))
-        .catch(() => callback(input))
-    }
-    return callback(input)
-  }
-}
-
-const aliases = {
-  '/': '/index.html',
-}
-
+const rootRegex = /^\/[^/]*$/
 workboxSW.router.registerRoute(
-  ({ event, url }) => event.request.mode === 'navigate' && url.pathname !== '/index.html',
-  withAliases(aliases, withFallback(`${self.location.origin}/index.html`, pageBaseHandler))
+  ({ event, url }) => event.request.mode === 'navigate' && !rootRegex.test(url.pathname),
+  withFallback(`${self.location.origin}/offline.html`, pageBaseHandler)
 )

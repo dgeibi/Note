@@ -13,6 +13,7 @@ const genSW = (_, { publicPath: root }) =>
         'assets/js/app-0.js',
         'assets/css/*.css',
         'index.html',
+        'offline.html',
         '*.json',
       ],
     })
