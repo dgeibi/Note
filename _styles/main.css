@@ -213,10 +213,6 @@ th {
   padding: 0.625rem;
 }
 
-.sidebar {
-  background: var(--background-color);
-}
-
 .main {
   position: relative;
   margin: 0 auto;
