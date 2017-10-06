@@ -1,7 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
 
+const PROD = process.env.NODE_ENV === 'production'
+
 module.exports = {
+  devtool: PROD ? 'source-map' : 'cheap-module-eval-source-map',
   entry: {
     'app-0': './_scripts/app-0.js',
     'app-1': './_scripts/app-1.js',
@@ -12,7 +15,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'assets/js'),
     filename: '[name].js',
-    publicPath: 'js',
   },
   module: {
     rules: [
@@ -31,7 +33,7 @@ module.exports = {
   ],
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (PROD) {
   module.exports.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -39,6 +41,7 @@ if (process.env.NODE_ENV === 'production') {
       },
       comments: false,
       'screw-ie8': true,
+      sourceMap: true,
     })
   )
 }
