@@ -1,6 +1,6 @@
 /* eslint-env serviceworker */
 /* eslint-disable no-console */
-importScripts('workbox-sw.prod.v2.0.3.js')
+importScripts('workbox-sw.prod.js')
 
 const workboxSW = new self.WorkboxSW({ clientsClaim: true, skipWaiting: true })
 workboxSW.precache([])

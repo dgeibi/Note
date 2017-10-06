@@ -46,6 +46,18 @@ module.exports = {
   logger: {
     file: 'error',
   },
+  workbox: {
+    swSrc: `${__dirname}/config/sw.js`,
+    globPatterns: [
+      '**/*.{png,jpg,gif,svg,eot,ttf,woff}',
+      'assets/js/bootstrap.js',
+      'assets/js/app-0.js',
+      'assets/css/*.css',
+      'index.html',
+      'offline.html',
+      '*.json',
+    ],
+  },
   suites: [
     'wikic-suite-docslist',
     'wikic-suite-docsmap',

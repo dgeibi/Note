@@ -51,6 +51,6 @@
     "wikic-live-server": "^0.0.2",
     "wikic-suite-docslist": "^3.0.0",
     "wikic-suite-docsmap": "^2.0.0",
-    "workbox-build": "^2.0.3"
+    "workbox-build": "^2.1.0"
   }
 }

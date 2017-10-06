@@ -1,29 +1,33 @@
 /* eslint-disable no-console */
 const wbBuild = require('workbox-build')
+const { basename, join } = require('path')
 
-const genSW = (_, { publicPath: root }) =>
-  wbBuild
-    .injectManifest({
-      swDest: `${root}/sw.js`,
-      swSrc: `${__dirname}/sw.js`,
-      globDirectory: root,
-      globPatterns: [
-        '**/*.{png,jpg,gif,svg,eot,ttf,woff}',
-        'assets/js/bootstrap.js',
-        'assets/js/app-0.js',
-        'assets/css/*.css',
-        'index.html',
-        'offline.html',
-        '*.json',
-      ],
-    })
-    .then(() => {
-      console.log('Service worker generated.')
-    })
-    .catch((err) => {
-      console.log(`[ERROR] This happened: ${err}`)
-    })
+const WB_SW = require.resolve('workbox-sw')
+const copyToDir = (fn, from, dir) => fn(from, join(dir, basename(from)))
+
+const generateSW = async (_, { publicPath, fse, config: { workbox } }) => {
+  const config = {
+    globDirectory: publicPath,
+    swDest: `${publicPath}/sw.js`,
+    ...workbox,
+  }
+  await wbBuild.injectManifest(config)
+  const string = await fse.readFile(config.swDest, { encoding: 'utf8' })
+
+  const result = string.replace('workbox-sw.prod.js', basename(WB_SW))
+
+  await fse.writeFile(config.swDest, result)
+  console.log('Service worker generated.')
+}
+
+const copyWorkboxSW = async (_, { fse, publicPath }) => {
+  await Promise.all([
+    copyToDir(fse.copy, WB_SW, publicPath),
+    copyToDir(fse.copy, `${WB_SW}.map`, publicPath),
+  ])
+}
 
 module.exports = {
-  afterBuild: genSW,
+  afterBuild: generateSW,
+  beforeBuild: copyWorkboxSW,
 }
