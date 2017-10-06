@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: inherit;  
+  background: inherit;
   transform: translateX(calc(-var(--sidebar-width)));
   transition: transform var(--duration);
   width: var(--sidebar-width);
@@ -57,7 +57,7 @@
   left: 0px;
   display: inline-block;
   transition: transform var(--duration);
-  
+
   & > svg {
     border: 1px solid transparent;
     border-radius: 3px;
