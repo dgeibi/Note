@@ -1,0 +1,4 @@
+/* copy from https://css-tricks.com/transitions-only-after-page-load/ */
+._disable-transition * {
+  transition: none !important;
+}

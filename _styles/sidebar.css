@@ -8,7 +8,6 @@
   top: 0;
   left: 0;
   height: 100%;
-  z-index: -1;
   background: inherit;  
   transform: translateX(calc(-var(--sidebar-width)));
   transition: transform var(--duration);
@@ -27,7 +26,6 @@
 
 .sidebar-opener--open + .sidebar {
   transform: translateX(0);
-  z-index: 0;
 }
 
 .site-header {
@@ -82,7 +80,6 @@
   position: relative;
   overflow-x: hidden;
   transform: translateX(0);
-  background: inherit;
   padding-left: 0;
   transition: transform var(--duration), padding-left var(--duration);
 }
