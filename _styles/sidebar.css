@@ -6,9 +6,10 @@
 .sidebar {
   position: fixed;
   top: 0;
-  left: calc(-var(--sidebar-width));
+  left: 0;
   height: 100%;
-  transition: left var(--duration);
+  transform: translateX(calc(-var(--sidebar-width)));
+  transition: transform var(--duration);
   width: var(--sidebar-width);
   padding: 0.7rem;
   border-bottom: 0;
@@ -22,8 +23,8 @@
   }
 }
 
-.sidebar-opener--open .sidebar {
-  left: 0;
+.sidebar-opener--open + .sidebar {
+  transform: translateX(0);
 }
 
 .site-header {
@@ -47,10 +48,6 @@
 
 .site-nav__content a:hover {
   text-decoration: none;
-}
-
-.main {
-  position: relative;
 }
 
 #slide-btn {
@@ -81,14 +78,14 @@
 .sidebar-opener {
   position: relative;
   overflow-x: hidden;
-  left: 0;
+  transform: translateX(0);
   padding-left: 0;
-  transition: left var(--duration), padding-left var(--duration);
+  transition: transform var(--duration), padding-left var(--duration);
 }
 
 @media (max-width: 799px) {
   .sidebar-opener.sidebar-opener--open {
-    left: var(--sidebar-width);
+    transform: translateX(var(--sidebar-width));
   }
 }
 

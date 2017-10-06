@@ -7,6 +7,25 @@
 {%- endblock %}
 
 {%- block body %}
+<div class="sidebar-opener">
+  <main class="main">
+    <article class='page'>
+      {% if page.title %}<h1 class="page-title">{{- page.title }}</h1>{% endif %}
+      {% if page.toc %}<nav id="toc"></nav>{% endif %}
+      <div class="page-content">
+        {{- content| safe }}
+      </div>
+    </article>
+    <section class="search-result" data-search-result>
+      <header class="search-result__header">
+        <h1 class="search-result__description">Found&nbsp;<span class="count"></span>&nbsp;articles.</h1>
+      </header>
+      <ul class="search-result__suggestions" data-suggestions></ul>
+    </section>
+    <a href="#" title="Docs Tree" id="slide-btn" role="button" aria-label="Docs Tree" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
+  </main>
+</div>
+
 <aside class="sidebar" inert>
   {% include "includes/header.njk" %}
   <input type="search" placeholder="Type or Title" class="docs-search-input" data-search-input>
@@ -15,22 +34,5 @@
     {{ list | safe }}
   </nav>
 </aside>
-
-<main class="main">
-  <article class='page'>
-    {% if page.title %}<h1 class="page-title">{{- page.title }}</h1>{% endif %}
-    {% if page.toc %}<nav id="toc"></nav>{% endif %}
-    <div class="page-content">
-      {{- content| safe }}
-    </div>
-  </article>
-  <section class="search-result" data-search-result>
-    <header class="search-result__header">
-      <h1 class="search-result__description">Found&nbsp;<span class="count"></span>&nbsp;articles.</h1>
-    </header>
-    <ul class="search-result__suggestions" data-suggestions></ul>
-  </section>
-  <a href="#" title="Docs Tree" id="slide-btn" role="button" aria-label="Docs Tree" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
-</main>
 
 {%- endblock -%}

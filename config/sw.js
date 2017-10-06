@@ -52,7 +52,7 @@ const removeCaches = filter =>
 
 // helpers end
 
-const SITE_PAGES = 'site-pages-v1'
+const SITE_PAGES = 'site-pages-v2'
 const expecteds = [SITE_PAGES]
 
 const pageBaseHandler = workboxSW.strategies.staleWhileRevalidate({
