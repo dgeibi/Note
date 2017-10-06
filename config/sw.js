@@ -16,7 +16,7 @@ const wrapHandler = (handler) => {
 }
 
 // getMsg: info -> string
-// throwTest: x => boolean
+// throwTest: x -> boolean
 const check = (getMsg, throwTest) => info => (x) => {
   const errMsg = getMsg(info)
   if (x === undefined || (throwTest && throwTest(x))) {
@@ -52,8 +52,11 @@ const removeCaches = filter =>
 
 // helpers end
 
+const SITE_PAGES = 'site-pages-v1'
+const expecteds = [SITE_PAGES]
+
 const pageBaseHandler = workboxSW.strategies.staleWhileRevalidate({
-  cacheName: 'site-pages',
+  cacheName: SITE_PAGES,
   cacheExpiration: {
     maxEntries: 20,
     maxAgeSeconds: 7 * 24 * 60 * 60,
@@ -71,6 +74,6 @@ workboxSW.router.registerRoute(
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    removeCaches(key => key === 'site-pages' || /^workbox-precaching-revisioned-v1/.test(key))
+    removeCaches(key => expecteds.includes(key) || /^workbox-precaching-revisioned-v1/.test(key))
   )
 })
