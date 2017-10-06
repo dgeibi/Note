@@ -75,12 +75,6 @@ img {
   vertical-align: middle;
 }
 
-main {
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 1.5rem;
-}
-
 /**
  * Lists
  */
@@ -219,6 +213,13 @@ th {
   padding: 0.625rem;
 }
 
-aside {
+.sidebar {
   background: var(--background-color);
+}
+
+.main {
+  position: relative;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 1.5rem;
 }
