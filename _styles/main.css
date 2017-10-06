@@ -41,7 +41,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-  position: relative;
   font-family: var(--base-font-family);
   font-size: var(--base-font-size);
   font-weight: var(--base-font-weight);
@@ -49,6 +48,7 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
   font-feature-settings: 'kern' 1;
   font-kerning: normal;
 }
@@ -189,7 +189,6 @@ pre {
 ._table-wrapper {
   margin-bottom: 1rem;
   overflow: auto;
-  word-break: initial;
 }
 
 table {

@@ -77,8 +77,6 @@
 }
 
 .sidebar-opener {
-  position: relative;
-  overflow-x: hidden;
   transform: translateX(0);
   padding-left: 0;
   transition: transform var(--duration), padding-left var(--duration);
