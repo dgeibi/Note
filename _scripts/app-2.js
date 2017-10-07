@@ -1,4 +1,4 @@
-import 'matchmedia-polyfill/matchMedia'
-import 'matchmedia-polyfill/matchMedia.addListener'
+import 'babel-polyfill'
+import './utils/mutation-observer'
 
-import './app-1'
+import './app-0'

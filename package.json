@@ -19,9 +19,11 @@
     "classlist.js": "^1.1.20150312",
     "escape-string-regexp": "^1.0.5",
     "matchmedia-polyfill": "^0.3.0",
+    "mutation-observer": "^1.0.3",
     "normalize.css": "^7.0.0",
     "uemitter": "^0.0.3",
-    "unfetch": "^3.0.0"
+    "unfetch": "^3.0.0",
+    "wicg-inert": "^1.1.4"
   },
   "description": "personal wiki",
   "author": "dgeibi <png.inside@gmail.com>",
