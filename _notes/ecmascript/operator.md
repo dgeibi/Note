@@ -99,6 +99,17 @@ Foo.call(o);
 
 检测引用类型是否属于 xx 构造函数
 
+``` js
+const proto = {}
+const r1= {}
+r1.__proto__ = proto
+const F1 = function() {}
+F1.prototype = proto
+
+r1 instanceof F1 // true
+proto.isPrototypeOf(r1) // true
+```
+
 ## 一元操作符
 
 * `+` 正
