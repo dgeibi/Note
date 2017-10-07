@@ -4,4 +4,4 @@ import 'matchmedia-polyfill/matchMedia.addListener'
 import 'classlist.js'
 import './utils/mutation-observer'
 
-import './app-0'
+import './app'

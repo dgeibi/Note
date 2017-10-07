@@ -1,3 +1,3 @@
-import './utils/inert'
+import 'regenerator-runtime/runtime'
 
-import './operations'
+import './app'

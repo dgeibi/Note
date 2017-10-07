@@ -21,6 +21,7 @@
     "matchmedia-polyfill": "^0.3.0",
     "mutation-observer": "^1.0.3",
     "normalize.css": "^7.0.0",
+    "regenerator-runtime": "^0.11.0",
     "uemitter": "^0.0.3",
     "unfetch": "^3.0.0",
     "wicg-inert": "^1.1.4"

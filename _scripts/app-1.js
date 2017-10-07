@@ -1,3 +1,3 @@
 import 'babel-polyfill'
 
-import './app-0'
+import './app'
