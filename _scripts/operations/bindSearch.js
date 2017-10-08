@@ -65,5 +65,4 @@ const methods = {
   },
 }
 
-fetchJSON('/docsmap.json')
-  .then(docs => bindSearch(docs, view, methods))
+fetchJSON('/docsmap.json').then(docs => bindSearch(docs, view, methods))
