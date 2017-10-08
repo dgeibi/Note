@@ -7,19 +7,26 @@ workboxSW.precache([])
 
 // helpers start
 
+// wrapHandler :: (Handler a) => a -> Function | any
 const wrapHandler = (handler) => {
   if (typeof handler === 'function') return handler
   if (handler && typeof handler === 'object' && typeof handler.handle === 'function') {
     return input => handler.handle(input)
   }
-  throw Error('fake handler')
+  return handler
 }
 
-// getMsg: info -> string
-// throwTest: x -> boolean
+// createHandler :: (Handler a) => (..., a) -> a
+const createHandlerFactory = createHandler => (...args) => {
+  args[args.length - 1] = wrapHandler(args[args.length - 1]) // eslint-disable-line
+  return createHandler.call(this, ...args)
+}
+
+// getMsg :: (Any info) => info -> String
+// throwTest :: (Any x) => x -> Boolean
 const check = (getMsg, throwTest) => info => (x) => {
   const errMsg = getMsg(info)
-  if (x === undefined || (throwTest && throwTest(x))) {
+  if (throwTest(x)) {
     console.error(errMsg)
     throw Error(errMsg)
   }
@@ -28,17 +35,16 @@ const check = (getMsg, throwTest) => info => (x) => {
 
 const checkResponse = check(
   ({ tag, url }) => `[SW]${tag ? ' ' : ''}${tag || ''}: fail to fetch ${url}`,
-  response => !response.ok && response.status === 0
+  response => response === undefined || (!response.ok && response.status === 0)
 )
 
-const withFallback = (url, handler) => {
-  const callback = wrapHandler(handler)
-  return input =>
-    callback(input)
-      .then(checkResponse({ url: input.event.request.url }))
-      .catch(() => caches.match(url))
-      .then(checkResponse({ url, tag: 'fallback' }))
-}
+// withFallback :: (Handler a) => (String, a) -> a
+const withFallback = createHandlerFactory((url, handler) => input =>
+  handler(input)
+    .then(checkResponse({ url: input.event.request.url }))
+    .catch(() => caches.match(url))
+    .then(checkResponse({ url, tag: 'fallback' }))
+)
 
 const removeCaches = filter =>
   caches.keys().then(keys =>
