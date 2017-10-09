@@ -61,7 +61,11 @@ module.exports = {
   suites: [
     'wikic-suite-docslist',
     'wikic-suite-docsmap',
-    require('./config/suite-gensw'),
-    require('./config/suite-htmlclean'),
+    './config/suite-gensw',
+    './config/suite-htmlclean',
   ],
+  watchHandlers: {
+    setupAndBuild: ['config/**', '**/wikic.config.js', '_notes/*.md', '**/_config.yml'],
+    build: ['_layouts/**', '_notes/**', '**/*.{png,jpg,gif,svg,eot,ttf,woff}', 'assets/js/app-0.js', 'assets/js/bootstrap.js', 'assets/css/*.css', '*.json'],
+  },
 }
