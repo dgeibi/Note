@@ -12,7 +12,7 @@ module.exports = {
     'gulpfile.js',
     'webpack.config.js',
   ],
-  publicExcludes: ['config/**'],
+  publicExcludes: ['config/**', 'sw.js'],
   toc: {
     selectors: '.page-content > h2, .page-content > h3',
     minLength: 3,
@@ -47,7 +47,7 @@ module.exports = {
     file: 'error',
   },
   workbox: {
-    swSrc: `${__dirname}/config/sw.js`,
+    swSrc: `${__dirname}/sw.js`,
     globPatterns: [
       '**/*.{png,jpg,gif,svg,eot,ttf,woff}',
       'assets/js/bootstrap.js',
@@ -66,6 +66,11 @@ module.exports = {
   ],
   watchHandlers: {
     setupAndBuild: ['config/**', '**/wikic.config.js', '_notes/*.md', '**/_config.yml'],
-    build: ['_layouts/**', '_notes/**', '**/*.{png,jpg,gif,svg,eot,ttf,woff}', 'assets/js/app-0.js', 'assets/js/bootstrap.js', 'assets/css/*.css', '*.json'],
+    custom: {
+      sw: {
+        matcher: 'sw.js',
+        handler: require('./config/suite-gensw').afterBuild,
+      },
+    },
   },
 }

@@ -50,7 +50,7 @@
     "postcss-import": "^11.0.0",
     "prettier-eslint-cli": "^4.3.2",
     "webpack": "^3.6.0",
-    "wikic": "^3.1.0",
+    "wikic": "^3.1.1",
     "wikic-live-server": "^0.0.2",
     "wikic-suite-docslist": "^3.0.0",
     "wikic-suite-docsmap": "^2.0.0",
