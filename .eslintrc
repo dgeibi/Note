@@ -1,7 +1,12 @@
 {
   "root": true,
   "extends": ["dgeibi"],
+  "env": {
+    "browser": true
+  },
   "rules": {
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "global-require": "off",
+    "prefer-destructuring": "off"
   }
 }

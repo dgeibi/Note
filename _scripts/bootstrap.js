@@ -2,7 +2,7 @@ import loadJS from './utils/loadJS'
 import loadCSS from './utils/loadCSS'
 import './utils/modernizr'
 
-const Modernizr = window.Modernizr
+const { Modernizr } = window
 
 if (
   Modernizr.promises &&

@@ -1,5 +1,5 @@
 /* eslint-env serviceworker */
-/* eslint-disable no-console */
+/* eslint-disable no-console, no-restricted-globals */
 importScripts('workbox-sw.prod.js')
 
 const workboxSW = new self.WorkboxSW({ clientsClaim: true, skipWaiting: true })
@@ -17,10 +17,11 @@ const wrapHandler = (handler) => {
 }
 
 // createHandler :: (Handler a) => (..., a) -> a
-const createHandlerFactory = createHandler => function handler(...args) {
-  args[args.length - 1] = wrapHandler(args[args.length - 1]) // eslint-disable-line
-  return createHandler.call(this, ...args)
-}
+const createHandlerFactory = createHandler =>
+  function handler(...args) {
+    args[args.length - 1] = wrapHandler(args[args.length - 1]) // eslint-disable-line
+    return createHandler.call(this, ...args)
+  }
 
 // getMsg :: (Any info) => info -> String
 // throwTest :: (Any x) => x -> Boolean
@@ -43,18 +44,14 @@ const withFallback = createHandlerFactory((url, handler) => input =>
   handler(input)
     .then(checkResponse({ url: input.event.request.url }))
     .catch(() => caches.match(url))
-    .then(checkResponse({ url, tag: 'fallback' }))
-)
+    .then(checkResponse({ url, tag: 'fallback' })))
 
 const removeCaches = filter =>
   caches.keys().then(keys =>
-    Promise.all(
-      keys.map((key) => {
-        if (filter(key)) return null
-        return caches.delete(key)
-      })
-    )
-  )
+    Promise.all(keys.map((key) => {
+      if (filter(key)) return null
+      return caches.delete(key)
+    })))
 
 // helpers end
 
@@ -79,7 +76,5 @@ workboxSW.router.registerRoute(
 )
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    removeCaches(key => expecteds.includes(key) || /^workbox-precaching-revisioned-v1/.test(key))
-  )
+  event.waitUntil(removeCaches(key => expecteds.includes(key) || /^workbox-precaching-revisioned-v1/.test(key)))
 })

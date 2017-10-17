@@ -6,7 +6,9 @@ const fetchJSON = url => fetch(url).then(r => r.json())
 
 const bindSearch = (docs, view, methods) => {
   const { searchInput, resultNumberSpan, suggestionsEl } = view
-  const { open, close, findMatches, generateHTML } = methods
+  const {
+    open, close, findMatches, generateHTML,
+  } = methods
 
   const showSearchResult = (e) => {
     const { value } = e.target
@@ -53,14 +55,12 @@ const methods = {
   generateHTML(regex, matches) {
     const replacer = x => x.replace(regex, '<span class="hl">$&</span>')
     return matches
-      .map(
-        ({ title, types, address }) => `
+      .map(({ title, types, address }) => `
           <li class="search-item">
             <h3 class="search-item__title"><a href="${address}">${replacer(title)}</a></h3>
             <span class="search-item__types">${types.map(replacer).join(' > ')}</span>
           </li>
-      `
-      )
+      `)
       .join('')
   },
 }

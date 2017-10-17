@@ -28,8 +28,7 @@ gulp.task('css:watch', ['css'], () => {
   gulp.task('serve', ['build'], () => wikic.serve())
 
   gulp.task('build:watch', ['css', 'css:watch', 'js:watch', 'clean'], () =>
-    wikic.build().then(() => wikic.watch())
-  )
+    wikic.build().then(() => wikic.watch()))
   gulp.task('serve:watch', ['build:watch'], () => wikic.serve())
 }
 
@@ -42,12 +41,10 @@ gulp.task('css:watch', ['css'], () => {
       return
     }
 
-    console.log(
-      stats.toString({
-        chunks: false,
-        colors: true,
-      })
-    )
+    console.log(stats.toString({
+      chunks: false,
+      colors: true,
+    }))
   }
 
   gulp.task('js', () => {
