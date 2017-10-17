@@ -17,7 +17,7 @@ const wrapHandler = (handler) => {
 }
 
 // createHandler :: (Handler a) => (..., a) -> a
-const createHandlerFactory = createHandler => (...args) => {
+const createHandlerFactory = createHandler => function handler(...args) {
   args[args.length - 1] = wrapHandler(args[args.length - 1]) // eslint-disable-line
   return createHandler.call(this, ...args)
 }
