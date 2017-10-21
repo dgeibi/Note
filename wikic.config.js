@@ -56,7 +56,6 @@ module.exports = {
       'index.html',
       'offline.html',
       '*.json',
-      '*.{png,jpg,gif,svg,eot,ttf,woff}',
     ],
   },
   suites: [
