@@ -49,13 +49,14 @@ module.exports = {
   workbox: {
     swSrc: `${__dirname}/sw.js`,
     globPatterns: [
-      '**/*.{png,jpg,gif,svg,eot,ttf,woff}',
+      'assets/**/*.{png,jpg,gif,svg,eot,ttf,woff}',
       'assets/js/bootstrap.js',
       'assets/js/app-0.js',
       'assets/css/*.css',
       'index.html',
       'offline.html',
       '*.json',
+      '*.{png,jpg,gif,svg,eot,ttf,woff}',
     ],
   },
   suites: [

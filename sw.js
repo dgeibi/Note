@@ -75,6 +75,19 @@ workboxSW.router.registerRoute(
   withFallback(`${self.location.origin}/offline.html`, pageBaseHandler)
 )
 
+workboxSW.router.registerRoute(
+  /.*\.(png|jpg|jpeg|gif)/,
+  workboxSW.strategies.cacheFirst({
+    cacheName: 'images',
+    cacheExpiration: {
+      maxAgeSeconds: 7 * 24 * 60 * 60,
+    },
+    cacheableResponse: {
+      statuses: [0, 200],
+    },
+  })
+)
+
 self.addEventListener('activate', (event) => {
   event.waitUntil(removeCaches(key => expecteds.includes(key) || /^workbox-precaching-revisioned-v1/.test(key)))
 })
