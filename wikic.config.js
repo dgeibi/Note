@@ -10,9 +10,8 @@ module.exports = {
     'LICENSE',
     'package.json',
     'gulpfile.js',
-    'webpack.config.js',
   ],
-  publicExcludes: ['config/**', 'sw.js'],
+  publicExcludes: ['config/**', 'sw.js', '*.config.js'],
   toc: {
     selectors: '.page-content > h2, .page-content > h3',
     minLength: 3,
@@ -63,6 +62,7 @@ module.exports = {
     'wikic-suite-docsmap',
     './config/suite-gensw',
     './config/suite-htmlclean',
+    './config/suite-imagemin',
   ],
   watchHandlers: {
     setupAndBuild: ['config/**', '**/wikic.config.js', '_notes/*.md', '**/_config.yml'],

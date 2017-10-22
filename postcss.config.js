@@ -5,9 +5,7 @@ const postcssImport = require('postcss-import')
 module.exports = {
   plugins: [
     postcssImport(),
-    cssnext({
-      browsers: '> 5% in CN, ie >= 10, last 2 versions',
-    }),
+    cssnext(),
     csso,
   ],
 }
