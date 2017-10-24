@@ -43,6 +43,7 @@ const getJSRule = opts => Object.assign({}, includeJSRule, opts)
 const modern = {
   entry: {
     'app-0': './_scripts/app-0.js',
+    'offline-page': './_scripts/offline-page.js',
   },
   module: {
     rules: [

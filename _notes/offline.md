@@ -2,4 +2,5 @@
 hide: true
 ---
 
-You are offline.
+你已离线……
+<script src="/assets/js/offline-page.js"></script>

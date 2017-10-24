@@ -51,6 +51,7 @@ module.exports = {
       'assets/**/*.{png,jpg,gif,svg,eot,ttf,woff}',
       'assets/js/bootstrap.js',
       'assets/js/app-0.js',
+      'assets/js/offline-page.js',
       'assets/css/*.css',
       'index.html',
       'offline.html',
