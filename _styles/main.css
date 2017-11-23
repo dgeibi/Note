@@ -174,7 +174,7 @@ pre {
   border: 0.4px solid #e0e0e0;
   border-radius: 3px;
   overflow-x: auto;
-
+  overflow-y: hidden;
   & > code {
     border: 0;
     padding-right: 0;
