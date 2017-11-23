@@ -84,21 +84,21 @@ git log --pretty=format:"%h %s" --graph
 ## 修改上一次 commit
 git commit --amend
 
-## 取消暂存文件（add 的撤销）
-git reset HEAD added_file
-### 注意：加上 --hard ，可能导致工作目录的所有当前进度丢失！
-
-## Undo a commit
-
+# 回滚提交
 git reset --soft HEAD^
 
-# Undo commits permanently
-# HEAD, HEAD^, and HEAD~2
+# 回滚提交，清空暂存区
+git reset HEAD~
+git reset --mixed HEAD~
 
+# 回滚提交，清空暂存区，重置工作目录
 git reset --hard HEAD~3
 
-## 撤销工作目录中对文件的修改
+## 取消暂存文件（add 的撤销）
+git reset added_file
+git reset HEAD added_file
 
+## 撤销工作目录中对文件的修改
 git checkout -- modify_file
 
 #remote
