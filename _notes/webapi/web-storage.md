@@ -17,7 +17,7 @@ methods and properties:
 
 ## sessionStorage
 
-储存浏览器关闭前的数据，即使窗口或标签页关闭了。
+储存窗口或标签页关闭前的数据。打开任意页面时，sessionStorage 为空。
 
 sessionStorage 是 Storage 的一个实例。
 
@@ -43,41 +43,26 @@ for (var key in sessionStorage) {
 }
 ```
 
-## globalStorage
-
-globalStorage 不是 Storage 的实例。
-
-`globalStorage["dgeibi.xyz"]` 是 Storage 的实例，针对所有域名为 dgeibi.xyz 的储存对象，包括其子域名。
-
-未清除缓存的情况下，数据会一直保留在磁盘中。
-
 ## localStorage
 
 取代的 globalStorage 的方案。
 
-localStorage 是 Storage 的实例，相当于 `globalStorage[location.host]` ，只对同一域名，同一协议，同一端口的页面可访问。
-
-```javascript
-function getLocalStorage() {
-    if (typeof localStorage == "object") {
-        return localStorage;
-    } else if (typeof globalStorage == "object") {
-        return globalStorage[localStorage.host];
-    } else {
-        throw new Error("Local storage not available.");
-    }
-}
-
-var storage = getLocalStorage();
-```
+localStorage 是 Storage 的实例，只对同一域名，同一协议，同一端口的页面可访问。
 
 ## storage 事件
 
-Storage 的实例发生更改就会触发 storage 事件。
+Storage 的实例发生更改就会触发 storage 事件。适用于 localStorage 。
 
 event 对象的属性：
 
-- domain：发生变化的存储空间的域名
+- url：发生变化的存储空间的域名
 - key：键名
 - newValue：新值 \|\| null
 - oldValue：旧值
+- storageArea：Storage 的实例
+
+```js
+window.addEventListener('storage', function(e) {  
+    console.log(e)
+});
+```
