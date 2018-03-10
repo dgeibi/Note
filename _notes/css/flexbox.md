@@ -2,7 +2,7 @@
 title: Flexbox
 ---
 
-```
+```css
 .flex-container {
     display: flex;
     flex-flow: column wrap; /* shortcut of flex-wrap and flex-direction */
