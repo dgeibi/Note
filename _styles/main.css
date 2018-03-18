@@ -1,4 +1,5 @@
 @import 'normalize.css';
+@import 'prism';
 @import 'sidebar';
 @import 'anchor';
 @import 'page';
@@ -7,8 +8,7 @@
 @import 'helper';
 
 :root {
-  --monospace-font-family: 'Iosevka Slab', 'Iosevka', Menlo, Monaco, Consolas, 'Andale Mono',
-    'lucida console', 'Courier New', monospace;
+  --monospace-font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   --base-font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, Ubuntu,
     'Helvetica Neue', Helvetica, 'Noto Sans CJK SC', 'Noto Sans SC', 'PingFang SC',
     'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
@@ -146,7 +146,6 @@ blockquote {
   font-size: 1.125rem;
   letter-spacing: -1px;
   font-style: italic;
-
   &:last-child {
     margin-bottom: 0;
   }
@@ -155,31 +154,18 @@ blockquote {
 /**
  * Code formatting
  */
-
-code,
 kbd,
 pre,
 samp,
 tt {
   font-family: var(--monospace-font-family);
-  font-size: 1em;
-}
-
-code {
-  padding: 0.07rem 0.3rem;
 }
 
 pre {
-  padding: 0.5rem 0.75rem;
   border: 0.4px solid #e0e0e0;
   border-radius: 3px;
   overflow-x: auto;
   overflow-y: hidden;
-  & > code {
-    border: 0;
-    padding-right: 0;
-    padding-left: 0;
-  }
 }
 
 /**

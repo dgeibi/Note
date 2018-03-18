@@ -4,7 +4,7 @@ title: history
 
 ## `history` command
 
-```shell
+```bash
 history [n] #列出最近的 n 笔命令列表
 history -c  #将目前的 shell 中的所有 history 内容全部消除
 history -raw histfiles
@@ -19,7 +19,7 @@ history -raw histfiles
 
 ## 感叹号
 
-```shell
+```bash
 !number  #执行第几笔指令的意思；
 !command #找到最近的开头为 `command` 的那个指令，并执行；
 !!       #执行上一个指令 (相当于按↑按键后，按 Enter)

@@ -12,7 +12,7 @@ command &> file
 
 忽略错误
 
-```shell
+```bash
 command > /dev/null 2>&1
 command &> /dev/null #这样更简单
 ```
@@ -32,7 +32,7 @@ sed 's/bar//' <<< 'foobarbar'
 
 ## STDOUT to String
 
-```shell
+```bash
 value1="$(command)"
 value2=\`command\`
 ```

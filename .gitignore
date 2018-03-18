@@ -60,6 +60,5 @@ typings/
 /docs/
 
 /assets/css/*
-!/assets/css/github.css
 /assets/js/*
 .vscode

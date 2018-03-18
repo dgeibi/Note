@@ -2,7 +2,7 @@
 title: date
 ---
 
-```shell
+```bash
 date +%s
 # 1477668822
 date "+%Y-%m-%d %H:%M:%S"

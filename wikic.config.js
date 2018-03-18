@@ -1,4 +1,6 @@
 /* eslint-disable global-require, no-console */
+const PRODUCTION = process.env.NODE_ENV === 'production'
+
 module.exports = {
   title: 'Wikic',
   port: 4511,
@@ -10,6 +12,7 @@ module.exports = {
     'LICENSE',
     'package.json',
     'gulpfile.js',
+    '.debug.log',
   ],
   publicExcludes: ['config/**', 'sw.js', '*.config.js'],
   toc: {
@@ -61,17 +64,11 @@ module.exports = {
   suites: [
     'wikic-suite-docslist',
     'wikic-suite-docsmap',
-    './config/suite-gensw',
+    PRODUCTION && './config/suite-gensw',
     './config/suite-htmlclean',
     './config/suite-imagemin',
-  ],
+  ].filter(Boolean),
   watchHandlers: {
     setupAndBuild: ['config/**', '**/wikic.config.js', '_notes/*.md', '**/_config.yml'],
-    custom: {
-      sw: {
-        matcher: 'sw.js',
-        handler: require('./config/suite-gensw').afterBuild,
-      },
-    },
   },
 }

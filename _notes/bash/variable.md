@@ -8,13 +8,13 @@ http://linux.vbird.org/linux_basic/0320bash.php
 
 ### 直接赋值
 
-```shell
+```bash
 name=value # 定义一个变量叫name，其值为value
 export name # 使变量变成环境变量，环境变量可以理解为全局变量
 export name=value
 ```
 
-```shell
+```bash
 PATH=${PATH}:/home/bin # 变量后面添加 `:/home/bin`
 ```
 
@@ -35,7 +35,7 @@ declare [-aixr] variable
 
 ## 取消变量声明
 
-```shell
+```bash
 unset var-name
 ```
 

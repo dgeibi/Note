@@ -18,7 +18,7 @@ title: 调整分区大小
 
 ## 查看当前分区情况
 
-```shell
+```bash
 [root@tanghuimin /]# df -Th
 
 # Filesystem Type Size Used Avail Use% Mounted on
@@ -40,7 +40,7 @@ title: 调整分区大小
 - p: 查看分区表
 - b: 备份分区表，以便后面操作失误可以恢复分区表
 
-```shell
+```bash
 [root@tanghuimin ~]# gdisk /dev/sda
 
 # GPT fdisk (gdisk) version 0.8.10
@@ -131,7 +131,7 @@ Command (? for help): b
 
 ## 卸载即将被调整的分区 /home
 
-```shell
+```bash
 [root@tanghuimin ~]# umount /home/
 
 [root@tanghuimin ~]# df -Th
@@ -147,7 +147,7 @@ Command (? for help): b
 
 ## 检测文件系统错误
 
-```shell
+```bash
 [root@tanghuimin ~]# e2fsck -f /dev/sda1
 
 # e2fsck 1.41.12 (17-May-2010)
@@ -167,7 +167,7 @@ Command (? for help): b
 
 ## 用 resize2fs 调整文件系统大小
 
-```shell
+```bash
 [root@tanghuimin ~]# resize2fs /dev/sda1 326G
 
 # resize2fs 1.41.12 (17-May-2010)
@@ -181,7 +181,7 @@ Command (? for help): b
 
 先用 d 删除分区，后用 n 创建分区
 
-```shell
+```bash
 [root@tanghuimin ~]# gdisk /dev/sda
 
 # GPT fdisk (gdisk) version 0.8.10
@@ -297,7 +297,7 @@ Do you want to proceed? (Y/N): y
 
 ## 将 /dev/sda1 挂载到 /home
 
-```shell
+```bash
 [root@tanghuimin ~]# df -Th
 
 # Filesystem Type Size Used Avail Use% Mounted on
@@ -329,7 +329,7 @@ reboot.
 
 在 /dev/sda 所有 free 的空间上创建新分区
 
-```shell
+```bash
 [root@tanghuimin ~]# gdisk /dev/sda
 
 # GPT fdisk (gdisk) version 0.8.10
@@ -415,7 +415,7 @@ Do you want to proceed? (Y/N): y
 
 将新分区的文件系统类型设为 ext4
 
-```shell
+```bash
 [root@tanghuimin ~]# mkfs -t ext4 /dev/sda5
 
 # mke2fs 1.41.12 (17-May-2010)
@@ -467,7 +467,7 @@ Do you want to proceed? (Y/N): y
 
 将新分区 /dev/sda5 挂载到/vm
 
-```shell
+```bash
 [root@tanghuimin ~]# mount /dev/sda5 /vm
 
 [root@tanghuimin ~]# df -Th

@@ -4,7 +4,7 @@ title: systemd
 
 ## analyze startup time
 
-```shell
+```bash
 systemd-analyze blame
 
 systemd-analyze critical-chain
@@ -14,7 +14,7 @@ systemd-analyze plot > plot.svg
 
 ## check error
 
-```shell
+```bash
 systemctl --failed
 
 journalctl -p 3 -xb

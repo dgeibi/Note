@@ -2,7 +2,7 @@
 title: seq
 ---
 
-```shell
+```bash
 seq 1 5
 # 1
 # 2

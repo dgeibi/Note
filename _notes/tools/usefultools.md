@@ -4,19 +4,19 @@ title: Useful Tools
 
 ## man
 
-```shell
+```bash
 man command
 ```
 
 ##  passwd
 
 
-```shell
+```bash
 passwd root #修改 root 密码
 ```
 
 ## sudo
-```shell
+```bash
 
 sudo bash -c 'command line && command line'
 sudo -i
@@ -24,7 +24,7 @@ sudo -i
 
 ## hash
 
-```shell
+```bash
 md5sum  filename
 sha256sum filename
 sha1sum filename
@@ -32,7 +32,7 @@ sha1sum filename
 
 ## cp
 
-```shell
+```bash
 cp file1 dir1   #复制 file1 到 dir1 下         
 cp a b          #将文档 a 复制成 b             
 cp -r dir1 dir2 #将目录 dir1 整个复制到 dir2 下
@@ -40,21 +40,21 @@ cp -r dir1 dir2 #将目录 dir1 整个复制到 dir2 下
 
 ## rm
 
-```shell
+```bash
 rm -rf dir # 删除目录    
 rm -f file # 强制删除文件
 ```
 
 ## rename
 
-```shell
+```bash
 rename a b a        # 将 a 重命名为 b          
 rename "s/AA/aa/" * # 把文件名中的 AA 替换成 aa
 ```
 
 ## mv
 
-```shell
+```bash
 mv file1 file2       #将 a 重命名为 b              
 mv file1 file2 dir/  #把 file1、file2 移动到 dir 下
 ```

@@ -6,13 +6,13 @@ title: netctl
 
 ## 安装
 
-```shell
+```bash
 pacman -S netctl wpa_actiond ifplugd wpa_supplicant dialog
 ```
 
 ## 配置文件的准备
 
-```shell
+```bash
 cat /etc/netctl/examples/wireless-wpa
 =====
 Description='A simple WPA encrypted wireless connection'
@@ -35,7 +35,7 @@ Key='WirelessKey'
 
 使用 `wifi-menu -o` 在目录 `/etc/netctl/` 中生成一个配置文件
 
-```shell
+```bash
 #禁止其他用户访问密码
 chmod 600 /etc/netctl/<profile>
 ```
@@ -45,7 +45,7 @@ chmod 600 /etc/netctl/<profile>
 - 有线网络： `netctl-ifplugd@interface.service`
 - 无线网络： `netctl-auto@interface.service`
 
-```shell
+```bash
 ip link      #查看接口名
 systemctl enable netctl-auto@interface.service
 systemctl enable netctl-ifplugd@interface.service

@@ -4,7 +4,7 @@ title: MySQL/MariaDB
 
 Access monitor:
 
-```shell
+```bash
 mysql -u [username] -p
 ```
 

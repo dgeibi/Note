@@ -2,7 +2,7 @@
 title: Create a FAT32 Partition
 ---
 
-```shell
+```bash
 sudo fdisk /dev/sdc
 
 #Welcome to fdisk (util-linux 2.28).

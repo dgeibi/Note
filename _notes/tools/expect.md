@@ -2,7 +2,7 @@
 title: expect
 ---
 
-```shell
+```bash
 #!/bin/bash
 pass='password'
 jekyll build

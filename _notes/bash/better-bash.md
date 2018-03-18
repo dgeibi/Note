@@ -15,7 +15,7 @@ title: Bash 脚本 15 分钟进阶教程
 
 我的所有bash脚本都以下面几句为开场白：
 
-```sh
+```bash
 #!/bin/bash
 set -o nounset
 set -o errexit
@@ -34,7 +34,7 @@ set -o errexit
 
 在bash里你可以定义函数，它们就跟其它命令一样，可以随意的使用；它们能让你的脚本更具可读性：
 
-```sh
+```bash
 ExtractBashComments() {
     egrep "^#"
 }
@@ -46,7 +46,7 @@ comments=$(ExtractBashComments < myscript.sh)
 
 还有一些例子：
 
-```sh
+```bash
 SumLines() {  # iterating over stdin - similar to awk
     local sum=0
     local line=””
@@ -75,7 +75,7 @@ Bash里可以对变量进行有限的注解。最重要的两个注解是：
 1. local(函数内部变量)
 2. readonly(只读变量)
 
-```sh
+```bash
 # a useful idiom: DEFAULT_VAL can be overwritten
 #       with an environment variable of the same name
 readonly DEFAULT_VAL=${DEFAULT_VAL:-7}
@@ -89,7 +89,7 @@ myfunc() {
 
 这样，你可以将一个以前不是只读变量的变量声明成只读变量：
 
-```sh
+```bash
 x=5
 x=6
 readonly x
@@ -102,7 +102,7 @@ x=7   # failure
 
 反单引号很难看，在有些字体里跟正单引号很相似。$()能够内嵌使用，而且避免了转义符的麻烦。
 
-```sh
+```bash
 # both commands below print out: A-B-C-D
 echo "A-`echo B-\`echo C-\\\`echo D\\\`\``"
 echo "A-$(echo B-$(echo C-$(echo D)))"
@@ -128,13 +128,13 @@ echo "A-$(echo B-$(echo C-$(echo D)))"
 
 **单中括号**
 
-```sh
+```bash
 [ "${name}" \> "a" -o ${name} \< "m" ]
 ```
 
 **双中括号**
 
-```sh
+```bash
 [[ "${name}" > "a" && "${name}" < "m"  ]]
 ```
 
@@ -142,7 +142,7 @@ echo "A-$(echo B-$(echo C-$(echo D)))"
 
 使用双中括号带来的好处用下面几个例子最能表现：
 
-```sh
+```bash
 t="abc123"
 [[ "$t" == abc* ]]         # true (globbing比较)
 [[ "$t" == "abc*" ]]       # false (字面比较)
@@ -152,14 +152,14 @@ t="abc123"
 
 注意，从bash 3.2版开始，正则表达式和globbing表达式都不能用引号包裹。如果你的表达式里有空格，你可以把它存储到一个变量里：
 
-```sh
+```bash
 r="a b+"
 [[ "a bbb" =~ $r ]]        # true
 ```
 
 按Globbing方式的字符串比较也可以用到case语句中：
 
-```sh
+```bash
 case $t in
 abc*)  <action> ;;
 esac
@@ -171,7 +171,7 @@ Bash里有各种各样操作字符串的方式，很多都是不可取的。
 
 **基本用户**
 
-```sh
+```bash
 f="path1/path2/file.ext"
 
 len="${#f}" # = 20 (字符串长度)
@@ -187,7 +187,7 @@ slice4="${f:${pos}:${len}}" # = "path2"
 
 **替换操作(使用globbing)**
 
-```sh
+```bash
 f="path1/path2/file.ext"
 
 single_subst="${f/path?/x}"   # = "x/path2/file.ext"
@@ -201,7 +201,7 @@ second_dir="${arrray[1]}"     # = path2
 
 **删除头部或尾部(使用globbing)**
 
-```sh
+```bash
 f="path1/path2/file.ext"
 
 # 删除字符串头部
@@ -221,7 +221,7 @@ root="${f%%/*}"      # = "path1"
 
 有些命令需要以文件名为参数，这样一来就不能使用管道。这个时候 `<()` 就显出用处了，它可以接受一个命令，并把它转换成可以当成文件名之类的什么东西：
 
-```sh
+```bash
 # 下载并比较两个网页
 diff <(wget -O - url1) <(wget -O - url2)
 ```
@@ -229,7 +229,7 @@ diff <(wget -O - url1) <(wget -O - url2)
 还有一个非常有用处的是”here documents”，它能让你在标准输入上输入多行字符串。下面的’MARKER’可以替换成任何字词。
 
 
-```sh
+```bash
 # 任何字词都可以当作分界符
 command  << MARKER
 ...
@@ -241,7 +241,7 @@ MARKER
 
 如果文本里没有内嵌变量替换操作，你可以把第一个MARKER用单引号包起来：
 
-```sh
+```bash
 command << 'MARKER'
 ...
 no substitution is happening here.
@@ -275,19 +275,19 @@ $@能够处理空格参数，而且参数间的空格也能正确的处理。
 
 对脚本进行语法检查：
 
-```sh
+```bash
 bash -n myscript.sh
 ```
 
 跟踪脚本里每个命令的执行：
 
-```sh
+```bash
 bash -v myscripts.sh
 ```
 
 跟踪脚本里每个命令的执行并附加扩充信息：
 
-```sh
+```bash
 bash -x myscript.sh
 ```
 

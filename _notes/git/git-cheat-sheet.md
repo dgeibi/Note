@@ -6,7 +6,7 @@ Reference:
 
 - [Pro Git](https://git-scm.com/book/en/v2)
 
-```shell
+```bash
 exit 1
 
 #set user.email and user.name
