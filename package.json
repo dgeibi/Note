@@ -11,7 +11,7 @@
     "start": "gulp",
     "build": "cross-env NODE_ENV=production gulp build",
     "start:prod": "cross-env NODE_ENV=production gulp serve",
-    "format": "prettier-eslint --write './*.js' '{_scripts,config,_styles}/**/*.{js,css}'",
+    "format": "prettier-eslint --write \"./*.js\" \"{_scripts,config,_styles}/**/*.{js,css}\"",
     "lint": "eslint ."
   },
   "browserslist": [
@@ -20,9 +20,9 @@
     "IE 10"
   ],
   "dependencies": {
-    "babel-polyfill": "^7.0.0-beta.3",
     "classlist.js": "^1.1.20150312",
     "escape-string-regexp": "^1.0.5",
+    "hyperscript": "^2.0.2",
     "matchmedia-polyfill": "^0.3.0",
     "mutation-observer": "^1.0.3",
     "normalize.css": "^7.0.0",
@@ -34,17 +34,13 @@
   "author": "dgeibi <png.inside@gmail.com>",
   "repository": "git@github.com:dgeibi/note.git",
   "devDependencies": {
-    "babel-core": "^7.0.0-beta.3",
-    "babel-eslint": "^8.0.1",
-    "babel-loader": "^7.1.2",
-    "babel-minify-webpack-plugin": "^0.2.0",
-    "babel-preset-env": "^7.0.0-beta.3",
-    "babel-preset-stage-3": "^7.0.0-beta.3",
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "babel-loader": "^8.0.0-beta.2",
     "cross-env": "^5.0.5",
-    "eslint": "^4.9.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-dgeibi": "^3.0.6",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint": "^4.19.0",
+    "eslint-config-dgeibi": "^5.0.0",
     "gulp": "^3.9.1",
     "gulp-postcss": "^7.0.0",
     "gulp-sourcemaps": "^2.6.1",
@@ -55,12 +51,12 @@
     "postcss-csso": "^2.0.0",
     "postcss-import": "^11.0.0",
     "prettier-eslint-cli": "^4.3.2",
-    "webpack": "^3.6.0",
-    "webpack-merge": "^4.1.0",
+    "svg-inline-loader": "^0.8.0",
+    "webpack": "^4.1.1",
     "wikic": "^3.3.0",
     "wikic-live-server": "^0.0.2",
     "wikic-suite-docslist": "^3.0.0",
     "wikic-suite-docsmap": "^2.0.0",
-    "workbox-build": "^2.1.0"
+    "workbox-build": "^3.0.0"
   }
 }

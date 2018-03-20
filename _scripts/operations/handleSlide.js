@@ -14,7 +14,7 @@ if (aside && slideBtn && opener) {
   }
   aside.inert = state.hided
 
-  bindMedia('(max-width: 799px)', (mql) => {
+  bindMedia('(max-width: 799px)', mql => {
     state.isNarrow = mql.matches
   })
 
@@ -25,9 +25,8 @@ if (aside && slideBtn && opener) {
     slideBtn.setAttribute('aria-pressed', !state.hided)
   }
   slideBtn.addEventListener('click', toggle)
-
   const enable = e => state.isNarrow && !slideBtn.contains(e.target)
-  const shouldHideWhenBlur = () => !state.hided
+  const shouldHideWhenBlur = e => !state.hided && opener.contains(e.target)
   slide2left({
     touchArea: aside,
     enable,

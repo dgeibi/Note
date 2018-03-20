@@ -6,6 +6,7 @@
 @import 'search';
 @import 'tree';
 @import 'helper';
+@import 'notify';
 
 :root {
   --monospace-font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;

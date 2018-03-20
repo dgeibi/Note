@@ -1,33 +1,45 @@
 /* eslint-disable no-console */
 const wbBuild = require('workbox-build')
-const { basename, join } = require('path')
+const path = require('path')
 
-const WB_SW = require.resolve('workbox-sw')
-const copyToDir = (fn, from, dir) => fn(from, join(dir, basename(from)))
+const generateSW = async (_, { publicPath, cwd, fse, config: { workbox } }) => {
+  const isFile = p =>
+    fse
+      .stat(p)
+      .then(x => x.isFile())
+      .catch(() => false)
 
-const generateSW = async (_, { publicPath, fse, config: { workbox } }) => {
   const config = {
     globDirectory: publicPath,
-    swDest: `${publicPath}/sw.js`,
     ...workbox,
   }
-  await wbBuild.injectManifest(config)
+
+  config.swSrc = path.resolve(
+    cwd,
+    typeof config.swSrc !== 'string' ? 'sw.js' : config.swSrc
+  )
+  if (!await isFile(config.swSrc)) {
+    throw Error(`should provide "config.workbox.swSrc" for sw.js`)
+  }
+  config.swDest = path.resolve(
+    publicPath,
+    typeof config.swDest !== 'string' ? 'sw.js' : config.swDest
+  )
+
+  const ret = await wbBuild.injectManifest(config)
+  if (ret.warnings.length > 0) {
+    console.log(ret.warnings.join('\n'))
+  }
+  const workboxDirname = await wbBuild.copyWorkboxLibraries(publicPath)
+  const relativePath = path.posix.normalize(
+    path.relative(path.dirname(config.swDest), path.join(publicPath, workboxDirname))
+  )
   const string = await fse.readFile(config.swDest, { encoding: 'utf8' })
-
-  const result = string.replace('workbox-sw.prod.js', basename(WB_SW))
-
+  const result = string.replace(/__workbox_prefix__/g, relativePath)
   await fse.writeFile(config.swDest, result)
   console.log('Service worker generated.')
 }
 
-const copyWorkboxSW = async (_, { fse, publicPath }) => {
-  await Promise.all([
-    copyToDir(fse.copy, WB_SW, publicPath),
-    copyToDir(fse.copy, `${WB_SW}.map`, publicPath),
-  ])
-}
-
 module.exports = {
   afterBuild: generateSW,
-  beforeBuild: copyWorkboxSW,
 }

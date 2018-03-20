@@ -1,16 +1,20 @@
-/* eslint-env serviceworker */
-/* eslint-disable no-console, no-restricted-globals */
-importScripts('workbox-sw.prod.js')
-
-const workboxSW = new self.WorkboxSW({ clientsClaim: true, skipWaiting: true })
-workboxSW.precache([])
+/* eslint-disable no-console, no-restricted-globals, no-restricted-syntax */ /* eslint-env serviceworker */ /* global workbox */
+importScripts('__workbox_prefix__/workbox-sw.js')
+workbox.setConfig({
+  modulePathPrefix: '__workbox_prefix__/',
+})
+workbox.precaching.precacheAndRoute([])
+workbox.skipWaiting()
 
 // helpers start
-
 // wrapHandler :: (Handler a) => a -> Function | any
-const wrapHandler = (handler) => {
+const wrapHandler = handler => {
   if (typeof handler === 'function') return handler
-  if (handler && typeof handler === 'object' && typeof handler.handle === 'function') {
+  if (
+    handler &&
+    typeof handler === 'object' &&
+    typeof handler.handle === 'function'
+  ) {
     return input => handler.handle(input)
   }
   return handler
@@ -25,7 +29,7 @@ const createHandlerFactory = createHandler =>
 
 // getMsg :: (Any info) => info -> String
 // throwTest :: (Any x) => x -> Boolean
-const check = (getMsg, throwTest) => info => (x) => {
+const check = (getMsg, throwTest) => info => x => {
   const errMsg = getMsg(info)
   if (throwTest(x)) {
     console.error(errMsg)
@@ -44,50 +48,94 @@ const withFallback = createHandlerFactory((url, handler) => input =>
   handler(input)
     .then(checkResponse({ url: input.event.request.url }))
     .catch(() => caches.match(url))
-    .then(checkResponse({ url, tag: 'fallback' })))
+    .then(checkResponse({ url, tag: 'fallback' }))
+)
 
 const removeCaches = filter =>
   caches.keys().then(keys =>
-    Promise.all(keys.map((key) => {
-      if (filter(key)) return null
-      return caches.delete(key)
-    })))
+    Promise.all(
+      keys.map(key => {
+        if (filter(key)) return null
+        return caches.delete(key)
+      })
+    )
+  )
 
+const IMAGES = 'images'
+const SITE_PAGES = 'site-pages-v3'
+const expecteds = [SITE_PAGES, IMAGES].concat(
+  Object.values(workbox.core.cacheNames)
+)
+// remove old store
+self.addEventListener('activate', event => {
+  event.waitUntil(removeCaches(key => expecteds.includes(key)))
+})
+
+const responsesAreSame = (a, b, names) =>
+  names.every(x => a.headers.get(x) === b.headers.get(x))
+
+const checkPageUpdatePlugin = ({ headersToCheck }) => ({
+  cacheDidUpdate: ({ cacheName, oldResponse, newResponse, request }) => {
+    if (
+      !oldResponse ||
+      responsesAreSame(oldResponse, newResponse, headersToCheck)
+    ) {
+      return null
+    }
+    return self.clients
+      .matchAll({
+        type: 'window',
+      })
+      .then(clientList => {
+        const updatedUrl = request.url
+        clientList.forEach(client => {
+          setTimeout(() => {
+            client.postMessage({
+              type: 'update',
+              payload: { cacheName, updatedUrl },
+            })
+          }, 500)
+        })
+      })
+  },
+})
 // helpers end
 
-const SITE_PAGES = 'site-pages-v3'
-const expecteds = [SITE_PAGES]
-
-const pageBaseHandler = workboxSW.strategies.staleWhileRevalidate({
+const pageBaseHandler = workbox.strategies.staleWhileRevalidate({
   cacheName: SITE_PAGES,
-  cacheExpiration: {
-    maxEntries: 20,
-    maxAgeSeconds: 7 * 24 * 60 * 60,
-  },
-  cacheableResponse: {
-    statuses: [0, 200],
-  },
+  plugins: [
+    checkPageUpdatePlugin({
+      headersToCheck: ['content-length', 'etag', 'last-modified'],
+    }),
+    new workbox.expiration.Plugin({
+      maxEntries: 40,
+      maxAgeSeconds: 7 * 24 * 60 * 60,
+    }),
+    new workbox.cacheableResponse.Plugin({
+      statuses: [0, 200],
+    }),
+  ],
 })
 
 const rootRegex = /^\/[^/]*$/
-workboxSW.router.registerRoute(
-  ({ event, url }) => event.request.mode === 'navigate' && !rootRegex.test(url.pathname),
+workbox.routing.registerRoute(
+  ({ event, url }) =>
+    event.request.mode === 'navigate' && !rootRegex.test(url.pathname),
   withFallback(`${self.location.origin}/offline.html`, pageBaseHandler)
 )
 
-workboxSW.router.registerRoute(
+workbox.routing.registerRoute(
   /.*\.(png|jpg|jpeg|gif)/,
-  workboxSW.strategies.cacheFirst({
-    cacheName: 'images',
-    cacheExpiration: {
-      maxAgeSeconds: 7 * 24 * 60 * 60,
-    },
-    cacheableResponse: {
-      statuses: [0, 200],
-    },
+  workbox.strategies.cacheFirst({
+    cacheName: IMAGES,
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 20,
+        maxAgeSeconds: 7 * 24 * 60 * 60,
+      }),
+      new workbox.cacheableResponse.Plugin({
+        statuses: [0, 200],
+      }),
+    ],
   })
 )
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(removeCaches(key => expecteds.includes(key) || /^workbox-precaching-revisioned-v1/.test(key)))
-})

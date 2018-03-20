@@ -1,0 +1,50 @@
+:root {
+  --brand-color: #d10f0f;
+}
+
+.notify {
+  background: #fff;
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  border: 1px solid var(--brand-color);
+  border-radius: 5px;
+  padding: 0.5em 0.6em;
+}
+
+.notify-btn-close {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  & svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid;
+    border-radius: 0.2em;
+  }
+}
+
+.notify-btn {
+  color: var(--brand-color);
+  display: inline-block;
+  font: inherit;
+  padding: 0.3em 0.4em;
+  background-color: transparent;
+  text-decoration: none;
+  border: 0 none;
+  cursor: pointer;
+  &:focus {
+    outline: 0;
+    color: red;
+  }
+}
+
+.notify-title {
+  font-size: 18px;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.notify-message {
+  margin: 5px 0 0;
+}
