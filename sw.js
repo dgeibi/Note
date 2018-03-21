@@ -62,7 +62,7 @@ const removeCaches = filter =>
   )
 
 const IMAGES = 'images'
-const SITE_PAGES = 'site-pages-v3'
+const SITE_PAGES = 'site-pages-v4'
 const expecteds = [SITE_PAGES, IMAGES].concat(
   Object.values(workbox.core.cacheNames)
 )
