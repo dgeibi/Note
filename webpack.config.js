@@ -1,4 +1,13 @@
 const path = require('path')
+const webpack = require('webpack')
+
+const define = (opts) => {
+  const definitions = {}
+  Object.keys(opts).forEach(k => {
+    definitions[k] = JSON.stringify(opts[k])
+  })
+  return new webpack.DefinePlugin(definitions)
+}
 
 const PROD = process.env.NODE_ENV === 'production'
 
@@ -14,6 +23,12 @@ module.exports = {
     app: './_scripts/app.js',
     'offline-page': './_scripts/offline-page.js',
   },
+  plugins: [
+    define({
+      'process.env.DOCSMAP_URL': '/docsmap.json',
+      'process.env.runTimeCacheNames': require('./config/runTimeCacheNames')
+    })
+  ],
   module: {
     rules: [
       {

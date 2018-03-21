@@ -1,7 +1,7 @@
 /* eslint-disable no-console, no-restricted-globals, no-restricted-syntax */ /* eslint-env serviceworker */ /* global workbox */
-importScripts('__workbox_prefix__/workbox-sw.js')
+importScripts(`${self.__workbox_prefix__}/workbox-sw.js`)
 workbox.setConfig({
-  modulePathPrefix: '__workbox_prefix__/',
+  modulePathPrefix: self.__workbox_prefix__,
 })
 workbox.precaching.precacheAndRoute([])
 workbox.skipWaiting()
@@ -61,11 +61,12 @@ const removeCaches = filter =>
     )
   )
 
-const IMAGES = 'images'
-const SITE_PAGES = 'site-pages-v4'
-const expecteds = [SITE_PAGES, IMAGES].concat(
+const runTimeCacheNames = self.__runTimeCacheNames__
+
+const expecteds = [Object.values(runTimeCacheNames)].concat(
   Object.values(workbox.core.cacheNames)
 )
+
 // remove old store
 self.addEventListener('activate', event => {
   event.waitUntil(removeCaches(key => expecteds.includes(key)))
@@ -102,7 +103,7 @@ const checkPageUpdatePlugin = ({ headersToCheck }) => ({
 // helpers end
 
 const pageBaseHandler = workbox.strategies.staleWhileRevalidate({
-  cacheName: SITE_PAGES,
+  cacheName: runTimeCacheNames.sitePages,
   plugins: [
     checkPageUpdatePlugin({
       headersToCheck: ['content-length', 'etag', 'last-modified'],
@@ -127,7 +128,7 @@ workbox.routing.registerRoute(
 workbox.routing.registerRoute(
   /.*\.(png|jpg|jpeg|gif)/,
   workbox.strategies.cacheFirst({
-    cacheName: IMAGES,
+    cacheName: runTimeCacheNames.images,
     plugins: [
       new workbox.expiration.Plugin({
         maxEntries: 20,

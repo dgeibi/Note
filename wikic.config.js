@@ -50,6 +50,10 @@ module.exports = {
   },
   workbox: {
     swSrc: `${__dirname}/sw.js`,
+    define: {
+      // defaults: replace `self.__workbox_prefix__` to `workbox-vx.x.x` relative to `swDist`
+      'self.__runTimeCacheNames__': require('./config/runTimeCacheNames'),
+    },
     globPatterns: [
       'assets/**/*.{png,jpg,gif,svg,eot,ttf,woff}',
       'assets/js/app.js',
@@ -68,6 +72,11 @@ module.exports = {
     './config/suite-imagemin',
   ].filter(Boolean),
   watchHandlers: {
-    setupAndBuild: ['config/**', '**/wikic.config.js', '_notes/*.md', '**/_config.yml'],
+    setupAndBuild: [
+      'config/**',
+      '**/wikic.config.js',
+      '_notes/*.md',
+      '**/_config.yml',
+    ],
   },
 }
