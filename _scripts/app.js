@@ -1,3 +1,9 @@
+import 'core-js/modules/es6.array.from'
+import 'core-js/modules/es6.symbol'
+import 'core-js/modules/web.dom.iterable'
+import 'core-js/modules/es6.set'
+import 'core-js/modules/es6.map'
+
 import 'matchmedia-polyfill/matchMedia'
 import 'matchmedia-polyfill/matchMedia.addListener'
 import 'classlist.js'

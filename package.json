@@ -8,19 +8,20 @@
     "node": ">=8.1.3"
   },
   "scripts": {
-    "start": "gulp",
+    "dev": "gulp",
     "build": "cross-env NODE_ENV=production gulp build",
-    "start:prod": "cross-env NODE_ENV=production gulp serve",
-    "format": "prettier-eslint --write \"./*.js\" \"{_scripts,config,_styles}/**/*.{js,css}\"",
-    "lint": "eslint ."
+    "start": "cross-env NODE_ENV=production gulp serve",
+    "format": "prettier --write \"./*.js\" \"{_scripts,config,_styles}/**/*.{js,css}\"",
+    "lint": "eslint .",
+    "precommit": "lint-staged"
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
-    "IE 10"
+    "last 2 versions"
   ],
   "dependencies": {
     "classlist.js": "^1.1.20150312",
+    "core-js": "^2.5.3",
     "escape-string-regexp": "^1.0.5",
     "hyperscript": "^2.0.2",
     "matchmedia-polyfill": "^0.3.0",
@@ -46,12 +47,14 @@
     "gulp-postcss": "^7.0.0",
     "gulp-sourcemaps": "^2.6.1",
     "htmlclean": "^2.7.10",
+    "husky": "^0.14.3",
     "imagemin": "^5.3.1",
+    "lint-staged": "^7.0.0",
     "postcss": "^6.0.12",
     "postcss-cssnext": "^3.0.2",
     "postcss-csso": "^2.0.0",
     "postcss-import": "^11.0.0",
-    "prettier-eslint-cli": "^4.3.2",
+    "prettier": "^1.11.1",
     "svg-inline-loader": "^0.8.0",
     "webpack": "^4.1.1",
     "wikic": "^3.3.0",
@@ -59,5 +62,20 @@
     "wikic-suite-docslist": "^3.0.0",
     "wikic-suite-docsmap": "^2.0.0",
     "workbox-build": "^3.0.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ],
+    "*.md": [
+      "prettier --write",
+      "git add"
+    ],
+    ".*rc": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

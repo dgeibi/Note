@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 
-const define = (opts) => {
+const define = opts => {
   const definitions = {}
   Object.keys(opts).forEach(k => {
     definitions[k] = JSON.stringify(opts[k])
@@ -26,8 +26,8 @@ module.exports = {
   plugins: [
     define({
       'process.env.DOCSMAP_URL': '/docsmap.json',
-      'process.env.runTimeCacheNames': require('./config/runTimeCacheNames')
-    })
+      'process.env.runTimeCacheNames': require('./config/runTimeCacheNames'),
+    }),
   ],
   module: {
     rules: [
@@ -46,9 +46,6 @@ module.exports = {
               {
                 modules: false,
                 useBuiltIns: 'usage',
-                targets: {
-                  browsers: ['last 2 versions'],
-                },
                 shippedProposals: true,
               },
             ],
