@@ -24,7 +24,7 @@ export const isSWUpdateAvailable = new Promise(resolve => {
   }
 })
 
-export const assetHasUpdate = new Promise((resolve) => {
+export const assetHasUpdate = new Promise(resolve => {
   if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
     const update = event => {
       if (event.data.type === 'update') {

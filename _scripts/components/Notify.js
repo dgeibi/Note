@@ -38,7 +38,7 @@ export default opts => {
     h(
       'p',
       {
-        className: `${prefix}-message`
+        className: `${prefix}-message`,
       },
       message,
       h(

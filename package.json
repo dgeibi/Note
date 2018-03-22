@@ -11,7 +11,7 @@
     "dev": "gulp",
     "build": "cross-env NODE_ENV=production gulp build",
     "start": "cross-env NODE_ENV=production gulp serve",
-    "format": "prettier --write \"./*.js\" \"{_scripts,config,_styles}/**/*.{js,css}\"",
+    "format": "prettier --write \"**/*.{js,css}\" --ignore-path ./.gitignore",
     "lint": "eslint .",
     "precommit": "lint-staged"
   },

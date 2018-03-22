@@ -84,8 +84,14 @@ class TreeitemLink {
     this.domNode.addEventListener('blur', this.handleBlur)
     if (this.isExpandable) {
       // add listeners for <span />
-      this.domNode.firstElementChild.addEventListener('mouseover', this.handleMouseOver)
-      this.domNode.firstElementChild.addEventListener('mouseout', this.handleMouseOut)
+      this.domNode.firstElementChild.addEventListener(
+        'mouseover',
+        this.handleMouseOver
+      )
+      this.domNode.firstElementChild.addEventListener(
+        'mouseout',
+        this.handleMouseOut
+      )
     } else {
       this.domNode.addEventListener('mouseover', this.handleMouseOver)
       this.domNode.addEventListener('mouseout', this.handleMouseOut)
@@ -100,7 +106,7 @@ class TreeitemLink {
   }
 
   /* EVENT HANDLERS */
-  handleKeydown = (event) => {
+  handleKeydown = event => {
     let flag = false
     const char = event.key
 
@@ -129,7 +135,10 @@ class TreeitemLink {
       return
     }
     if (event.shift) {
-      if (event.keyCode === this.keyCode.SPACE || event.keyCode === this.keyCode.RETURN) {
+      if (
+        event.keyCode === this.keyCode.SPACE ||
+        event.keyCode === this.keyCode.RETURN
+      ) {
         event.stopPropagation()
         this.stopDefaultClick = true
       } else if (isPrintableCharacter(char)) {
@@ -199,9 +208,12 @@ class TreeitemLink {
     }
   }
 
-  handleClick = (event) => {
+  handleClick = event => {
     // only process click events that directly happened on this treeitem
-    if (event.target !== this.domNode && event.target !== this.domNode.firstElementChild) {
+    if (
+      event.target !== this.domNode &&
+      event.target !== this.domNode.firstElementChild
+    ) {
       return
     }
     if (this.isExpandable) {
@@ -230,11 +242,11 @@ class TreeitemLink {
     node.classList.remove('focus')
   }
 
-  handleMouseOver = (event) => {
+  handleMouseOver = event => {
     event.currentTarget.classList.add('hover')
   }
 
-  handleMouseOut = (event) => {
+  handleMouseOut = event => {
     event.currentTarget.classList.remove('hover')
   }
 }

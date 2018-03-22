@@ -1,8 +1,7 @@
-
 const imagemin = require('imagemin')
 const { _extend: assign } = require('util')
 
-exports.beforeWriteAsset = async (context) => {
+exports.beforeWriteAsset = async context => {
   if (!/.+\.(png|jpg|gif|svg)$/.test(context.src)) return null
   const origLength = context.data.byteLength
   const mined = await imagemin.buffer(context.data)

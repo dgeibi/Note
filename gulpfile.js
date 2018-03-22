@@ -61,12 +61,16 @@ gulp.task('css:watch', ['css'], () => {
     )
   }
 
-  gulp.task('js', () => runWebpack(webpackConfig).then(logStats).catch(error => {
-    console.error(error)
-    if (error.stats) {
-      logStats(error.stats)
-    }
-  }))
+  gulp.task('js', () =>
+    runWebpack(webpackConfig)
+      .then(logStats)
+      .catch(error => {
+        console.error(error)
+        if (error.stats) {
+          logStats(error.stats)
+        }
+      })
+  )
 
   gulp.task('js:watch', () => {
     const compiler = webpack(webpackConfig)

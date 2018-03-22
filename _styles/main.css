@@ -9,13 +9,15 @@
 @import 'notify';
 
 :root {
-  --monospace-font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  --base-font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, Ubuntu,
-    'Helvetica Neue', Helvetica, 'Noto Sans CJK SC', 'Noto Sans SC', 'PingFang SC',
-    'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+  --monospace-font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+    monospace;
+  --base-font-family: -apple-system, BlinkMacSystemFont, 'San Francisco',
+    'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica, 'Noto Sans CJK SC',
+    'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'WenQuanYi Micro Hei', sans-serif;
   --base-font-size: 16px;
   --base-font-weight: 400;
-  --small-font-size: calc(var(--base-font-size)*0.8);
+  --small-font-size: calc(var(--base-font-size) * 0.8);
   --base-line-height: 1.4;
   --spacing-unit: 2rem;
   --text-color: #222;
