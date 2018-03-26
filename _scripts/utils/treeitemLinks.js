@@ -20,7 +20,7 @@ class TreeitemLink {
    */
   constructor(node, treeObj, group) {
     // Check whether node is a DOM element
-    if (typeof node !== 'object') {
+    if (typeof node !== 'object' || !node) {
       return
     }
     node.tabIndex = -1
@@ -120,7 +120,7 @@ class TreeitemLink {
     /**
      * @param {TreeitemLink} item
      */
-    function printableCharacter(item) {
+    function handlePrintableCharacter(item) {
       if (char === '*') {
         item.tree.expandAllSiblingItems(item)
         flag = true
@@ -142,7 +142,7 @@ class TreeitemLink {
         event.stopPropagation()
         this.stopDefaultClick = true
       } else if (isPrintableCharacter(char)) {
-        printableCharacter(this)
+        handlePrintableCharacter(this)
       }
     } else {
       switch (event.keyCode) {
@@ -197,7 +197,7 @@ class TreeitemLink {
           break
         default:
           if (isPrintableCharacter(char)) {
-            printableCharacter(this)
+            handlePrintableCharacter(this)
           }
           break
       }
