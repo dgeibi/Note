@@ -1,3 +1,5 @@
+import isStyleSheetLoaded from '../utils/isStyleSheetLoaded'
+
 const removeClass = className => {
   const node = document.querySelector(`.${className}`)
   if (node) {
@@ -5,4 +7,8 @@ const removeClass = className => {
   }
 }
 
-removeClass('_disable-transition')
+isStyleSheetLoaded(document.querySelector('#css-main', document.head)).then(
+  () => {
+    removeClass('_disable-transition')
+  }
+)

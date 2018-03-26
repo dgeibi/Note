@@ -1,6 +1,7 @@
 :root {
   --sidebar-width: 280px;
   --duration: 0.5s;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar {
@@ -10,7 +11,7 @@
   height: 100%;
   background: inherit;
   transform: translateX(calc(-var(--sidebar-width)));
-  transition: transform var(--duration);
+  transition: transform var(--duration) var(--easing);
   width: var(--sidebar-width);
   padding: 0.7rem;
   border-bottom: 0;
@@ -52,34 +53,32 @@
 }
 
 #slide-btn {
+  z-index: 1;
   position: absolute;
-  top: 0px;
-  left: 0px;
-  display: inline-block;
-  transition: transform var(--duration);
+  transition: transform var(--duration) var(--easing);
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
 
-  & > svg {
-    border: 1px solid transparent;
-    border-radius: 3px;
-  }
+#slide-btn > svg {
+  vertical-align: top;
 }
 
 #slide-btn[aria-pressed='true'] {
   transform: rotate(90deg);
+  position: fixed;  
 }
 
 #slide-btn:focus {
   outline: 0;
-
-  & > svg {
-    border: 1px solid #bebebe;
-  }
+  border: 1px solid #bebebe;
 }
 
 .sidebar-opener {
   transform: translateX(0);
   padding-left: 0;
-  transition: transform var(--duration), padding-left var(--duration);
+  transition: transform var(--duration) var(--easing),
+    padding-left var(--duration) var(--easing);
 }
 
 @media (max-width: 799px) {
