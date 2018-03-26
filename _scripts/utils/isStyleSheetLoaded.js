@@ -4,10 +4,7 @@ export default function isStyleSheetLoaded(node) {
       reject(Error(`node should be provided`))
       return
     }
-    if (!node.sheet || !node.sheet.rules) {
-      reject(Error(`node should be <style> or <link rel="stylesheet">`))
-    }
-    if (node.sheet.rules.length > 0) {
+    if (node.sheet && node.sheet.rules && node.sheet.rules.length > 0) {
       resolve()
       return
     }
