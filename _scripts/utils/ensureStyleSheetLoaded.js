@@ -1,4 +1,4 @@
-export default function isStyleSheetLoaded(node) {
+export default function ensureStyleSheetLoaded(node) {
   return new Promise((resolve, reject) => {
     if (!node) {
       reject(Error(`node should be provided`))
