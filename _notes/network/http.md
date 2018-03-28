@@ -55,13 +55,13 @@ title: HTTP
 
 ### 301 Moved Permanently
 
-永久重定向，POST->GET
+永久重定向，允许变更方法 POST->GET
 
 如果这不是一个 GET 或者 HEAD 请求，因此浏览器禁止自动进行重定向，除非得到用户的确认，因为请求的条件可能因此发生变化。注意：对于某些使用 HTTP/1.0 协议的浏览器，当它们发送的 POST 请求得到了一个 301 响应的话，接下来的重定向请求将会变成 GET 方式。
 
 ### 302 Found
 
-临时重定向，POST->GET
+临时重定向，允许变更方法 POST->GET
 
 由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在 Cache-Control 或 Expires 中进行了指定的情况下，这个响应才是可缓存的。
 
@@ -69,7 +69,7 @@ title: HTTP
 
 ### 303 See Other
 
-临时重定向，标准的 POST->GET
+临时重定向，通常变更方法 POST->GET
 
 对应当前请求的响应可以在另一个 URI 上被找到，当响应于 POST（或 PUT / DELETE）接收到响应时，客户端应该假定服务器已经收到数据，并且应该使用单独的 GET 消息发出重定向。同时，303 响应禁止被缓存。当然，第二个请求（重定向）可能被缓存。
 
@@ -79,15 +79,26 @@ title: HTTP
 
 ### 307 Temporary Redirect
 
-临时重定向，标准的 POST->POST
+临时重定向
 
 与 302 重定向有所区别的地方在于，收到 307 响应码后，客户端应保持请求方法不变向新的地址发出请求
 
 ### 308 Permanent Redirect
 
-永久重定向，标准的 POST->POST
+永久重定向
 
 307 和 308 重复 302 和 301 的行为，但不允许 HTTP 方法更改
+
+```
+   +-------------------------------------------+-----------+-----------+
+   |                                           | Permanent | Temporary |
+   +-------------------------------------------+-----------+-----------+
+   | Allows changing the request method from   | 301       | 302       |
+   | POST to GET                               |           |           |
+   | Does not allow changing the request       | 308       | 307       |
+   | method from POST to GET                   |           |           |
+   +-------------------------------------------+-----------+-----------+
+```
 
 ### 400 Bad Request
 
@@ -191,11 +202,13 @@ Last-Modified 响应头可以作为一种弱校验器。说它弱是因为它只
 
 ## 参考资料
 
-* [HTTP状态码 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81)
-* [web性能优化之：no-cache与must-revalidate深入探究 - 程序猿小卡](http://www.cnblogs.com/chyingp/p/no-cache-vs-must-revalidate.html)
-* [HTTP缓存控制小结 - 腾讯Web前端 IMWeb 团队社区](http://imweb.io/topic/5795dcb6fb312541492eda8c)
+* [HTTP 状态码 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81)
+* [web 性能优化之：no-cache 与 must-revalidate 深入探究 - 程序猿小卡](http://www.cnblogs.com/chyingp/p/no-cache-vs-must-revalidate.html)
+* [HTTP 缓存控制小结 - 腾讯 Web 前端 IMWeb 团队社区](http://imweb.io/topic/5795dcb6fb312541492eda8c)
 * [http - What's the difference between Cache-Control: max-age=0 and no-cache? - Stack Overflow](https://stackoverflow.com/questions/1046966/whats-the-difference-between-cache-control-max-age-0-and-no-cache)
 * [Safe - Glossary | MDN](https://developer.mozilla.org/en-US/docs/Glossary/safe)
 * [HTTP request methods - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
 * [If-Unmodified-Since - HTTP | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Unmodified-Since)
 * [Are Duplicate HTTP Response Headers acceptable? - Stack Overflow](https://stackoverflow.com/questions/4371328/are-duplicate-http-response-headers-acceptable)
+* [RFC 7238 - The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect)](https://tools.ietf.org/html/rfc7238)
+* [RFC 7231 - Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content](https://tools.ietf.org/html/rfc7231)
