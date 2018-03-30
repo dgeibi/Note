@@ -1,5 +1,6 @@
 ---
 hide: true
+openSideBar: true
 ---
 
 Fork me on [GitHub](https://github.com/dgeibi/note)

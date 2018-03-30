@@ -12,7 +12,7 @@ function slide2left(options) {
     if (startX && options.touchArea.contains(target)) {
       const endX = e.changedTouches[0].clientX
       const offsetX = endX - startX
-      if (offsetX < -40) {
+      if (offsetX < -95) {
         toggle()
       }
     }

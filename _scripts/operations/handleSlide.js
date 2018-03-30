@@ -9,7 +9,7 @@ const OPEN_KEY = 'sidebar-opener--open'
 
 if (aside && slideBtn && opener) {
   const state = {
-    hided: true,
+    hided: !opener.classList.contains(OPEN_KEY),
     isNarrow: null,
   }
   aside.inert = state.hided

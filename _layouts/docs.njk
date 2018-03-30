@@ -7,8 +7,8 @@
 {%- endblock %}
 
 {%- block body %}
-<a href="javascript:void(0)" title="Docs Tree" id="slide-btn" role="button" aria-label="Docs Tree" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
-<div class="sidebar-opener">
+<a href="javascript:void(0)" title="Docs Tree" id="slide-btn" role="button" aria-label="Docs Tree" aria-pressed="{{ "true" if page.openSideBar else "false" }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
+<div class="sidebar-opener{{ " sidebar-opener--open" if page.openSideBar }}" >
   <main class="main">
     <article class='page'>
       {% if page.title %}<h1 class="page-title">{{- page.title }}</h1>{% endif %}
