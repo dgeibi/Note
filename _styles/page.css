@@ -4,7 +4,6 @@
 }
 
 .page-content {
-  margin-top: 1rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -12,6 +11,8 @@
 .page-content p {
   line-height: 1.7;
 }
+
+/* offline page list */
 
 .page-list {
   list-style: none;
@@ -28,5 +29,5 @@
 }
 
 .page-item:not(:last-of-type) {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }

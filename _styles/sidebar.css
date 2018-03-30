@@ -57,7 +57,10 @@
   position: absolute;
   transition: transform var(--duration) var(--easing);
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: 50%;
+  padding: 3px;
+  left: 10px;
+  top: 10px;
 }
 
 #slide-btn > svg {

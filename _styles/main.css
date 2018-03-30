@@ -33,7 +33,7 @@
 
 html {
   box-sizing: border-box;
-  overflow-x: hidden;  
+  overflow-x: hidden;
 }
 
 *,
@@ -67,7 +67,7 @@ ol,
 p,
 ul,
 pre {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 /**
@@ -144,14 +144,9 @@ a:hover {
  */
 
 blockquote {
-  border-left: 0.25rem solid var(--grey-color-light);
-  padding-left: 1rem;
-  font-size: 1.125rem;
-  letter-spacing: -1px;
-  font-style: italic;
-  &:last-child {
-    margin-bottom: 0;
-  }
+  border-left: 4px solid var(--grey-color-light);
+  padding-left: 10px;
+  margin: 16px 10px;
 }
 
 /**
@@ -206,6 +201,6 @@ th {
   position: relative;
   margin: 0 auto;
   max-width: 800px;
-  padding: 1.5rem;
+  padding: 50px 24px 24px;
   min-height: 100vh;
 }

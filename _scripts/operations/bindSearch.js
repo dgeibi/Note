@@ -56,8 +56,9 @@ const methods = {
   generateHTML(regex, matches) {
     const replacer = x => x.replace(regex, '<span class="hl">$&</span>')
     return matches
-      .map(
-        ({ title, types, address }) => `
+      .map(({ title, types, address }) => {
+        if (!title) return ''
+        return `
           <li class="search-item">
             <h3 class="search-item__title"><a href="${address}">${replacer(
           title
@@ -67,7 +68,7 @@ const methods = {
               .join(' > ')}</span>
           </li>
       `
-      )
+      })
       .join('')
   },
 }
