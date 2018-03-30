@@ -94,11 +94,17 @@ key 仅仅需要在兄弟节点间唯一，不需要全局唯一。
 
 如果需要指定 key 则 key 最好和节点内容有密切的关系，如果 key 是数组的 index ，往往效果和不用 key 一样。
 
-为什么 key 不用数组的 index？
+### 为什么 key 不能是数组的 index？
 
-如果数组的变更触发组件重渲染，列表子树的一个非末尾节点被删除或者中间有新节点插入，在没有指定 key 或 key 为数组 index 的情况下，和前文说的默认情况一样是按顺序比较两组节点，这是不准确、效率低下的。例如，我们把 `<li />` 换成有内部状态的节点比如 `<Article url={item.url} />`，Article 组件存在副作用，它获取 url 对应的资源，最终显示相应的内容。此时，Virtual DOM 中实际发送改变位置之后的节点对比原子树对应位置的节点 url prop 的值改变了，如果 Article 组件没有处理 props 改变的情况即 `componentWillReceiveProps` 没有处理 url 改动带来的变化，内部的状态还是原来的，但和 url 不匹配，这样就造成了状态紊乱。如果处理了 props 改变的情况，也会带来额外的开销。根据实际业务应该用和内容相关的唯一值作为 key，例如这里的 `item.url` 。
+假定有个组件，其状态有一个数组，组件用数组生成一个列表。通过 setState 方法删除数组中间的一个元素，触发组件重渲染，对应的，删除列表子树一个节点。列表组件的 item 是有内部状态的节点比如 `<Article url={item.url} />`，Article 组件存在副作用，它获取 url 对应的资源，最终显示相应的内容。
 
-不用 index 那用 `Math.random()` 可以吧！？
+如果不指定 key，React 按顺序比较两组节点。如果 key 为数组 index，React 比较 key 相同的两个 Element，因为数组 index 只和位置有关，所以实际上 React 依旧按顺序比较两组节点。
+
+被删除节点后面的所有节点被移动到前面的一个位置。然而 React 并不知道其中的对应关系。React 只知道新子树的末尾少了一个节点，销毁最后的实例。React 会执行剩下所有实例的 `componentWillReceiveProps` 方法，如果 `componentWillReceiveProps` 没有处理好 url 改动的情况，url 变动的实例的状态会是脏的，因为状态和 url 不匹配。如果处理了 props 改变的情况，则会带来额外的开销。
+
+根据实际业务应该用和内容相关的唯一值作为 key，例如上面的 `item.url`。
+
+### 不用 index 那用 `Math.random()` 可以吧！？
 
 引用一下 React 文档的一段话：
 
