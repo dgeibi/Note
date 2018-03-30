@@ -4,33 +4,30 @@ import bindMedia from '../utils/bindMedia'
 
 const slideBtn = $('#slide-btn')
 const aside = $('.sidebar')
-const opener = $('.sidebar-opener')
-const OPEN_KEY = 'sidebar-opener--open'
+const peer = $('.sidebar-peer')
+const OPEN_CLASS = 'sidebar--open'
 
-if (aside && slideBtn && opener) {
+if (aside && slideBtn && peer) {
+  const isHided = () => !aside.classList.contains(OPEN_CLASS)
   const state = {
-    hided: !opener.classList.contains(OPEN_KEY),
+    hided: isHided(),
     isNarrow: null,
   }
   aside.inert = state.hided
-
   bindMedia('(max-width: 799px)', mql => {
     state.isNarrow = mql.matches
   })
-
   const toggle = () => {
-    opener.classList.toggle(OPEN_KEY)
-    state.hided = !opener.classList.contains(OPEN_KEY)
+    aside.classList.toggle(OPEN_CLASS)
+    state.hided = isHided()
     aside.inert = state.hided
     slideBtn.setAttribute('aria-pressed', !state.hided)
   }
   slideBtn.addEventListener('click', toggle)
-  const enable = e => state.isNarrow && !slideBtn.contains(e.target)
-  const shouldHideWhenBlur = e => !state.hided && opener.contains(e.target)
   slide2left({
-    touchArea: aside,
-    enable,
     toggle,
-    shouldHideWhenBlur,
+    touchArea: aside,
+    enable: e => state.isNarrow && !slideBtn.contains(e.target),
+    shouldHideWhenBlur: e => !state.hided && peer.contains(e.target),
   })
 }
