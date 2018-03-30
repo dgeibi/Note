@@ -25,7 +25,7 @@
     </section>
   </main>
 </div>
-<aside class="sidebar" inert>
+<aside class="sidebar" {{ "inert" if not page.openSideBar }}>
   {% include "includes/header.njk" %}
   <input type="search" placeholder="Type or Title" class="docs-search-input" data-search-input>
   <nav class="site-nav">
