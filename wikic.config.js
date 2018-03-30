@@ -55,9 +55,7 @@ module.exports = {
       'self.__runTimeCacheNames__': require('./config/runTimeCacheNames'),
     },
     globPatterns: [
-      'assets/**/*.{png,jpg,gif,svg,eot,ttf,woff}',
-      'assets/js/app.js',
-      'assets/js/offline-page.js',
+      'assets/js/*.js',
       'assets/css/*.css',
       'index.html',
       'offline.html',

@@ -29,7 +29,7 @@ const generateSW = async (_, { publicPath, cwd, fse, config: { workbox } }) => {
   delete config.define
   const injectResult = await wbBuild.injectManifest(config)
   if (injectResult.warnings.length > 0) {
-    console.log(injectResult.warnings.join('\n'))
+    throw Error(injectResult.warnings.join('\n'))
   }
   const workboxDirname = await wbBuild.copyWorkboxLibraries(publicPath)
   const workboxPrefix = path.posix.normalize(
