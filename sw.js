@@ -63,7 +63,8 @@ const removeCaches = filter =>
 
 const runTimeCacheNames = self.__runTimeCacheNames__
 
-const expecteds = [Object.values(runTimeCacheNames)].concat(
+const expecteds = [].concat(
+  Object.values(runTimeCacheNames),
   Object.values(workbox.core.cacheNames)
 )
 
