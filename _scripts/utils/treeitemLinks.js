@@ -23,7 +23,7 @@ class TreeitemLink {
     if (typeof node !== 'object' || !node) {
       return
     }
-    node.tabIndex = -1
+    node.tabIndex = 0
     this.tree = treeObj
 
     /** @type {(boolean|TreeitemLink)} */
@@ -74,7 +74,7 @@ class TreeitemLink {
   }
 
   init() {
-    this.domNode.tabIndex = -1
+    // this.domNode.tabIndex = -1
     if (!this.domNode.getAttribute('role')) {
       this.domNode.setAttribute('role', 'treeitem')
     }
@@ -108,28 +108,6 @@ class TreeitemLink {
   /* EVENT HANDLERS */
   handleKeydown = event => {
     let flag = false
-    const char = event.key
-
-    /**
-     * @param {string} str
-     */
-    function isPrintableCharacter(str) {
-      return str.length === 1 && str.match(/\S/)
-    }
-
-    /**
-     * @param {TreeitemLink} item
-     */
-    function handlePrintableCharacter(item) {
-      if (char === '*') {
-        item.tree.expandAllSiblingItems(item)
-        flag = true
-      } else if (isPrintableCharacter(char)) {
-        item.tree.setFocusByFirstCharacter(item, char)
-        flag = true
-      }
-    }
-
     this.stopDefaultClick = false
     if (event.altKey || event.ctrlKey || event.metaKey) {
       return
@@ -141,8 +119,6 @@ class TreeitemLink {
       ) {
         event.stopPropagation()
         this.stopDefaultClick = true
-      } else if (isPrintableCharacter(char)) {
-        handlePrintableCharacter(this)
       }
     } else {
       switch (event.keyCode) {
@@ -196,9 +172,6 @@ class TreeitemLink {
           flag = true
           break
         default:
-          if (isPrintableCharacter(char)) {
-            handlePrintableCharacter(this)
-          }
           break
       }
     }

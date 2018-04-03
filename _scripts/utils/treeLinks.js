@@ -31,7 +31,6 @@ function findTreeitems(node, tree, group) {
       ti = new TreeitemLink(elem, tree, group)
       ti.init()
       tree.treeitems.push(ti)
-      tree.firstChars.push(ti.label.substring(0, 1).toLowerCase())
     }
     if (elem.firstElementChild) {
       findTreeitems(elem, tree, ti)
@@ -54,9 +53,6 @@ class TreeLinks {
     /** @type {TreeitemLink[]} */
     this.treeitems = []
 
-    /** @type {string[]} */
-    this.firstChars = []
-
     /** @type {TreeitemLink} */
     this.firstTreeitem = null
     this.lastTreeitem = null
@@ -71,22 +67,13 @@ class TreeLinks {
 
     // set ti.isVisible, find firstTreeitem and lastTreeitem
     this.updateVisibleTreeitems()
-    this.firstTreeitem.domNode.tabIndex = 0
   }
 
   /**
    * @param {TreeitemLink} treeitem
    */
   setFocusToItem(treeitem) {
-    for (let i = 0; i < this.treeitems.length; i += 1) {
-      const ti = this.treeitems[i]
-      if (ti === treeitem) {
-        ti.domNode.tabIndex = 0
-        ti.domNode.focus()
-      } else {
-        ti.domNode.tabIndex = -1
-      }
-    }
+    treeitem.domNode.focus()
   }
 
   /**
@@ -145,15 +132,6 @@ class TreeLinks {
     }
   }
 
-  expandAllSiblingItems(currentItem) {
-    for (let i = 0; i < this.treeitems.length; i += 1) {
-      const ti = this.treeitems[i]
-      if (ti.groupTreeitem === currentItem.groupTreeitem && ti.isExpandable) {
-        this.expandTreeitem(ti)
-      }
-    }
-  }
-
   collapseTreeitem(currentItem) {
     let groupTreeitem = false
     if (currentItem.isExpanded()) {
@@ -184,38 +162,6 @@ class TreeLinks {
         this.lastTreeitem = ti
       }
     }
-  }
-
-  setFocusByFirstCharacter(currentItem, _char) {
-    let start
-    let index
-    const char = _char.toLowerCase()
-    // Get start index for search based on position of currentItem
-    start = this.treeitems.indexOf(currentItem) + 1
-    if (start === this.treeitems.length) {
-      start = 0
-    }
-    // Check remaining slots in the menu
-    index = this.getIndexFirstChars(start, char)
-    // If not found in remaining slots, check from beginning
-    if (index === -1) {
-      index = this.getIndexFirstChars(0, char)
-    }
-    // If match was found...
-    if (index > -1) {
-      this.setFocusToItem(this.treeitems[index])
-    }
-  }
-
-  getIndexFirstChars(startIndex, char) {
-    for (let i = startIndex; i < this.firstChars.length; i += 1) {
-      if (this.treeitems[i].isVisible) {
-        if (char === this.firstChars[i]) {
-          return i
-        }
-      }
-    }
-    return -1
   }
 }
 
