@@ -18,13 +18,15 @@
 </aside>
 <div class="sidebar-peer">
   <main class="main">
-    <article class='page'>
-      {% if page.title %}<h1 class="page-title">{{- page.title }}</h1>{% endif %}
-      {% if page.toc %}<nav id="toc"></nav>{% endif %}
-      <div class="page-content">
+    <div class='page'>
+      <article class="page-content">
+        {% if page.title %}<h1 class="page-title">{{- page.title }}</h1>{% endif %}
+        {% if page.toc %}<nav id="toc"></nav>{% endif %}
         {{- content| safe }}
-      </div>
-    </article>
+      </article>
+      <section class="page-meta">最后提交时间：<time datetime="{{ page.updateDate.datetime }}">{{ page.updateDate.display }}</time></section>
+    </div>
+
     <section class="search-result" data-search-result>
       <header class="search-result__header">
         <h1 class="search-result__description">Found&nbsp;<span class="count"></span>&nbsp;articles.</h1>

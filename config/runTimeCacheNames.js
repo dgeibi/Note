@@ -1,4 +1,4 @@
 module.exports = {
-  sitePages: 'site-pages-v6',
+  sitePages: 'site-pages-v7',
   images: 'images',
 }

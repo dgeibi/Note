@@ -28,7 +28,7 @@ gulp.task('css:watch', ['css'], () => {
   gulp.task('serve', ['build'], () => wikic.serve())
 
   gulp.task('build:watch', ['css', 'css:watch', 'js:watch', 'clean'], () =>
-    wikic.build().then(() => wikic.watch())
+    wikic.watch().build()
   )
   gulp.task('serve:watch', ['build:watch'], () => wikic.serve())
 }

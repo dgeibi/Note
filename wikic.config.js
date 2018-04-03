@@ -1,6 +1,10 @@
 /* eslint-disable global-require, no-console */
 const PRODUCTION = process.env.NODE_ENV === 'production'
 
+const cnFormat = {
+  timeZone: 'Asia/Shanghai',
+}
+
 module.exports = {
   title: 'Wikic',
   port: 4511,
@@ -68,6 +72,7 @@ module.exports = {
     PRODUCTION && './config/suite-gensw',
     './config/suite-htmlclean',
     './config/suite-imagemin',
+    './config/suite-addDate',
   ].filter(Boolean),
   watchHandlers: {
     setupAndBuild: [
@@ -77,4 +82,8 @@ module.exports = {
       '**/_config.yml',
     ],
   },
+  dateFormatter: date => ({
+    display: date.toLocaleString('zh-CN', cnFormat),
+    datetime: date.toISOString(),
+  }),
 }
