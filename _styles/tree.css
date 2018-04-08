@@ -25,28 +25,40 @@ ul[role='tree'] li {
 }
 
 [role='treeitem'][aria-expanded='false'] > span:before {
-  content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9J2N1cnJlbnRDb2xvcicgc3Ryb2tlLXdpZHRoPScyJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnPjxwb2x5bGluZSBwb2ludHM9JzkgMTggMTUgMTIgOSA2Jz48L3BvbHlsaW5lPjwvc3ZnPg==');
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9J2N1cnJlbnRDb2xvcicgc3Ryb2tlLXdpZHRoPScyJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnPjxwb2x5bGluZSBwb2ludHM9JzkgMTggMTUgMTIgOSA2Jz48L3BvbHlsaW5lPjwvc3ZnPg==');
 }
 
 [role='treeitem'][aria-expanded='true'] > span:before {
-  content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9J2N1cnJlbnRDb2xvcicgc3Ryb2tlLXdpZHRoPScyJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnPjxwb2x5bGluZSBwb2ludHM9JzYgOSAxMiAxNSAxOCA5Jz48L3BvbHlsaW5lPjwvc3ZnPg==');
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9J2N1cnJlbnRDb2xvcicgc3Ryb2tlLXdpZHRoPScyJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnPjxwb2x5bGluZSBwb2ludHM9JzYgOSAxMiAxNSAxOCA5Jz48L3BvbHlsaW5lPjwvc3ZnPg==');
 }
 
-[role='treeitem'] > span::before {
-  position: relative;
-  top: 0.4em;
+[role='treeitem'] span::before {
+  font-size: 1.4em;
+  background-size: 1em;
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 1em;
+  height: 1em;
 }
 
 [role='treeitem'],
 [role='treeitem'] span {
-  margin: 0;
   border: 1px transparent solid;
   border-radius: 0.2em;
+  padding: 0.125em;
   display: block;
+  margin: 0;
+  line-height: 1.8;
 }
 
-[role='treeitem'] {
-  padding: 0.125em;
+[role='treeitem'] span {
+  position: relative;
+  padding-left: 1.4em;
 }
 
 /* disable default keyboard focus styling for treeitems

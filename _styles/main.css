@@ -15,7 +15,7 @@
     'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Helvetica, 'Noto Sans CJK SC',
     'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
     'WenQuanYi Micro Hei', sans-serif;
-  --base-font-size: 16px;
+  --base-font-size: 1em;
   --base-font-weight: 400;
   --small-font-size: calc(var(--base-font-size) * 0.8);
   --base-line-height: 1.4;
