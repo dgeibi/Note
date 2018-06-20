@@ -184,7 +184,7 @@ Pragma 的优先级是高于 Cache-Control
 * `no-cache`：告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，**一定**要到**源服务器**进行副本有效性校验。和 response `max-age=0, must-revalidate` 效果一样。
 * `must-revalidate`：告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，**必须**去**源服务器**进行有效性校验。
 * `s-max-age`: 仅应用在共有缓存，保持新鲜的最大时间，优先级高于 `max-age`
-* `max-age`: 保持新鲜的最大时间
+* `max-age`: 从请求的时间开始，允许获取的响应被重用的最长时间（单位：秒）。
 * `max-age=0`：告诉浏览器、缓存服务器，使用资源副本前，应该进行副本有效性校验。
 
 #### request header
@@ -212,3 +212,4 @@ Last-Modified 响应头可以作为一种弱校验器。说它弱是因为它只
 * [Are Duplicate HTTP Response Headers acceptable? - Stack Overflow](https://stackoverflow.com/questions/4371328/are-duplicate-http-response-headers-acceptable)
 * [RFC 7238 - The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect)](https://tools.ietf.org/html/rfc7238)
 * [RFC 7231 - Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content](https://tools.ietf.org/html/rfc7231)
+* [HTTP Caching  |  Web Fundamentals  |  Google Developers](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)
