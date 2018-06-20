@@ -1,7 +1,16 @@
-const csso = require('postcss-csso')
-const cssnext = require('postcss-cssnext')
-const postcssImport = require('postcss-import')
-
 module.exports = {
-  plugins: [postcssImport(), cssnext(), csso],
+  plugins: {
+    'postcss-import': {},
+    'postcss-preset-env': {
+      browsers: 'last 2 versions',
+      stage: 0,
+      features: {
+        'custom-properties': {
+          preserve: false,
+        },
+      },
+    },
+    'postcss-calc': {},
+    'postcss-csso': {},
+  },
 }

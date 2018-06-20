@@ -1,39 +1,59 @@
-/* eslint-disable global-require, no-console */
 const gulp = require('gulp')
+const wikic = new (require('wikic'))()
 
-gulp.task('default', ['serve:watch'])
+function streamToPromise(stream) {
+  return new Promise((resolve, reject) => {
+    stream.on('finish', resolve).on('error', reject)
+  })
+}
 
-gulp.task('css', () => {
+function buildCSS() {
   const postcss = require('gulp-postcss')
   const sourcemaps = require('gulp-sourcemaps')
   const postcssConfig = require('./postcss.config')
-  return gulp
-    .src('./_styles/main.css')
-    .pipe(sourcemaps.init())
-    .pipe(postcss(postcssConfig.plugins))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./assets/css'))
-})
-
-gulp.task('css:watch', ['css'], () => {
-  gulp.watch('./_styles/**/*.css', ['css'])
-})
-
-{
-  const Wikic = require('wikic')
-  const wikic = new Wikic()
-  gulp.task('clean', () => wikic.clean())
-
-  gulp.task('build', ['css', 'js', 'clean'], () => wikic.build())
-  gulp.task('serve', ['build'], () => wikic.serve())
-
-  gulp.task('build:watch', ['css', 'css:watch', 'js:watch', 'clean'], () =>
-    wikic.watch().build()
+  return streamToPromise(
+    gulp
+      .src('./_styles/main.css')
+      .pipe(sourcemaps.init())
+      .pipe(postcss(postcssConfig.plugins))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest('./assets/css'))
   )
-  gulp.task('serve:watch', ['build:watch'], () => wikic.serve())
 }
 
-{
+function watchCSS() {
+  return gulp.watch('./_styles/**/*.css', buildCSS)
+}
+
+const logStats = stats => {
+  console.log(
+    stats.toString({
+      chunks: false,
+      colors: true,
+    })
+  )
+}
+
+function getWebpackConfig() {
+  return require('./webpack.config')
+}
+
+function buildWatchJS() {
+  const webpack = require('webpack')
+  const compiler = webpack(getWebpackConfig())
+  return new Promise(done => {
+    compiler.watch({}, (err, stats) => {
+      if (err) {
+        console.error(err)
+      } else {
+        done() // first done
+        logStats(stats)
+      }
+    })
+  })
+}
+
+function buildJS() {
   const webpack = require('webpack')
   const runWebpack = config =>
     new Promise((resolve, reject) => {
@@ -51,35 +71,41 @@ gulp.task('css:watch', ['css'], () => {
         }
       })
     })
-  const webpackConfig = require('./webpack.config')
-  const logStats = stats => {
-    console.log(
-      stats.toString({
-        chunks: false,
-        colors: true,
-      })
-    )
-  }
 
-  gulp.task('js', () =>
-    runWebpack(webpackConfig)
-      .then(logStats)
-      .catch(error => {
-        console.error(error)
-        if (error.stats) {
-          logStats(error.stats)
-        }
-      })
-  )
-
-  gulp.task('js:watch', () => {
-    const compiler = webpack(webpackConfig)
-    compiler.watch({}, (err, stats) => {
-      if (err) {
-        console.error(err)
-      } else {
-        logStats(stats)
+  return runWebpack(getWebpackConfig())
+    .then(logStats)
+    .catch(error => {
+      console.error(error)
+      if (error.stats) {
+        logStats(error.stats)
       }
     })
-  })
 }
+
+async function dev() {
+  await buildCSS()
+  watchCSS()
+  await buildWatchJS()
+
+  await wikic.clean()
+  await wikic.watch().build()
+  wikic.serve()
+}
+
+async function build() {
+  await buildCSS()
+  await buildJS()
+
+  await wikic.clean()
+  await wikic.build()
+  return wikic
+}
+
+async function serve() {
+  await build()
+  wikic.serve()
+}
+
+gulp.task('dev', dev)
+gulp.task('build', build)
+gulp.task('serve', serve)

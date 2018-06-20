@@ -1,5 +1,6 @@
 :root {
   --sidebar-width: 280px;
+  --n-sidebar-width: -280px;
   --duration: 0.4s;
   --easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -10,7 +11,7 @@
   left: 0;
   height: 100%;
   background: inherit;
-  transform: translateX(calc(-var(--sidebar-width)));
+  transform: translateX(var(--n-sidebar-width));
   transition: transform var(--duration) var(--easing);
   width: var(--sidebar-width);
   padding: 0.7rem;

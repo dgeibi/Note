@@ -23,8 +23,8 @@
   --text-color: #222;
   --background-color: #f9f9f9;
   --brand-color: #d10f0f;
-  --grey-color-dark: color(grey shade(50%));
-  --grey-color-light: color(grey tint(10%));
+  --grey-color-dark: color-mod(grey shade(50%));
+  --grey-color-light: color-mod(grey tint(10%));
 }
 
 /**
